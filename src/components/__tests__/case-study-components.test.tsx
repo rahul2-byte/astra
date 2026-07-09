@@ -3,6 +3,7 @@ import { Activity, Cpu, Gauge } from "lucide-react";
 import { ComparisonBars } from "@/components/case-study/comparison-bars";
 import { MetricTile } from "@/components/case-study/metric-tile";
 import { StackPill } from "@/components/case-study/stack-pill";
+import { TrendLine } from "@/components/case-study/trend-line";
 
 describe("StackPill", () => {
   it("renders the stack label inside a rounded chip", () => {
