@@ -1,4 +1,6 @@
 import { render, screen } from "@testing-library/react";
+import { Activity, Cpu, Gauge } from "lucide-react";
+import { MetricTile } from "@/components/case-study/metric-tile";
 import { StackPill } from "@/components/case-study/stack-pill";
 
 describe("StackPill", () => {
@@ -8,5 +10,39 @@ describe("StackPill", () => {
     expect(pill).toBeInTheDocument();
     expect(pill.className).toMatch(/rounded/);
     expect(pill.className).toMatch(/border/);
+  });
+});
+
+describe("MetricTile", () => {
+  it("renders the value, label, and source", () => {
+    render(
+      <MetricTile
+        value="95%"
+        label="Alert accuracy maintained"
+        source="Resume"
+        icon={Gauge}
+      />,
+    );
+    expect(screen.getByText("95%")).toBeInTheDocument();
+    expect(screen.getByText(/alert accuracy maintained/i)).toBeInTheDocument();
+    expect(screen.getByText(/resume/i)).toBeInTheDocument();
+  });
+
+  it("renders an optional sparkline when spark points are provided", () => {
+    const { container } = render(
+      <MetricTile
+        value="120ms"
+        label="p95 latency"
+        source="Project artifact"
+        icon={Activity}
+        spark={[1, 2, 3, 2, 4, 5]}
+      />,
+    );
+    expect(container.querySelector("svg polyline")).not.toBeNull();
+  });
+
+  it("renders different icons based on the icon prop", () => {
+    render(<MetricTile value="4" label="agents" source="Project artifact" icon={Cpu} />);
+    expect(screen.getByLabelText("metric icon")).toBeInTheDocument();
   });
 });
