@@ -5,13 +5,18 @@ import MovieRecommendationPage from "@/app/projects/movie-recommendation-system/
 import ProductionMlPage from "@/app/projects/production-ml-systems/page";
 
 describe("research-note project pages", () => {
-  it("renders the upgraded projects index with metrics and research-note links", () => {
+  it("renders the upgraded projects index with featured and supporting cards", () => {
     render(<ProjectsPage />);
     expect(screen.getByRole("heading", { name: /selected case studies/i })).toBeInTheDocument();
-    expect(screen.getByText(/95%/i)).toBeInTheDocument();
-    expect(screen.getByText(/4/i)).toBeInTheDocument();
-    expect(screen.getByText(/50k\+/i)).toBeInTheDocument();
-    expect(screen.getAllByRole("link", { name: /open research note/i })).toHaveLength(3);
+    expect(screen.getByText(/3 focused studies/i)).toBeInTheDocument();
+    expect(screen.getByText(/Production ML Systems/i)).toBeInTheDocument();
+    expect(screen.getByText(/Purpose/i)).toBeInTheDocument();
+    expect(screen.getByText(/Role/i)).toBeInTheDocument();
+    expect(screen.getByText(/FIN-AI/i)).toBeInTheDocument();
+    expect(screen.getByText(/Movie Recommendation System/i)).toBeInTheDocument();
+    expect(screen.getAllByRole("link", { name: /open case study/i })).toHaveLength(3);
+    expect(screen.queryByRole("link", { name: /github/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: /live demo/i })).not.toBeInTheDocument();
   });
 
   it("renders FIN-AI as a research-note case study", () => {

@@ -6,10 +6,30 @@ import ResumePage from "@/app/resume/page";
 import WritingPage from "@/app/writing/page";
 
 describe("core recruiter pages", () => {
-  it("renders the high-level Intangles experience page", () => {
+  it("renders the detailed timeline experience page", () => {
     render(<ExperiencePage />);
-    expect(screen.getByRole("heading", { name: /production ml experience/i })).toBeInTheDocument();
-    expect(screen.getAllByText(/fuel analytics/i).length).toBeGreaterThan(0);
+    expect(
+      screen.getByRole("heading", { name: /production ml, applied ai, and recommendation systems/i }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/machine learning engineer · intangles/i)).toBeInTheDocument();
+    expect(screen.getByText(/dbscan \+ loess fuel event detection/i)).toBeInTheDocument();
+    expect(screen.getByText(/sub-threshold fuel event detection/i)).toBeInTheDocument();
+    expect(screen.getByText(/fin-ai · multi-agent financial intelligence/i)).toBeInTheDocument();
+    expect(screen.getByText(/langgraph orchestrator/i)).toBeInTheDocument();
+    expect(screen.getByText(/movie recommendation system/i)).toBeInTheDocument();
+    expect(screen.getByText(/faiss candidate retrieval/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/95% alert accuracy/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/15% false-positive reduction/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/30\+ hrs\/week reclaimed/i).length).toBeGreaterThan(0);
+    expect(screen.getByRole("link", { name: /open production ml case study/i })).toHaveAttribute(
+      "href",
+      "/projects/production-ml-systems",
+    );
+    expect(screen.getByRole("link", { name: /open fin-ai case study/i })).toHaveAttribute("href", "/projects/fin-ai");
+    expect(screen.getByRole("link", { name: /open movie recommendation case study/i })).toHaveAttribute(
+      "href",
+      "/projects/movie-recommendation-system",
+    );
   });
 
   it("renders the projects index with featured case studies", () => {
