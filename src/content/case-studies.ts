@@ -1,6 +1,3 @@
-import { Activity, BarChart3, Cpu, Database, FileText, Gauge, Network, TriangleAlert } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-
 export type MetricTileData = {
   value: string;
   label: string;
@@ -30,7 +27,7 @@ export type TrendLineData = {
 export type ArchitectureNode = {
   key: string;
   label: string;
-  icon: LucideIcon;
+  iconName: string;
   caption: string;
 };
 
@@ -96,11 +93,11 @@ export const caseStudies: Record<CaseStudy["slug"], CaseStudy> = {
     architecture: {
       caption: "User query → orchestrator → retriever / analyst / writer → grounded response.",
       nodes: [
-        { key: "user", label: "User", icon: FileText, caption: "Natural-language query" },
-        { key: "orchestrator", label: "Orchestrator", icon: Network, caption: "LangGraph state machine" },
-        { key: "retriever", label: "Retriever", icon: Database, caption: "pgvector similarity search" },
-        { key: "analyst", label: "Analyst", icon: BarChart3, caption: "Structured signal extraction" },
-        { key: "writer", label: "Writer", icon: FileText, caption: "Grounded response composition" },
+        { key: "user", label: "User", iconName: "FileText", caption: "Natural-language query" },
+        { key: "orchestrator", label: "Orchestrator", iconName: "Network", caption: "LangGraph state machine" },
+        { key: "retriever", label: "Retriever", iconName: "Database", caption: "pgvector similarity search" },
+        { key: "analyst", label: "Analyst", iconName: "BarChart3", caption: "Structured signal extraction" },
+        { key: "writer", label: "Writer", iconName: "FileText", caption: "Grounded response composition" },
       ],
     },
     metrics: [
@@ -170,11 +167,11 @@ export const caseStudies: Record<CaseStudy["slug"], CaseStudy> = {
     architecture: {
       caption: "Client request → API Gateway → Lambda → FAISS retrieve → LightGBM rerank → ranked list.",
       nodes: [
-        { key: "client", label: "Client", icon: FileText, caption: "Web or service caller" },
-        { key: "gateway", label: "API Gateway", icon: Network, caption: "Auth + throttling" },
-        { key: "lambda", label: "Lambda", icon: Cpu, caption: "Orchestrates the pipeline" },
-        { key: "faiss", label: "FAISS", icon: Database, caption: "Candidate retrieval" },
-        { key: "ranker", label: "LightGBM ranker", icon: BarChart3, caption: "Final ranking" },
+        { key: "client", label: "Client", iconName: "FileText", caption: "Web or service caller" },
+        { key: "gateway", label: "API Gateway", iconName: "Network", caption: "Auth + throttling" },
+        { key: "lambda", label: "Lambda", iconName: "Cpu", caption: "Orchestrates the pipeline" },
+        { key: "faiss", label: "FAISS", iconName: "Database", caption: "Candidate retrieval" },
+        { key: "ranker", label: "LightGBM ranker", iconName: "BarChart3", caption: "Final ranking" },
       ],
     },
     metrics: [
@@ -252,11 +249,11 @@ export const caseStudies: Record<CaseStudy["slug"], CaseStudy> = {
     architecture: {
       caption: "OBD telemetry → cleaning → detection (DBSCAN + LOESS) → alerting → ops.",
       nodes: [
-        { key: "telemetry", label: "Telemetry", icon: Activity, caption: "OBD fuel + GPS signals" },
-        { key: "cleaning", label: "Cleaning", icon: Cpu, caption: "SMA smoothing + validation" },
-        { key: "detection", label: "Detection", icon: Network, caption: "DBSCAN + LOESS events" },
-        { key: "alerting", label: "Alerting", icon: TriangleAlert, caption: "Thresholded, deduplicated" },
-        { key: "ops", label: "Ops", icon: Gauge, caption: "Operator workflows" },
+        { key: "telemetry", label: "Telemetry", iconName: "Activity", caption: "OBD fuel + GPS signals" },
+        { key: "cleaning", label: "Cleaning", iconName: "Cpu", caption: "SMA smoothing + validation" },
+        { key: "detection", label: "Detection", iconName: "Network", caption: "DBSCAN + LOESS events" },
+        { key: "alerting", label: "Alerting", iconName: "TriangleAlert", caption: "Thresholded, deduplicated" },
+        { key: "ops", label: "Ops", iconName: "Gauge", caption: "Operator workflows" },
       ],
     },
     metrics: [

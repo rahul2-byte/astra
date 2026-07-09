@@ -1,10 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import { Activity, Cpu, Gauge } from "lucide-react";
 import { ComparisonBars } from "@/components/case-study/comparison-bars";
 import { MetricTile } from "@/components/case-study/metric-tile";
 import { StackPill } from "@/components/case-study/stack-pill";
 import { TrendLine } from "@/components/case-study/trend-line";
-import { Database, Network } from "lucide-react";
 import { ArchitectureFlow } from "@/components/case-study/architecture-flow";
 import { EvidenceTable } from "@/components/case-study/evidence-table";
 
@@ -25,7 +23,7 @@ describe("MetricTile", () => {
         value="95%"
         label="Alert accuracy maintained"
         source="Resume"
-        icon={Gauge}
+        iconName="Gauge"
       />,
     );
     expect(screen.getByText("95%")).toBeInTheDocument();
@@ -39,7 +37,7 @@ describe("MetricTile", () => {
         value="120ms"
         label="p95 latency"
         source="Project artifact"
-        icon={Activity}
+        iconName="Activity"
         spark={[1, 2, 3, 2, 4, 5]}
       />,
     );
@@ -47,7 +45,7 @@ describe("MetricTile", () => {
   });
 
   it("renders different icons based on the icon prop", () => {
-    render(<MetricTile value="4" label="agents" source="Project artifact" icon={Cpu} />);
+    render(<MetricTile value="4" label="agents" source="Project artifact" iconName="Cpu" />);
     expect(screen.getByLabelText("metric icon")).toBeInTheDocument();
   });
 });
@@ -98,9 +96,9 @@ describe("ArchitectureFlow", () => {
       <ArchitectureFlow
         caption="A → B → C"
         nodes={[
-          { key: "a", label: "A", icon: Network, caption: "first" },
-          { key: "b", label: "B", icon: Database, caption: "second" },
-          { key: "c", label: "C", icon: Network, caption: "third" },
+          { key: "a", label: "A", iconName: "Network", caption: "first" },
+          { key: "b", label: "B", iconName: "Database", caption: "second" },
+          { key: "c", label: "C", iconName: "Network", caption: "third" },
         ]}
       />,
     );

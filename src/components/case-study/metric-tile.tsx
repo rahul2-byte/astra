@@ -1,18 +1,22 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { Activity, Cpu, Database, Gauge } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export type MetricTileProps = {
   value: string;
   label: string;
   source: string;
-  icon: LucideIcon;
+  iconName: string;
   spark?: number[];
 };
 
-export function MetricTile({ value, label, source, icon: Icon, spark }: MetricTileProps) {
+const iconMap: Record<string, LucideIcon> = { Activity, Cpu, Database, Gauge };
+
+export function MetricTile({ value, label, source, iconName, spark }: MetricTileProps) {
   const reduced = useReducedMotion();
+  const Icon = iconMap[iconName] ?? Gauge;
   const polylinePoints = spark
     ? spark
         .map((v, i) => {

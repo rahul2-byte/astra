@@ -10,33 +10,44 @@ export type ComparisonBarsProps = {
   source: string;
 };
 
+function ComparisonRow({
+  entry,
+  color,
+  max,
+  reduced,
+}: {
+  entry: ComparisonBarsProps["before"];
+  color: string;
+  max: number;
+  reduced: boolean | null;
+}) {
+  const width = `${(entry.value / max) * 100}%`;
+
+  return (
+    <div>
+      <div className="flex items-baseline justify-between text-sm text-slate-700">
+        <span className="font-medium">{entry.label}</span>
+        <span className="font-mono text-slate-900">
+          {entry.value} <span className="text-slate-500">{entry.unit}</span>
+        </span>
+      </div>
+      <div className="mt-2 h-3 w-full overflow-hidden rounded-full bg-slate-200/70">
+        <motion.div
+          className="h-full rounded-full"
+          style={{ backgroundColor: color }}
+          initial={reduced ? { width } : { width: "0%" }}
+          whileInView={reduced ? undefined : { width }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        />
+      </div>
+    </div>
+  );
+}
+
 export function ComparisonBars({ title, before, after, delta, source }: ComparisonBarsProps) {
   const reduced = useReducedMotion();
   const max = Math.max(before.value, after.value) || 1;
-
-  function Row({ entry, color }: { entry: ComparisonBarsProps["before"]; color: string }) {
-    const width = `${(entry.value / max) * 100}%`;
-    return (
-      <div>
-        <div className="flex items-baseline justify-between text-sm text-slate-700">
-          <span className="font-medium">{entry.label}</span>
-          <span className="font-mono text-slate-900">
-            {entry.value} <span className="text-slate-500">{entry.unit}</span>
-          </span>
-        </div>
-        <div className="mt-2 h-3 w-full overflow-hidden rounded-full bg-slate-200/70">
-          <motion.div
-            className="h-full rounded-full"
-            style={{ backgroundColor: color }}
-            initial={reduced ? { width } : { width: "0%" }}
-            whileInView={reduced ? undefined : { width }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          />
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="glass-panel p-6">
@@ -45,8 +56,8 @@ export function ComparisonBars({ title, before, after, delta, source }: Comparis
         <span className="text-xs uppercase tracking-widest text-slate-500">{source}</span>
       </div>
       <div className="mt-5 space-y-5">
-        <Row entry={before} color="#94a3b8" />
-        <Row entry={after} color="#4f7fb8" />
+        <ComparisonRow entry={before} color="#94a3b8" max={max} reduced={reduced} />
+        <ComparisonRow entry={after} color="#4f7fb8" max={max} reduced={reduced} />
       </div>
       <p className="mt-5 text-sm font-semibold text-[#2f5ea4]">{delta}</p>
     </div>

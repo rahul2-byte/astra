@@ -1,17 +1,30 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { Activity, BarChart3, Cpu, Database, FileText, Gauge, Network, TriangleAlert } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import type { ArchitectureNode } from "@/content/case-studies";
 
 export type { ArchitectureNode };
+
+const iconMap: Record<string, LucideIcon> = {
+  Activity,
+  BarChart3,
+  Cpu,
+  Database,
+  FileText,
+  Gauge,
+  Network,
+  TriangleAlert,
+};
 
 export function ArchitectureFlow({ nodes, caption }: { nodes: ArchitectureNode[]; caption: string }) {
   const reduced = useReducedMotion();
   const items: ReactNode[] = [];
 
   nodes.forEach((node, index) => {
-    const Icon = node.icon;
+    const Icon = iconMap[node.iconName] ?? Network;
     items.push(
       <motion.div
         key={node.key}
