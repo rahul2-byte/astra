@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Activity, Cpu, Gauge } from "lucide-react";
+import { ComparisonBars } from "@/components/case-study/comparison-bars";
 import { MetricTile } from "@/components/case-study/metric-tile";
 import { StackPill } from "@/components/case-study/stack-pill";
 
@@ -44,5 +45,24 @@ describe("MetricTile", () => {
   it("renders different icons based on the icon prop", () => {
     render(<MetricTile value="4" label="agents" source="Project artifact" icon={Cpu} />);
     expect(screen.getByLabelText("metric icon")).toBeInTheDocument();
+  });
+});
+
+describe("ComparisonBars", () => {
+  it("renders the before and after labels, units, and delta", () => {
+    render(
+      <ComparisonBars
+        title="Support queries per day"
+        before={{ label: "Before", value: 6, unit: "queries/day" }}
+        after={{ label: "After", value: 2, unit: "queries/day" }}
+        delta="−4 queries/day"
+        source="Resume"
+      />,
+    );
+    expect(screen.getByText(/support queries per day/i)).toBeInTheDocument();
+    expect(screen.getByText(/before/i)).toBeInTheDocument();
+    expect(screen.getByText(/after/i)).toBeInTheDocument();
+    expect(screen.getByText(/−4 queries\/day/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/queries\/day/i).length).toBeGreaterThanOrEqual(2);
   });
 });
