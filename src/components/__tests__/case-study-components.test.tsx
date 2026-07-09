@@ -4,6 +4,9 @@ import { ComparisonBars } from "@/components/case-study/comparison-bars";
 import { MetricTile } from "@/components/case-study/metric-tile";
 import { StackPill } from "@/components/case-study/stack-pill";
 import { TrendLine } from "@/components/case-study/trend-line";
+import { Database, Network } from "lucide-react";
+import { ArchitectureFlow } from "@/components/case-study/architecture-flow";
+import { EvidenceTable } from "@/components/case-study/evidence-table";
 
 describe("StackPill", () => {
   it("renders the stack label inside a rounded chip", () => {
@@ -65,5 +68,70 @@ describe("ComparisonBars", () => {
     expect(screen.getByText(/after/i)).toBeInTheDocument();
     expect(screen.getByText(/−4 queries\/day/i)).toBeInTheDocument();
     expect(screen.getAllByText(/queries\/day/i).length).toBeGreaterThanOrEqual(2);
+  });
+});
+
+describe("TrendLine", () => {
+  it("renders the title, axis labels, and one dot per data point", () => {
+    const { container } = render(
+      <TrendLine
+        title="Precision@10 over training iterations"
+        yLabel="Precision@10"
+        xLabel="Iteration"
+        source="Project artifact"
+        points={[
+          { iteration: 1, metric: 0.18 },
+          { iteration: 2, metric: 0.24 },
+          { iteration: 3, metric: 0.31 },
+        ]}
+      />,
+    );
+    expect(screen.getByText(/precision@10 over training iterations/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/iteration/i).length).toBeGreaterThanOrEqual(2);
+    expect(container.querySelectorAll("svg circle").length).toBe(3);
+  });
+});
+
+describe("ArchitectureFlow", () => {
+  it("renders every node label, caption, and the caption line", () => {
+    render(
+      <ArchitectureFlow
+        caption="A → B → C"
+        nodes={[
+          { key: "a", label: "A", icon: Network, caption: "first" },
+          { key: "b", label: "B", icon: Database, caption: "second" },
+          { key: "c", label: "C", icon: Network, caption: "third" },
+        ]}
+      />,
+    );
+    expect(screen.getByText(/a → b → c/i)).toBeInTheDocument();
+    expect(screen.getByText("A")).toBeInTheDocument();
+    expect(screen.getByText("B")).toBeInTheDocument();
+    expect(screen.getByText("C")).toBeInTheDocument();
+    expect(screen.getByText(/first/i)).toBeInTheDocument();
+    expect(screen.getByText(/second/i)).toBeInTheDocument();
+    expect(screen.getByText(/third/i)).toBeInTheDocument();
+  });
+});
+
+describe("EvidenceTable", () => {
+  it("renders the title, headers, and one row per evidence entry", () => {
+    render(
+      <EvidenceTable
+        title="Signal → outcome"
+        columns={["Signal", "Method", "Outcome"]}
+        rows={[
+          { Signal: "Fuel", Method: "SMA", Outcome: "Stable" },
+          { Signal: "GPS", Method: "Gap check", Outcome: "Detected" },
+        ]}
+        source="Resume"
+      />,
+    );
+    expect(screen.getByText(/signal → outcome/i)).toBeInTheDocument();
+    expect(screen.getByRole("columnheader", { name: /signal/i })).toBeInTheDocument();
+    expect(screen.getByRole("columnheader", { name: /method/i })).toBeInTheDocument();
+    expect(screen.getByRole("columnheader", { name: /outcome/i })).toBeInTheDocument();
+    expect(screen.getByText("Fuel")).toBeInTheDocument();
+    expect(screen.getByText("GPS")).toBeInTheDocument();
   });
 });
