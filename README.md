@@ -109,7 +109,6 @@ src/
     skills.ts
 public/
   ML_Engineer_resume.pdf
-  resume.pdf
 docs/
   superpowers/     Design specs and implementation plans from development
 ```

@@ -32,25 +32,25 @@ export function MetricTile({ value, label, source, iconName, spark }: MetricTile
 
   return (
     <motion.div
-      className="glass-panel flex h-full flex-col justify-between p-6 transition hover:-translate-y-1"
+      className="surface-card-interactive flex h-full flex-col justify-between p-6"
       initial={reduced ? false : { opacity: 0, y: 16 }}
       whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.4 }}
       transition={{ duration: 0.35, ease: "easeOut" }}
     >
       <div className="flex items-center justify-between gap-3">
-        <Icon aria-label="metric icon" className="h-5 w-5 text-[#2f5ea4]" strokeWidth={1.7} />
-        <span className="text-xs uppercase tracking-widest text-slate-500">{source}</span>
+        <span className="grid h-10 w-10 place-items-center bg-[var(--primary)]"><Icon aria-label="metric icon" className="h-5 w-5" strokeWidth={1.7} /></span>
+        <span className="font-technical text-[0.65rem] uppercase tracking-wider text-[var(--muted)]">{source}</span>
       </div>
       <div className="mt-4 flex items-end justify-between gap-4">
-        <span className="font-display text-4xl font-bold text-slate-900">{value}</span>
+        <span className="metric-value text-4xl font-semibold">{value}</span>
         {polylinePoints ? (
           <svg viewBox="0 0 100 32" className="h-9 w-24" aria-hidden="true">
-            <polyline points={polylinePoints} fill="none" stroke="#4f7fb8" strokeWidth={1.5} />
+            <polyline points={polylinePoints} fill="none" stroke="var(--primary-hover)" strokeWidth={2} />
           </svg>
         ) : null}
       </div>
-      <p className="mt-3 text-sm leading-6 text-slate-700">{label}</p>
+      <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{label}</p>
     </motion.div>
   );
 }

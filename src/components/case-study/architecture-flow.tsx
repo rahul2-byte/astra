@@ -28,15 +28,15 @@ export function ArchitectureFlow({ nodes, caption }: { nodes: ArchitectureNode[]
     items.push(
       <motion.div
         key={node.key}
-        className="glass-panel flex w-44 flex-col items-center gap-2 p-4 text-center"
+        className="surface-card flex w-44 shrink-0 flex-col items-center gap-2 p-4 text-center"
         initial={reduced ? false : { opacity: 0, y: 12 }}
         whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.35, delay: index * 0.08, ease: "easeOut" }}
       >
-        <Icon aria-label="architecture node" className="h-6 w-6 text-[#2f5ea4]" strokeWidth={1.7} />
-        <span className="font-display text-lg font-semibold text-slate-900">{node.label}</span>
-        <span className="text-xs leading-5 text-slate-600">{node.caption}</span>
+        <span className="grid h-10 w-10 place-items-center bg-[var(--primary)]"><Icon aria-label="architecture node" className="h-5 w-5" strokeWidth={1.7} /></span>
+        <span className="font-display text-lg font-semibold tracking-[-0.03em]">{node.label}</span>
+        <span className="text-xs leading-5 text-[var(--muted)]">{node.caption}</span>
       </motion.div>,
     );
     if (index < nodes.length - 1) {
@@ -44,7 +44,7 @@ export function ArchitectureFlow({ nodes, caption }: { nodes: ArchitectureNode[]
         <svg
           key={`arrow-${node.key}`}
           viewBox="0 0 40 12"
-          className="h-6 w-10 text-[#4f7fb8]"
+          className="h-6 w-10 shrink-0 text-[var(--primary-hover)]"
           aria-hidden="true"
         >
           <line x1="0" y1="6" x2="34" y2="6" stroke="currentColor" strokeWidth="1.5" />
@@ -55,10 +55,12 @@ export function ArchitectureFlow({ nodes, caption }: { nodes: ArchitectureNode[]
   });
 
   return (
-    <div className="glass-panel p-6">
+    <div className="surface-card p-6">
       <p className="section-label">Architecture</p>
-      <div className="mt-5 flex flex-wrap items-center justify-center gap-3">{items}</div>
-      <p className="mt-5 text-sm leading-6 text-slate-600">{caption}</p>
+      <div className="mt-5 overflow-x-auto pb-3" tabIndex={0} aria-label="Architecture flow diagram">
+        <div className="flex min-w-max items-center justify-center gap-3">{items}</div>
+      </div>
+      <p className="mt-5 border-t soft-divider pt-5 text-sm leading-6 text-[var(--muted)]">{caption}</p>
     </div>
   );
 }

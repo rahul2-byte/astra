@@ -7,12 +7,11 @@ import { ArchitectureFlow } from "@/components/case-study/architecture-flow";
 import { EvidenceTable } from "@/components/case-study/evidence-table";
 
 describe("StackPill", () => {
-  it("renders the stack label inside a rounded chip", () => {
+  it("renders the stack label with the shared stack-pill contract", () => {
     render(<StackPill>FastAPI</StackPill>);
     const pill = screen.getByText("FastAPI");
     expect(pill).toBeInTheDocument();
-    expect(pill.className).toMatch(/rounded/);
-    expect(pill.className).toMatch(/border/);
+    expect(pill).toHaveClass("stack-pill");
   });
 });
 

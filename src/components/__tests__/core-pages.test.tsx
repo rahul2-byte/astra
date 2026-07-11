@@ -48,6 +48,8 @@ describe("core recruiter pages", () => {
 
     render(<WritingPage />);
     expect(screen.getByText(/technical notes and write-ups coming soon/i)).toBeInTheDocument();
+    expect(screen.getByText(/writing queue/i)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /explore projects/i })).toHaveAttribute("href", "/projects");
   });
 
   it("renders Rahul's final contact links and resume URL", () => {
@@ -59,10 +61,10 @@ describe("core recruiter pages", () => {
     );
     expect(
       screen.getByRole("link", { name: /linkedin linkedin\.com\/in\/-rahul-singh22/i }),
-    ).toHaveAttribute("href", "https://www.linkedin.com/in/-rahul-singh22/");
+    ).toHaveAttribute("target", "_blank");
     expect(screen.getByRole("link", { name: /github github\.com\/rahul2-byte/i })).toHaveAttribute(
-      "href",
-      "https://github.com/rahul2-byte",
+      "rel",
+      "noreferrer",
     );
     expect(screen.getByRole("link", { name: /phone \+91 9027537314/i })).toHaveAttribute(
       "href",

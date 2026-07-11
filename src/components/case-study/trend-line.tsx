@@ -35,16 +35,16 @@ export function TrendLine({ title, yLabel, xLabel, points, source }: TrendLinePr
   const fillPath = `${linePath} L${toX(xMax)},${padding.top + innerH} L${toX(xMin)},${padding.top + innerH} Z`;
 
   return (
-    <div className="glass-panel p-6">
+    <div className="surface-card p-6">
       <div className="flex items-center justify-between gap-3">
-        <h3 className="font-display text-xl font-semibold text-slate-900">{title}</h3>
-        <span className="text-xs uppercase tracking-widest text-slate-500">{source}</span>
+        <h3 className="font-display text-xl font-semibold tracking-[-0.03em]">{title}</h3>
+        <span className="font-technical text-[0.65rem] uppercase tracking-wider text-[var(--muted)]">{source}</span>
       </div>
       <svg viewBox={`0 0 ${width} ${height}`} className="mt-4 w-full" role="img" aria-label={title}>
         <defs>
           <linearGradient id="trendFill" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#4f7fb8" stopOpacity="0.35" />
-            <stop offset="100%" stopColor="#4f7fb8" stopOpacity="0" />
+            <stop offset="0%" stopColor="var(--primary-hover)" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="var(--primary-hover)" stopOpacity="0" />
           </linearGradient>
         </defs>
         {[0.25, 0.5, 0.75].map((g) => (
@@ -54,7 +54,7 @@ export function TrendLine({ title, yLabel, xLabel, points, source }: TrendLinePr
             x2={padding.left + innerW}
             y1={padding.top + innerH * g}
             y2={padding.top + innerH * g}
-            stroke="#cbd5e1"
+            stroke="var(--border)"
             strokeDasharray="3 3"
           />
         ))}
@@ -69,7 +69,7 @@ export function TrendLine({ title, yLabel, xLabel, points, source }: TrendLinePr
         <motion.path
           d={linePath}
           fill="none"
-          stroke="#4f7fb8"
+          stroke="var(--primary-hover)"
           strokeWidth={2}
           initial={reduced ? { pathLength: 1 } : { pathLength: 0 }}
           whileInView={reduced ? undefined : { pathLength: 1 }}
@@ -77,16 +77,16 @@ export function TrendLine({ title, yLabel, xLabel, points, source }: TrendLinePr
           transition={{ duration: 0.8, ease: "easeOut" }}
         />
         {points.map((p) => (
-          <circle key={p.iteration} cx={toX(p.iteration)} cy={toY(p.metric)} r={3.5} fill="#2f5ea4" />
+          <circle key={p.iteration} cx={toX(p.iteration)} cy={toY(p.metric)} r={3.5} fill="var(--foreground)" />
         ))}
-        <text x={padding.left} y={padding.top - 4} fontSize="10" fill="#475569">
+        <text x={padding.left} y={padding.top - 4} fontSize="10" fill="var(--muted)">
           {yLabel}
         </text>
         <text
           x={padding.left + innerW}
           y={height - 6}
           fontSize="10"
-          fill="#475569"
+          fill="var(--muted)"
           textAnchor="end"
         >
           {xLabel}

@@ -7,20 +7,20 @@ export type EvidenceTableProps = {
 
 export function EvidenceTable({ title, columns, rows, source }: EvidenceTableProps) {
   return (
-    <div className="glass-panel p-6">
+    <div className="surface-card p-6">
       <div className="flex items-center justify-between gap-3">
-        <h3 className="font-display text-xl font-semibold text-slate-900">{title}</h3>
-        <span className="text-xs uppercase tracking-widest text-slate-500">{source}</span>
+        <h3 className="font-display text-xl font-semibold tracking-[-0.03em]">{title}</h3>
+        <span className="font-technical text-[0.65rem] uppercase tracking-wider text-[var(--muted)]">{source}</span>
       </div>
-      <div className="mt-4 overflow-x-auto">
-        <table className="w-full border-separate border-spacing-0 text-left text-sm">
+      <div className="mt-4 overflow-x-auto" tabIndex={0} aria-label={`${title} evidence table`}>
+        <table className="w-full min-w-[34rem] border-separate border-spacing-0 text-left text-sm">
           <thead>
             <tr>
               {columns.map((column) => (
                 <th
                   key={column}
                   scope="col"
-                  className="sticky top-0 bg-white/70 px-4 py-3 text-xs font-semibold uppercase tracking-widest text-slate-600"
+                  className="sticky top-0 bg-[var(--surface-elevated)] px-4 py-3 font-technical text-[0.65rem] font-semibold uppercase tracking-wider text-[var(--muted)]"
                 >
                   {column}
                 </th>
@@ -29,9 +29,9 @@ export function EvidenceTable({ title, columns, rows, source }: EvidenceTablePro
           </thead>
           <tbody>
             {rows.map((row, rowIndex) => (
-              <tr key={rowIndex} className={rowIndex % 2 === 0 ? "bg-white/40" : "bg-transparent"}>
+              <tr key={rowIndex} className={rowIndex % 2 === 0 ? "bg-[var(--card)]" : "bg-[var(--surface-elevated)]/50"}>
                 {columns.map((column) => (
-                  <td key={column} className="border-t border-slate-200/70 px-4 py-3 align-top text-slate-700">
+                  <td key={column} className="border-t border-[var(--border)] px-4 py-3 align-top text-[var(--muted)]">
                     {row[column]}
                   </td>
                 ))}

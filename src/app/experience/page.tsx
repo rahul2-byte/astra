@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, BrainCircuit, Code2, Database, Gauge, Network, ServerCog, Wrench } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { StackPill } from "@/components/case-study/stack-pill";
 
 type DetailBlock = {
   title: string;
@@ -162,22 +163,22 @@ const entries: ExperienceEntry[] = [
 
 export default function ExperiencePage() {
   return (
-    <main className="section-shell py-20">
-      <section className="glass-panel relative overflow-hidden p-8 md:p-10">
-        <div className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-blue-200/50 blur-3xl" />
+    <main className="section-shell py-16 md:py-24">
+      <section className="surface-card technical-grid relative overflow-hidden p-7 md:p-10">
+        <div className="signal-glow animate-signal pointer-events-none absolute -right-20 -top-24 h-72 w-72" />
         <p className="section-label">Experience</p>
-        <h1 className="font-display mt-4 max-w-5xl text-5xl font-bold leading-tight tracking-tight text-slate-900 md:text-6xl">
+        <h1 className="font-display mt-5 max-w-5xl text-5xl font-semibold leading-[1.02] tracking-[-0.055em] text-[var(--foreground)] md:text-6xl">
           Production ML, Applied AI, and Recommendation Systems
         </h1>
-        <p className="mt-6 max-w-4xl text-xl leading-8 text-slate-800">
+        <p className="relative mt-6 max-w-4xl text-lg leading-8 text-[var(--muted)] md:text-xl">
           A timeline of hands-on work across production telemetry systems, multi-agent RAG, and recommender engineering. Each entry explains what I built, which technical decisions I made, the problems I solved, and what the work added to my engineering skills.
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {heroMetrics.map((metric) => (
-            <div key={metric.label} className="rounded-2xl border border-slate-200/80 bg-white/50 p-5">
+            <div key={metric.label} className="border border-[var(--border)] bg-[var(--card)] p-5">
               <span className="sr-only">{metric.full}</span>
-              <p className="font-display text-3xl font-bold text-slate-900">{metric.value}</p>
-              <p className="mt-2 text-sm font-semibold uppercase tracking-widest text-slate-500">{metric.label}</p>
+              <p className="metric-value text-3xl font-semibold">{metric.value}</p>
+              <p className="font-technical mt-2 text-[0.65rem] uppercase tracking-wider text-[var(--muted)]">{metric.label}</p>
             </div>
           ))}
         </div>
@@ -185,54 +186,52 @@ export default function ExperiencePage() {
 
       <section className="mt-14 space-y-10">
         {entries.map((entry, index) => (
-          <article key={entry.title} className="grid gap-6 md:grid-cols-[9rem_1fr]">
+          <article key={entry.title} className="grid gap-5 md:grid-cols-[7rem_1fr]">
             <div className="relative hidden md:block">
-              <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-[#4f7fb8]/40" />
-              <div className="sticky top-28 mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-[#4f7fb8]/30 bg-[#f7f3ea] font-display text-xl font-bold text-[#2f5ea4] shadow-[0_12px_40px_rgba(47,94,164,0.14)]">
-                {index + 1}
+              <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-[var(--border)]" />
+              <div className="font-technical sticky top-28 mx-auto grid h-14 w-14 place-items-center border border-[var(--foreground)] bg-[var(--primary)] text-sm font-semibold shadow-[6px_6px_0_var(--foreground)]">
+                0{index + 1}
               </div>
             </div>
-            <div className="glass-panel p-7 md:p-8">
+            <div className="surface-card p-6 md:p-8">
               <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                 <div>
                   <p className="section-label">{entry.category}</p>
-                  <h2 className="font-display mt-3 text-3xl font-bold leading-tight text-slate-900">{entry.title}</h2>
+                  <h2 className="font-display mt-4 text-3xl font-semibold leading-tight tracking-[-0.04em]">{entry.title}</h2>
                 </div>
-                <span className="rounded-full border border-slate-300/70 bg-white/50 px-4 py-2 text-sm font-semibold text-slate-600">
+                <span className="font-technical border border-[var(--border)] bg-[var(--surface-elevated)] px-3 py-2 text-xs text-[var(--muted)]">
                   {entry.period}
                 </span>
               </div>
 
               <div className="mt-6 grid gap-5 lg:grid-cols-2">
                 <div>
-                  <h3 className="text-sm font-semibold uppercase tracking-widest text-slate-500">Context</h3>
-                  <p className="mt-3 leading-8 text-slate-700">{entry.context}</p>
+                  <h3 className="font-technical text-[0.65rem] font-semibold uppercase tracking-wider text-[var(--muted)]">Context</h3>
+                  <p className="mt-3 leading-8 text-[var(--muted)]">{entry.context}</p>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold uppercase tracking-widest text-slate-500">My role</h3>
-                  <p className="mt-3 leading-8 text-slate-700">{entry.role}</p>
+                  <h3 className="font-technical text-[0.65rem] font-semibold uppercase tracking-wider text-[var(--muted)]">My role</h3>
+                  <p className="mt-3 leading-8 text-[var(--muted)]">{entry.role}</p>
                 </div>
               </div>
 
               <div className="mt-6 flex flex-wrap gap-2">
                 {entry.stack.map((item) => (
-                  <span key={item} className="rounded-sm border border-slate-300/80 bg-white/40 px-3 py-1 text-sm font-medium text-slate-700">
-                    {item}
-                  </span>
+                  <StackPill key={item}>{item}</StackPill>
                 ))}
               </div>
 
               <div className="mt-7 grid gap-5 lg:grid-cols-3">
                 {entry.details.map(({ title, items, Icon }) => (
-                  <section key={title} className="rounded-2xl border border-slate-200/80 bg-white/45 p-5">
+                  <section key={title} className="border border-[var(--border)] bg-[var(--surface-elevated)] p-5">
                     <div className="flex items-center gap-3">
-                      <Icon className="h-5 w-5 text-[#2f5ea4]" strokeWidth={1.7} />
-                      <h3 className="font-display text-xl font-semibold text-slate-900">{title}</h3>
+                      <span className="grid h-9 w-9 place-items-center bg-[var(--primary)]"><Icon className="h-4 w-4" strokeWidth={1.7} /></span>
+                      <h3 className="font-display text-xl font-semibold tracking-[-0.03em]">{title}</h3>
                     </div>
-                    <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-700">
+                    <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--muted)]">
                       {items.map((item) => (
                         <li key={item} className="flex gap-2">
-                          <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[#4f7fb8]" />
+                          <span className="mt-2 h-1.5 w-1.5 flex-none bg-[var(--primary-hover)]" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -241,14 +240,14 @@ export default function ExperiencePage() {
                 ))}
               </div>
 
-              <div className="mt-7 rounded-2xl border border-[#4f7fb8]/25 bg-[#4f7fb8]/8 p-5">
-                <h3 className="text-sm font-semibold uppercase tracking-widest text-[#2f5ea4]">Outcome</h3>
-                <p className="mt-3 leading-8 text-slate-800">{entry.outcome}</p>
+              <div className="mt-7 border border-[var(--foreground)] bg-[var(--primary-soft)] p-5">
+                <h3 className="font-technical text-[0.65rem] font-semibold uppercase tracking-wider">Outcome</h3>
+                <p className="mt-3 leading-8">{entry.outcome}</p>
               </div>
 
-              <Link className="mt-6 inline-flex items-center gap-2 font-semibold text-[#2f5ea4] hover:text-slate-950" href={entry.href}>
+              <Link className="text-link mt-6" href={entry.href}>
                 {entry.linkLabel}
-                <ArrowUpRight className="h-4 w-4" strokeWidth={1.7} />
+                <ArrowUpRight className="link-arrow h-4 w-4" strokeWidth={1.7} />
               </Link>
             </div>
           </article>
