@@ -39,6 +39,15 @@ describe("portfolio visual system", () => {
     expect(existsSync(join(sourceRoot, "components/icon.tsx"))).toBe(false);
     expect(globals).toContain("--primary: #ffd43b");
     expect(globals).toContain("--cta-background: #171711");
+    expect(globals).toContain("--motion-fast: 160ms");
+    expect(globals).toContain("--motion-enter: 380ms");
+    expect(globals).toContain("--ease-enter");
+    expect(home).toContain("SectionReveal");
+    expect(globals).toContain(".surface-card-interactive:focus-within");
+    expect(globals).toContain(".surface-card {\n  background-color: var(--card);");
+    expect(globals).toContain(".surface-card-interactive {\n  background-color: var(--card);");
+    expect(globals).toContain(".btn-primary:active");
+    expect(globals).toContain(".nav-link[aria-current=\"page\"]");
     expect(globals).toContain("--font-display");
     expect(globals).toContain("--font-mono");
     expect(globals).toContain("max-width: 1280px");
@@ -55,7 +64,9 @@ describe("portfolio visual system", () => {
     expect(expertise).toContain("expertise-card");
     expect(expertise).toContain("expertise-capabilities");
     expect(experience).toContain("content-fit-grid");
+    expect(experience).toContain("SectionReveal");
     expect(projects).toContain("supporting-project-grid");
+    expect(projects).toContain("SectionReveal");
     expect(projects).not.toContain("lg:grid-cols-[1.15fr_0.85fr]");
     expect(movieArticle).toContain("section-shell");
     expect(movieArticle).toContain('aria-label="On this page"');
@@ -67,6 +78,7 @@ describe("portfolio visual system", () => {
     expect(contact).toContain("Mail");
     expect(contact).toContain("Github");
     expect(contact).toContain("Linkedin");
+    expect(contact).toContain("SectionReveal");
     expect(footer).toContain("Rahul Singh&apos;s ML portfolio");
     expect(allApplicationSource).not.toMatch(/#4f7fb8|#2f5ea4|bg-blue-|bg-emerald-/i);
   });

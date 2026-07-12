@@ -3,6 +3,7 @@ import { Activity, ArrowUpRight, BrainCircuit, Cpu, Database, Gauge, Network } f
 import type { LucideIcon } from "lucide-react";
 import { StackPill } from "@/components/case-study/stack-pill";
 import { caseStudies } from "@/content/case-studies";
+import { SectionReveal } from "@/components/motion/section-reveal";
 
 const iconMap: Record<string, LucideIcon> = { Activity, Cpu, Database, Gauge };
 
@@ -95,7 +96,8 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section className="mt-10 space-y-8">
+      <SectionReveal>
+        <section className="mt-10 space-y-8">
         <article className="surface-card relative flex flex-col overflow-hidden p-7 md:p-8">
           <span className="absolute inset-x-0 top-0 h-1.5 bg-[var(--primary)]" />
           <div className="flex items-start justify-between gap-4">
@@ -204,7 +206,8 @@ export default function ProjectsPage() {
             );
           })}
         </div>
-      </section>
+        </section>
+      </SectionReveal>
     </main>
   );
 }

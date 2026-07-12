@@ -1,5 +1,6 @@
 import { ArrowUpRight, Code2 as Github, Download, Link as Linkedin, Mail, Phone } from "lucide-react";
 import { site } from "@/content/site";
+import { SectionReveal } from "@/components/motion/section-reveal";
 
 const contactMethods = [
   { title: "Email", href: `mailto:${site.email}`, label: site.email, Icon: Mail, external: false },
@@ -20,7 +21,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="mx-auto mt-12 grid max-w-6xl gap-5 md:grid-cols-2 xl:grid-cols-4">
+      <SectionReveal>
+        <section className="mx-auto mt-12 grid max-w-6xl gap-5 md:grid-cols-2 xl:grid-cols-4">
         {contactMethods.map(({ title, href, label, Icon, external }, index) => (
           <a
             key={title}
@@ -40,7 +42,8 @@ export default function ContactPage() {
             </div>
           </a>
         ))}
-      </section>
+        </section>
+      </SectionReveal>
 
       <div className="mt-12 flex justify-center">
         <a className="btn-primary" download="Rahul-Singh-ML-Engineer-Resume.pdf" href={site.resume}>

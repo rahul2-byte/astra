@@ -11,7 +11,7 @@ export function ExperiencePreview() {
       <div className="section-shell">
         <div className="surface-card overflow-hidden">
           <div className="grid lg:grid-cols-[0.72fr_1.28fr]">
-            <div className="technical-grid border-b border-[var(--border)] p-7 md:p-9 lg:border-b-0 lg:border-r">
+            <div className="border-b border-[var(--border)] p-7 md:p-9 lg:border-b-0 lg:border-r">
               <div className="flex items-start justify-between gap-4">
                 <span className="grid h-12 w-12 place-items-center bg-[var(--primary)]">
                   <Building2 className="h-5 w-5" strokeWidth={1.6} aria-hidden />

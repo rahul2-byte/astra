@@ -31,6 +31,16 @@
   --font-display: var(--font-space-grotesk);
   --font-body: var(--font-space-grotesk);
   --font-mono: var(--font-ibm-plex-mono);
+  --motion-instant: 100ms;
+  --motion-fast: 160ms;
+  --motion-standard: 220ms;
+  --motion-enter: 380ms;
+  --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-distance-xs: 2px;
+  --motion-distance-sm: 6px;
+  --motion-distance-md: 12px;
+  --motion-press-scale: 0.985;
 }
 
 * {
@@ -114,24 +124,25 @@ button {
 }
 
 .surface-card {
-  background: var(--card);
+  background-color: var(--card);
   border: 1px solid var(--border);
   border-radius: 0.75rem;
   box-shadow: 0 16px 48px rgba(23, 23, 17, 0.055);
 }
 
 .surface-card-interactive {
-  background: var(--card);
+  background-color: var(--card);
   border: 1px solid var(--border);
   border-radius: 0.75rem;
   box-shadow: 0 16px 48px rgba(23, 23, 17, 0.055);
-  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 220ms ease, box-shadow 220ms ease;
+  transition: transform var(--motion-standard) var(--ease-standard), border-color var(--motion-standard) ease, box-shadow var(--motion-standard) ease;
 }
 
-.surface-card-interactive:hover {
+.surface-card-interactive:hover,
+.surface-card-interactive:focus-within {
   border-color: color-mix(in srgb, var(--foreground) 34%, var(--border));
   box-shadow: 0 24px 70px rgba(23, 23, 17, 0.1);
-  transform: translateY(-4px);
+  transform: translateY(calc(-1 * var(--motion-distance-sm)));
 }
 
 .section-tone {
@@ -181,7 +192,7 @@ button {
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+  transition: background-color var(--motion-fast) ease, color var(--motion-fast) ease, transform var(--motion-fast) var(--ease-standard), border-color var(--motion-fast) ease;
 }
 
 .btn-primary {
@@ -203,8 +214,13 @@ button {
   background: var(--primary-soft);
 }
 
+.btn-primary:active,
+.btn-secondary:active {
+  transform: scale(var(--motion-press-scale));
+}
+
 .link-arrow {
-  transition: transform 180ms ease;
+  transition: transform var(--motion-fast) var(--ease-standard);
 }
 
 .btn-primary:hover .link-arrow,
@@ -226,10 +242,49 @@ button {
   text-decoration-color: var(--primary-hover);
   text-decoration-thickness: 2px;
   text-underline-offset: 0.28rem;
+  transition: color var(--motion-fast) ease, text-decoration-color var(--motion-fast) ease;
 }
 
 .text-link:hover {
   text-decoration-color: var(--foreground);
+}
+
+.nav-link {
+  position: relative;
+  color: var(--foreground);
+  transition: color var(--motion-fast) ease;
+}
+
+.nav-link::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--primary-hover);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--motion-fast) var(--ease-standard);
+}
+
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.nav-link[aria-current="page"] {
+  color: var(--foreground);
+}
+
+.motion-mobile-menu[data-state="open"] {
+  animation: mobile-menu-enter var(--motion-fast) var(--ease-enter) both;
+}
+
+.motion-mobile-menu[data-state="closed"] {
+  animation: mobile-menu-exit var(--motion-fast) ease both;
 }
 
 .soft-divider {
@@ -262,7 +317,7 @@ button {
 }
 
 .hero-enter {
-  animation: hero-enter 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation: hero-enter var(--motion-enter) var(--ease-enter) both;
 }
 
 .hero-enter-delay {
@@ -275,16 +330,40 @@ button {
 }
 
 .animate-signal {
-  animation: signal-drift 10s ease-in-out infinite;
+  animation: signal-drift 12s ease-in-out 2;
+}
+
+@keyframes mobile-menu-enter {
+  from { opacity: 0; transform: translateY(calc(-1 * var(--motion-distance-sm))); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mobile-menu-exit {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(calc(-1 * var(--motion-distance-sm))); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
+  }
+
+  .hero-enter,
+  .animate-signal,
+  .motion-mobile-menu[data-state="open"],
+  .motion-mobile-menu[data-state="closed"] {
+    animation: none;
+  }
+
+  .surface-card-interactive,
+  .btn-primary,
+  .btn-secondary,
+  .link-arrow,
+  .text-link,
+  .nav-link,
+  .nav-link::after {
+    transition-duration: 0.01ms;
   }
 }
 

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight, BrainCircuit, Code2, Database, Gauge, Network, ServerCog, Wrench } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { StackPill } from "@/components/case-study/stack-pill";
+import { SectionReveal } from "@/components/motion/section-reveal";
 
 type DetailBlock = {
   title: string;
@@ -184,7 +185,8 @@ export default function ExperiencePage() {
         </div>
       </section>
 
-      <section className="mt-14 space-y-10">
+      <SectionReveal>
+        <section className="mt-14 space-y-10">
         {entries.map((entry, index) => (
           <article key={entry.title} className="grid gap-5 md:grid-cols-[7rem_1fr]">
             <div className="relative hidden md:block">
@@ -252,7 +254,8 @@ export default function ExperiencePage() {
             </div>
           </article>
         ))}
-      </section>
+        </section>
+      </SectionReveal>
     </main>
   );
 }

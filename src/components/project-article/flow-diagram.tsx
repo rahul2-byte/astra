@@ -1,4 +1,5 @@
 import type { FlowLane } from "@/content/project-article";
+import { SectionReveal } from "@/components/motion/section-reveal";
 
 type FlowDiagramProps = {
   title: string;
@@ -8,7 +9,8 @@ type FlowDiagramProps = {
 
 export function FlowDiagram({ title, caption, lanes }: FlowDiagramProps) {
   return (
-    <figure className="surface-card my-8 overflow-hidden p-5 md:p-6" aria-labelledby={`${title}-title`}>
+    <SectionReveal>
+      <figure className="surface-card my-8 overflow-hidden p-5 md:p-6" aria-labelledby={`${title}-title`}>
       <figcaption id={`${title}-title`} className="font-display text-2xl font-semibold tracking-[-0.04em]">{title}</figcaption>
       <div className="mt-6 space-y-5">
         {lanes.map((lane) => (
@@ -27,6 +29,7 @@ export function FlowDiagram({ title, caption, lanes }: FlowDiagramProps) {
         ))}
       </div>
       <p className="mt-6 border-t soft-divider pt-4 text-sm leading-6 text-[var(--muted)]">{caption}</p>
-    </figure>
+      </figure>
+    </SectionReveal>
   );
 }
