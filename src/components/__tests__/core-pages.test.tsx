@@ -15,7 +15,7 @@ describe("core recruiter pages", () => {
     expect(screen.getByText(/dbscan \+ loess fuel event detection/i)).toBeInTheDocument();
     expect(screen.getByText(/sub-threshold fuel event detection/i)).toBeInTheDocument();
     expect(screen.getByText(/fin-ai · multi-agent financial intelligence/i)).toBeInTheDocument();
-    expect(screen.getByText(/langgraph orchestrator/i)).toBeInTheDocument();
+    expect(screen.getByText(/langgraph workflow/i)).toBeInTheDocument();
     expect(screen.getByText(/movie recommendation system/i)).toBeInTheDocument();
     expect(screen.getByText(/faiss candidate retrieval/i)).toBeInTheDocument();
     expect(screen.getAllByText(/95% alert accuracy/i).length).toBeGreaterThan(0);
@@ -44,7 +44,7 @@ describe("core recruiter pages", () => {
     expect(screen.getByRole("heading", { name: /experience/i })).toBeInTheDocument();
 
     render(<ContactPage />);
-    expect(screen.getByRole("heading", { name: /get in touch/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /contact rahul singh/i })).toBeInTheDocument();
 
     render(<WritingPage />);
     expect(screen.getByText(/technical notes and write-ups coming soon/i)).toBeInTheDocument();
@@ -64,7 +64,7 @@ describe("core recruiter pages", () => {
     ).toHaveAttribute("target", "_blank");
     expect(screen.getByRole("link", { name: /github github\.com\/rahul2-byte/i })).toHaveAttribute(
       "rel",
-      "noreferrer",
+      "noopener noreferrer",
     );
     expect(screen.getByRole("link", { name: /phone \+91 9027537314/i })).toHaveAttribute(
       "href",
@@ -101,7 +101,7 @@ describe("core recruiter pages", () => {
     expect(screen.getAllByText(/langgraph/i).length).toBeGreaterThan(0);
 
     expect(screen.getByRole("heading", { name: /professional experience/i })).toBeInTheDocument();
-    expect(screen.getByText(/april 2022 - present/i)).toBeInTheDocument();
+    expect(screen.getByText(/april 2022–present/i)).toBeInTheDocument();
     expect(screen.getByText(/intangles/i)).toBeInTheDocument();
     expect(screen.getByText(/95% alert accuracy/i)).toBeInTheDocument();
     expect(screen.getByText(/reclaiming 30\+ hours weekly/i)).toBeInTheDocument();
@@ -112,7 +112,7 @@ describe("core recruiter pages", () => {
       "href",
       "/projects/movie-recommendation-system",
     );
-    expect(screen.getByText(/freshness-aware rag pipeline/i)).toBeInTheDocument();
+    expect(screen.getByText(/built a retrieval pipeline using pgvector/i)).toBeInTheDocument();
     expect(screen.getByText(/two-stage recommendation pipeline/i)).toBeInTheDocument();
 
     expect(screen.getByRole("heading", { name: /education/i })).toBeInTheDocument();

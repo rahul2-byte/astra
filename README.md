@@ -203,6 +203,14 @@ Recommended Vercel settings:
 - Output: Next.js default
 - Node version: use the platform default compatible with Next.js 16, or configure a supported modern Node.js version.
 
+### Security Deployment Checklist
+
+- Set `NEXT_PUBLIC_SITE_URL` to the final canonical `https://` domain before production deployment.
+- Verify `robots.txt` and `sitemap.xml` resolve on the production domain.
+- Confirm the deployed site returns the configured security headers.
+- Keep the hosting account and domain registrar protected with MFA.
+- Review [SECURITY.md](SECURITY.md) after any hosting, domain, or contact-link change.
+
 ## Git Workflow
 
 Useful commands:

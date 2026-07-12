@@ -10,7 +10,7 @@ export function FeaturedProjects() {
         <div className="max-w-3xl">
           <p className="section-label">Featured work</p>
           <h2 id="featured-projects-title" className="font-display mt-5 text-4xl font-semibold tracking-[-0.055em] md:text-5xl">
-            Case studies grounded in engineering decisions.
+            Case studies grounded in implementation details.
           </h2>
           <p className="mt-5 text-lg leading-8 text-[var(--muted)]">
             Each study connects the technical problem, my contribution, the system design, and the available evidence.
@@ -21,7 +21,7 @@ export function FeaturedProjects() {
         </Link>
       </div>
 
-      <div className="mt-10 grid gap-6 lg:grid-cols-3">
+      <div className="mt-10 grid gap-6 lg:auto-rows-fr lg:grid-cols-3">
         {homeProjects.map((project, index) => (
           <article key={project.title} className="surface-card-interactive relative flex h-full flex-col overflow-hidden p-6 md:p-7">
             <span className="absolute inset-x-0 top-0 h-1 bg-[var(--primary)]" />

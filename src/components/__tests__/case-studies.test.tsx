@@ -27,7 +27,7 @@ describe("research-note project pages", () => {
     expect(screen.getByRole("navigation", { name: /on this page/i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /local-first design shaped by a 6 gb rtx 4050/i })).toBeInTheDocument();
     expect(screen.getByRole("columnheader", { name: /agent/i })).toBeInTheDocument();
-    expect(screen.getByText(/no live deployment, formal accuracy benchmark, latency measurement/i)).toBeInTheDocument();
+    expect(screen.getByText(/no live deployment, formal accuracy benchmark, latency benchmark/i)).toBeInTheDocument();
     expect(screen.getAllByRole("link", { name: /view source on github/i })[0]).toHaveAttribute(
       "href",
       "https://github.com/rahul2-byte/financial-analyst-system",
@@ -53,7 +53,7 @@ describe("research-note project pages", () => {
     const movieContent = readFileSync(join(process.cwd(), "src/content/case-studies.ts"), "utf8");
 
     expect(movieContent).not.toMatch(/50k\+|120ms|Precision@10 over training iterations/);
-    expect(movieContent).toContain('value: "4"');
+    expect(movieContent).toContain('value: "13"');
   });
 
   it("renders Production ML as a public-safe evidence-led case study", () => {

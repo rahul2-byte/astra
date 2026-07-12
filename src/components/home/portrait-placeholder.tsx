@@ -7,7 +7,7 @@ export function PortraitPlaceholder() {
       role="img"
       aria-label="Professional portrait placeholder for Rahul Singh"
     >
-      <div className="signal-glow absolute inset-8" />
+      <div className="signal-glow pointer-events-none absolute inset-8" />
       <div className="relative flex h-full flex-col justify-between p-5 sm:p-6">
         <div className="flex items-center justify-between font-technical text-[0.65rem] uppercase tracking-wider">
           <span>Portrait / pending</span>

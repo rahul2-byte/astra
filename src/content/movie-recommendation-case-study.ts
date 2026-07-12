@@ -96,7 +96,7 @@ export const movieRecommendationCaseStudy: MovieRecommendationCaseStudy = {
       eyebrow: "Data lifecycle",
       title: "MovieLens interactions become product-ready movie records",
       paragraphs: [
-        "The primary source is MovieLens 32M. The repository expects movies, ratings, links, and tags files, using MovieLens movie IDs as the internal identifier. The links file maps those records to TMDB and IMDb identifiers for enrichment.",
+        "The primary source is MovieLens 32M. The project expects movies, ratings, links, and tags files, using MovieLens movie IDs as the internal identifier. The links file maps those records to TMDB and IMDb identifiers for enrichment.",
         "The enrichment workflow fetches TMDB details, credits, and keywords, then supplements usable records with OMDb/IMDb data. It batches work, checkpoints progress, tracks failed IDs, and can retry failures before the final dataset is merged.",
         "Metadata preparation lowercases and trims selected strings, normalizes list fields, deduplicates movie IDs, filters ratings to enriched movies, consolidates user tags, and serializes records safely for DynamoDB.",
       ],

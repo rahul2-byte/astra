@@ -70,23 +70,23 @@ export const caseStudies: Record<CaseStudy["slug"], CaseStudy> = {
     period: "2024",
     stack: ["FastAPI", "LangGraph", "pgvector", "llama.cpp", "Opik", "PyTorch"],
     summary:
-      "Multi-agent platform that retrieves financial context, orchestrates analyst and writer agents, and returns grounded responses with observability traces.",
+      "Multi-agent platform that retrieves financial context, orchestrates specialist analysis, and returns grounded responses with a local-first workflow.",
     problem: {
       intro:
         "Financial research workflows require gathering context, retrieving relevant documents, organizing signals, and presenting usable outputs. A single-prompt LLM call cannot ground answers in private sources or trace which evidence shaped which conclusion.",
       bullets: [
-        "No retrieval grounding produced fabricated citations.",
+        "Ungrounded responses risk fabricated citations and weak evidence links.",
         "Single-agent prompts drifted on multi-step tasks.",
-        "No observability into which documents influenced answers.",
+        "A single prompt hides which evidence shaped the final answer.",
       ],
     },
     approach: {
       intro:
-        "A FastAPI service routes requests through a LangGraph orchestrator that runs a retriever, analyst, and writer agent against a pgvector index, with Opik tracing and llama.cpp as the local model runtime.",
+        "A FastAPI service routes requests through a LangGraph workflow that coordinates retrieval, analysis, synthesis, critique, conflict resolution, validation, and evaluation against a pgvector index, with llama.cpp as the local model runtime.",
       bullets: [
         "pgvector store indexed with chunk-level embeddings.",
-        "LangGraph state machine coordinates retriever → analyst → writer.",
-        "Opik captures per-node traces for offline evaluation.",
+        "LangGraph state machine coordinates multi-stage research and validation.",
+        "Observability traces were reviewed during development.",
         "llama.cpp enables reproducible local model execution.",
       ],
     },
@@ -101,38 +101,38 @@ export const caseStudies: Record<CaseStudy["slug"], CaseStudy> = {
       ],
     },
     metrics: [
-      { value: "4", label: "Agents orchestrated", source: "Project artifact", iconName: "Cpu" },
-      { value: "<2s", label: "End-to-end retrieval latency", source: "Project artifact — pending real measurement", iconName: "Activity" },
-      { value: "12k+", label: "Source chunks indexed", source: "Project artifact — pending real measurement", iconName: "Gauge" },
+      { value: "13", label: "Workflow stages", source: "Code-backed architecture", iconName: "Cpu" },
+      { value: "5", label: "Specialist agent roles", source: "Code-backed architecture", iconName: "Activity" },
+      { value: "Local-first", label: "Prototype architecture", source: "Project implementation", iconName: "Gauge" },
     ],
     result: {
       kind: "comparison",
       data: {
-        label: "Answer quality (placeholder)",
-        before: { label: "No-RAG baseline", value: 41, unit: "% grounded" },
-        after: { label: "FIN-AI with RAG", value: 78, unit: "% grounded" },
-        delta: "+37 pts",
-        source: "Project artifact — pending real measurement",
+        label: "Implemented system structure",
+        before: { label: "Workflow stages", value: 13, unit: "stages" },
+        after: { label: "Specialist roles", value: 5, unit: "roles" },
+        delta: "Retrieval + orchestration + validation",
+        source: "Code-backed architecture",
       },
     },
     evidence: {
       title: "Agent responsibilities",
       columns: ["Agent", "Role", "Latency budget", "Model / tool"],
       rows: [
-        { Agent: "Retriever", Role: "pgvector top-k", "Latency budget": "<400ms", "Model / tool": "pgvector + embeddings" },
-        { Agent: "Analyst", Role: "Extract signals", "Latency budget": "<600ms", "Model / tool": "llama.cpp" },
-        { Agent: "Writer", Role: "Compose response", "Latency budget": "<800ms", "Model / tool": "llama.cpp + prompts" },
-        { Agent: "Orchestrator", Role: "State + retries", "Latency budget": "<200ms", "Model / tool": "LangGraph" },
+        { Agent: "Fundamental", Role: "Interpret company fundamentals and statements", "Latency budget": "Stage-based", "Model / tool": "YFinance + LLM" },
+        { Agent: "Technical", Role: "Interpret price and technical context", "Latency budget": "Stage-based", "Model / tool": "YFinance + LLM" },
+        { Agent: "Sentiment", Role: "Review news and research context", "Latency budget": "Stage-based", "Model / tool": "Exa + LLM" },
+        { Agent: "Orchestrator", Role: "State, routing, and validation handoffs", "Latency budget": "Stage-based", "Model / tool": "LangGraph" },
       ],
-      source: "Resume · Project artifact",
+      source: "Code-backed architecture",
     },
     learnings: {
       intro:
         "Agent graphs need explicit failure handling: when the retriever returns empty results, the analyst must short-circuit instead of hallucinating.",
       bullets: [
         "Add an evaluation harness with a fixed question set.",
-        "Cache retrieval embeddings to cut cold-start latency.",
-        "Expose Opik traces to recruiters via a public demo URL.",
+        "Measure groundedness and route quality with a curated benchmark.",
+        "Strengthen failure handling and evidence coverage across research questions.",
       ],
     },
   },
@@ -216,7 +216,7 @@ export const caseStudies: Record<CaseStudy["slug"], CaseStudy> = {
     category: "Production experience",
     title: "Production ML Systems — Fuel event telemetry",
     role: "Intangles · Pune",
-    period: "April 2022 – Present",
+    period: "April 2022–Present",
     stack: ["Python", "DBSCAN", "LOESS", "SMA", "Pandas", "NumPy", "Node.js"],
     summary:
       "High-level case study of fuel-event detection on noisy OBD telemetry, including data-loss detection, alert-quality improvement, and support-impact reduction.",

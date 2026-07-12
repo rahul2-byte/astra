@@ -1,33 +1,20 @@
 export const site = {
   name: "Rahul Singh",
-  title: "Machine Learning Engineer | LLM & RAG Systems | Production ML",
+  title: "Machine Learning Engineer | Applied AI | LLM/RAG Systems",
   headline:
     "Machine Learning Engineer building practical ML, recommendation, and RAG systems.",
   summary:
-    "Production-focused engineer with 4+ years of experience turning noisy real-world data into reliable detection and analytics systems, now expanding into applied AI, RAG, and LLM product workflows.",
+    "Machine Learning Engineer with 4+ years of production experience building telemetry analytics, detection systems, recommendation pipelines, and applied AI workflows.",
   location: "Pune, India",
-  openToRoles: "Open to ML, Applied AI, Data Science, and LLM Engineer roles",
+  openToRoles:
+    "Open to Machine Learning Engineer, Applied AI Engineer, LLM/RAG Engineer, and Data Scientist roles.",
   github: "https://github.com/rahul2-byte",
   linkedin: "https://www.linkedin.com/in/-rahul-singh22/",
   email: "rahulchand4299@gmail.com",
   phone: "+91 9027537314",
   phoneHref: "tel:+919027537314",
   resume: "/ML_Engineer_resume.pdf",
-  targetRoles: [
-    "Machine Learning Engineer",
-    "Applied ML Engineer",
-    "AI Engineer",
-    "Data Scientist",
-    "LLM Engineer",
-  ],
 };
-
-export const proofMetrics = [
-  "4+ years production experience",
-  "95% alert accuracy maintained",
-  "15% false positive reduction",
-  "30+ weekly hours reclaimed",
-];
 
 export const navItems = [
   { label: "Home", href: "/" },

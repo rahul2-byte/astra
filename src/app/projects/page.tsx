@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Activity, ArrowUpRight, BrainCircuit, Cpu, Database, Gauge, Network } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -32,9 +33,9 @@ const projectDetails = {
   },
   "fin-ai": {
     purpose:
-      "Support financial research workflows with retrieval-grounded, traceable multi-agent responses instead of single-prompt LLM output.",
+      "Support Indian-market financial research with retrieval-grounded, traceable multi-agent responses instead of single-prompt output.",
     role:
-      "Designed the FastAPI boundary, LangGraph workflow, retriever/analyst/writer responsibilities, pgvector retrieval, local inference path, and Opik tracing flow.",
+      "Designed the FastAPI boundary, LangGraph workflow, specialist responsibilities, pgvector retrieval, local inference path, and observability flow.",
     features: [
       "LangGraph orchestrator",
       "pgvector retrieval layer",
@@ -44,7 +45,7 @@ const projectDetails = {
   },
   "movie-recommendation-system": {
     purpose:
-      "Serve personalized movie recommendations using a practical two-stage retrieval and ranking architecture.",
+      "Serve personalized movie recommendations through a practical retrieval-and-ranking pipeline.",
     role:
       "Built FAISS candidate retrieval, LightGBM reranking, runtime feature generation, FastAPI serving, and AWS Lambda/API Gateway deployment boundaries.",
     features: [
@@ -56,11 +57,20 @@ const projectDetails = {
   },
 } as const;
 
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "Selected machine learning, applied AI, and recommendation-system case studies from Rahul Singh.",
+  openGraph: {
+    title: "Projects | Rahul Singh",
+    description: "Technical case studies covering production ML, applied AI/RAG, and recommender systems.",
+  },
+};
+
 function MetricPreview({ metric }: { metric: (typeof featured.metrics)[number] }) {
   const Icon = iconMap[metric.iconName] ?? Gauge;
 
   return (
-    <div className="border border-[var(--border)] bg-[var(--surface-elevated)] p-5">
+    <div className="flex h-full flex-col border border-[var(--border)] bg-[var(--surface-elevated)] p-5">
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="metric-value text-4xl font-semibold">{metric.value}</p>
@@ -68,7 +78,7 @@ function MetricPreview({ metric }: { metric: (typeof featured.metrics)[number] }
         </div>
         <span className="grid h-9 w-9 place-items-center bg-[var(--primary)]"><Icon className="h-4 w-4 flex-none" strokeWidth={1.7} /></span>
       </div>
-      <p className="font-technical mt-3 text-[0.65rem] uppercase tracking-wider text-[var(--muted)]">{metric.source}</p>
+      <p className="font-technical mt-auto pt-3 text-[0.65rem] uppercase tracking-wider text-[var(--muted)]">{metric.source}</p>
     </div>
   );
 }
@@ -85,11 +95,11 @@ export default function ProjectsPage() {
           Selected case studies
         </h1>
         <p className="relative mt-6 max-w-4xl text-lg leading-8 text-[var(--muted)] md:text-xl">
-          Focused project work across production ML, applied AI/RAG, and recommendation systems. Each card summarizes the problem, my contribution, key modules, stack, outcome, and the deeper case study link.
+          Focused work across production ML, applied AI/RAG, and recommendation systems. Each card summarizes the problem, my contribution, core system components, stack, and the deeper case study link.
         </p>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {heroStats.map((item) => (
-            <div key={item} className="flex items-center gap-3 border border-[var(--border)] bg-[var(--card)] px-5 py-4 text-sm font-semibold">
+            <div key={item} className="flex h-full items-center gap-3 border border-[var(--border)] bg-[var(--card)] px-5 py-4 text-sm font-semibold">
               <span className="h-2 w-2 bg-[var(--primary)]" />{item}
             </div>
           ))}
@@ -113,13 +123,13 @@ export default function ProjectsPage() {
           <p className="mt-5 text-lg leading-8 text-[var(--muted)]">{featured.summary}</p>
 
           <div className="mt-7 grid gap-5 md:grid-cols-2">
-            <section className="border border-[var(--border)] bg-[var(--surface-elevated)] p-5">
+            <section className="flex h-full flex-col border border-[var(--border)] bg-[var(--surface-elevated)] p-5">
               <h3 className="font-technical text-[0.65rem] font-semibold uppercase tracking-wider text-[var(--muted)]">Purpose</h3>
-              <p className="mt-3 leading-7 text-[var(--muted)]">{projectDetails[featured.slug].purpose}</p>
+              <p className="mt-3 flex-1 leading-7 text-[var(--muted)]">{projectDetails[featured.slug].purpose}</p>
             </section>
-            <section className="border border-[var(--border)] bg-[var(--surface-elevated)] p-5">
+            <section className="flex h-full flex-col border border-[var(--border)] bg-[var(--surface-elevated)] p-5">
               <h3 className="font-technical text-[0.65rem] font-semibold uppercase tracking-wider text-[var(--muted)]">Role</h3>
-              <p className="mt-3 leading-7 text-[var(--muted)]">{projectDetails[featured.slug].role}</p>
+              <p className="mt-3 flex-1 leading-7 text-[var(--muted)]">{projectDetails[featured.slug].role}</p>
             </section>
           </div>
 
@@ -153,14 +163,14 @@ export default function ProjectsPage() {
           </Link>
         </article>
 
-        <div className="supporting-project-grid grid items-start gap-8 lg:grid-cols-2">
+        <div className="supporting-project-grid grid gap-8 lg:auto-rows-fr lg:grid-cols-2">
           {supporting.map((study) => {
             const detail = projectDetails[study.slug];
             const Icon = detail.Icon;
             const metric = study.metrics[0];
 
             return (
-              <article key={study.slug} className="surface-card-interactive flex flex-col p-7">
+              <article key={study.slug} className="surface-card-interactive flex h-full flex-col p-7">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <p className="section-label">{study.category}</p>
@@ -171,17 +181,17 @@ export default function ProjectsPage() {
                   <span className="grid h-10 w-10 place-items-center bg-[var(--primary)]"><Icon className="h-5 w-5 flex-none" strokeWidth={1.7} /></span>
                 </div>
                 <p className="mt-4 leading-7 text-[var(--muted)]">{study.summary}</p>
-                <div className="mt-5 grid gap-4">
-                  <section className="border border-[var(--border)] bg-[var(--surface-elevated)] p-4">
+                <div className="mt-5 grid flex-1 gap-4">
+                  <section className="flex h-full flex-col border border-[var(--border)] bg-[var(--surface-elevated)] p-4">
                     <h3 className="font-technical text-[0.65rem] font-semibold uppercase tracking-wider text-[var(--muted)]">Problem solved</h3>
-                    <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{detail.purpose}</p>
+                    <p className="mt-2 flex-1 text-sm leading-6 text-[var(--muted)]">{detail.purpose}</p>
                   </section>
-                  <section className="border border-[var(--border)] bg-[var(--surface-elevated)] p-4">
+                  <section className="flex h-full flex-col border border-[var(--border)] bg-[var(--surface-elevated)] p-4">
                     <h3 className="font-technical text-[0.65rem] font-semibold uppercase tracking-wider text-[var(--muted)]">Contribution</h3>
-                    <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{detail.role}</p>
+                    <p className="mt-2 flex-1 text-sm leading-6 text-[var(--muted)]">{detail.role}</p>
                   </section>
                 </div>
-                <ul className="mt-5 space-y-2 text-sm leading-6 text-[var(--muted)]">
+                <ul className="mt-5 flex-1 space-y-2 text-sm leading-6 text-[var(--muted)]">
                   {detail.features.map((feature) => (
                     <li key={feature} className="flex gap-2">
                       <span className="mt-2 h-1.5 w-1.5 flex-none bg-[var(--primary-hover)]" />

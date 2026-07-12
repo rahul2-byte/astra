@@ -20,12 +20,13 @@ export function ProfessionalSnapshot() {
         <div className="grid gap-5 md:grid-cols-[1fr_0.72fr]">
           <div className="border-l-4 border-l-[var(--primary)] pl-6 text-lg leading-8 text-[var(--muted)]">
             <p>
-              I work where machine learning meets imperfect production data. At Intangles, I have built and
-              improved systems for fuel-event detection, telemetry loss, sensor smoothing, and analytics reliability.
+              I work on machine learning problems where real-world data is noisy, incomplete, and operationally
+              important. At Intangles, I have built and improved systems for fuel-event detection, telemetry data
+              loss, signal smoothing, and analytics reliability.
             </p>
             <p className="mt-5">
-              Alongside production work, I build retrieval, agent, recommendation, and ML-serving projects that
-              demonstrate practical applied-AI system design.
+              Alongside production work, I build applied AI and recommendation projects that show how I design
+              retrieval pipelines, multi-stage workflows, backend APIs, and deployed ML systems.
             </p>
           </div>
           <aside className="surface-card p-6">

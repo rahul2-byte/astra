@@ -20,6 +20,7 @@
   --primary: #ffd43b;
   --primary-hover: #f2bc19;
   --primary-soft: #fff2b2;
+  --bar-inactive: #aaa79d;
   --border: #dedacd;
   --card: #fffef9;
   --surface-elevated: #f6f2e5;
@@ -123,7 +124,8 @@ button {
   opacity: 0.7;
 }
 
-.surface-card {
+.surface-card,
+.surface-card-interactive {
   background-color: var(--card);
   border: 1px solid var(--border);
   border-radius: 0.75rem;
@@ -131,10 +133,6 @@ button {
 }
 
 .surface-card-interactive {
-  background-color: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 0.75rem;
-  box-shadow: 0 16px 48px rgba(23, 23, 17, 0.055);
   transition: transform var(--motion-standard) var(--ease-standard), border-color var(--motion-standard) ease, box-shadow var(--motion-standard) ease;
 }
 

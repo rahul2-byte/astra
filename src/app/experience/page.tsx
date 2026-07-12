@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight, BrainCircuit, Code2, Database, Gauge, Network, ServerCog, Wrench } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -23,6 +24,15 @@ type ExperienceEntry = {
   linkLabel: string;
 };
 
+export const metadata: Metadata = {
+  title: "Experience",
+  description: "Production ML, applied AI, and recommendation systems experience across telemetry analytics, RAG workflows, and recommender engineering.",
+  openGraph: {
+    title: "Experience | Rahul Singh",
+    description: "Hands-on production ML and applied AI experience, including telemetry analytics, multi-agent RAG, and recommender systems.",
+  },
+};
+
 const heroMetrics = [
   { value: "4+ yrs", label: "production ML experience", full: "4+ yrs production ML experience" },
   { value: "95%", label: "alert accuracy", full: "95% alert accuracy" },
@@ -33,12 +43,12 @@ const heroMetrics = [
 const entries: ExperienceEntry[] = [
   {
     title: "Machine Learning Engineer · Intangles",
-    period: "April 2022 – Present",
+    period: "April 2022–Present",
     category: "Production ML",
     context:
       "Production fuel analytics on noisy OBD telemetry where fuel-level sensors, GPS gaps, data loss, and alert reliability directly affect operational workflows.",
     role:
-      "Owned ML-backed detection and analytics improvements across event detection, smoothing, data-loss identification, alert-quality tuning, and Node.js analytics refactoring while keeping client-specific logic confidential.",
+      "Built and improved ML-backed detection and analytics workflows across fuel-event detection, smoothing, data-loss identification, alert-quality tuning, and Node.js analytics refactoring, while keeping client-specific logic confidential.",
     stack: ["Python", "SQL", "Pandas", "NumPy", "scikit-learn", "DBSCAN", "LOESS", "SMA", "Node.js"],
     details: [
       {
@@ -79,9 +89,9 @@ const entries: ExperienceEntry[] = [
     period: "2024",
     category: "Applied AI / RAG",
     context:
-      "Applied AI project focused on financial research workflows that require retrieval grounding, task orchestration, local inference, and traceable outputs.",
+      "Applied AI project focused on Indian-market financial research workflows that require retrieval grounding, task orchestration, local inference, and traceable outputs.",
     role:
-      "Designed the API boundary, retrieval flow, agent roles, local model path, and observability structure for a multi-agent RAG-style platform.",
+      "Designed the API boundary, retrieval flow, agent workflow, local model path, and observability structure for a multi-agent financial research platform.",
     stack: ["FastAPI", "LangGraph", "pgvector", "sentence-transformers", "llama.cpp", "Opik", "PyTorch", "Pandas", "NumPy"],
     details: [
       {
@@ -89,7 +99,7 @@ const entries: ExperienceEntry[] = [
         Icon: Network,
         items: [
           "FastAPI service boundary for request handling and workflow execution.",
-          "LangGraph orchestrator coordinating retriever, analyst, writer, and validation-style responsibilities.",
+          "LangGraph workflow coordinating routing, planning, retrieval, analysis, synthesis, critique, conflict resolution, validation, and evaluation stages.",
           "pgvector-backed retrieval layer for freshness-aware context lookup.",
           "llama.cpp local inference path for GGUF model experimentation without relying fully on hosted LLM APIs.",
         ],
@@ -99,7 +109,7 @@ const entries: ExperienceEntry[] = [
         Icon: Database,
         items: [
           "Reduced ungrounded LLM responses by separating retrieval context from response synthesis.",
-          "Added traceability for retrieved context, agent outputs, latency, and unsupported-claim patterns using Opik traces.",
+          "Added traceability for retrieved context, agent outputs, latency, and workflow behavior using observability traces.",
           "Separated deterministic quantitative processing from LLM reasoning so calculations stay in Python/Pandas/NumPy.",
         ],
       },
@@ -113,7 +123,7 @@ const entries: ExperienceEntry[] = [
       },
     ],
     outcome:
-      "Created portfolio-ready applied AI proof showing practical RAG, agent orchestration, local inference, backend API design, and observability skills.",
+      "Built a local-first applied AI project demonstrating retrieval-grounded financial research, multi-stage orchestration, backend API design, and observability.",
     href: "/projects/fin-ai",
     linkLabel: "Open FIN-AI case study",
   },
@@ -122,7 +132,7 @@ const entries: ExperienceEntry[] = [
     period: "2024",
     category: "Recommendation systems",
     context:
-      "Practical ML engineering project for serving personalized movie recommendations through a backend API and serverless AWS deployment path.",
+      "ML engineering project for serving personalized movie recommendations through a full-stack product and serverless deployment path.",
     role:
       "Designed the two-stage recommender architecture, candidate retrieval layer, ranking flow, runtime feature generation, API service, and deployment boundaries.",
     stack: ["FastAPI", "LightGBM", "FAISS", "AWS Lambda", "API Gateway", "DynamoDB", "S3", "Python"],
@@ -156,7 +166,7 @@ const entries: ExperienceEntry[] = [
       },
     ],
     outcome:
-      "Built a project-backed recommender proof that demonstrates retrieval, ranking, API delivery, cloud deployment, and production-style model artifact handling.",
+      "Built a deployed recommender project that demonstrates retrieval, ranking, API delivery, and cloud deployment.",
     href: "/projects/movie-recommendation-system",
     linkLabel: "Open movie recommendation case study",
   },
@@ -172,7 +182,7 @@ export default function ExperiencePage() {
           Production ML, Applied AI, and Recommendation Systems
         </h1>
         <p className="relative mt-6 max-w-4xl text-lg leading-8 text-[var(--muted)] md:text-xl">
-          A timeline of hands-on work across production telemetry systems, multi-agent RAG, and recommender engineering. Each entry explains what I built, which technical decisions I made, the problems I solved, and what the work added to my engineering skills.
+          A timeline of work across production telemetry systems, applied AI, and recommender engineering. Each entry explains the problem, my contribution, the technical decisions involved, and the outcome.
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {heroMetrics.map((metric) => (
@@ -223,14 +233,14 @@ export default function ExperiencePage() {
                 ))}
               </div>
 
-              <div className="content-fit-grid mt-7 grid items-start gap-5 lg:grid-cols-3">
+              <div className="content-fit-grid mt-7 grid gap-5 lg:auto-rows-fr lg:grid-cols-3 lg:items-stretch">
                 {entry.details.map(({ title, items, Icon }) => (
-                  <section key={title} className="border border-[var(--border)] bg-[var(--surface-elevated)] p-5">
+                  <section key={title} className="flex h-full min-h-full self-stretch flex-col border border-[var(--border)] bg-[var(--surface-elevated)] p-5">
                     <div className="flex items-center gap-3">
                       <span className="grid h-9 w-9 place-items-center bg-[var(--primary)]"><Icon className="h-4 w-4" strokeWidth={1.7} /></span>
                       <h3 className="font-display text-xl font-semibold tracking-[-0.03em]">{title}</h3>
                     </div>
-                    <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--muted)]">
+                    <ul className="mt-4 flex-1 space-y-3 text-sm leading-6 text-[var(--muted)]">
                       {items.map((item) => (
                         <li key={item} className="flex gap-2">
                           <span className="mt-2 h-1.5 w-1.5 flex-none bg-[var(--primary-hover)]" />

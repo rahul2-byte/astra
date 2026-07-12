@@ -16,7 +16,7 @@ export function ExperiencePreview() {
                 <span className="grid h-12 w-12 place-items-center bg-[var(--primary)]">
                   <Building2 className="h-5 w-5" strokeWidth={1.6} aria-hidden />
                 </span>
-                <span className="font-technical text-xs text-[var(--muted)]">APR 2022 — NOW</span>
+                <span className="font-technical text-xs text-[var(--muted)]">April 2022–Present</span>
               </div>
               <p className="section-label mt-9">Experience preview</p>
               <h2 id="experience-preview-title" className="font-display mt-5 text-4xl font-semibold tracking-[-0.05em]">
@@ -32,11 +32,11 @@ export function ExperiencePreview() {
                 Building and improving fuel analytics systems across OBD telemetry, event detection,
                 sensor-data quality, and operational support workflows.
               </p>
-              <ul className="mt-7 grid gap-3 md:grid-cols-3">
+              <ul className="mt-7 grid gap-3 md:auto-rows-fr md:grid-cols-3">
                 {experienceHighlights.map((highlight) => (
-                  <li key={highlight} className="border border-[var(--border)] bg-[var(--card)] p-4 text-sm leading-6">
+                  <li key={highlight} className="flex h-full flex-col border border-[var(--border)] bg-[var(--card)] p-4 text-sm leading-6">
                     <Check className="mb-4 h-5 w-5 text-[var(--primary-hover)]" strokeWidth={2} aria-hidden />
-                    {highlight}
+                    <span className="flex-1">{highlight}</span>
                   </li>
                 ))}
               </ul>

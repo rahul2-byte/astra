@@ -24,7 +24,7 @@ export function ExpertiseGrid() {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-px overflow-hidden border border-[var(--border)] bg-[var(--border)] md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-10 grid gap-px overflow-hidden border border-[var(--border)] bg-[var(--border)] md:auto-rows-fr md:grid-cols-2 xl:grid-cols-4">
           {expertiseAreas.map((area, index) => {
             const Icon = iconMap[area.iconName];
             return (

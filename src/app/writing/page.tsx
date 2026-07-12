@@ -1,13 +1,23 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight, FileText } from "lucide-react";
 
 const categories = ["Production ML", "RAG systems", "Recommenders"];
 
+export const metadata: Metadata = {
+  title: "Writing",
+  description: "Upcoming technical writing and notes from Rahul Singh on production ML, RAG systems, and recommender engineering.",
+  openGraph: {
+    title: "Writing | Rahul Singh",
+    description: "Placeholder for future technical writing on production ML, RAG systems, and recommender engineering.",
+  },
+};
+
 export default function WritingPage() {
   return (
     <main className="section-shell py-16 md:py-24">
       <section className="surface-card technical-grid relative mx-auto max-w-5xl overflow-hidden p-7 md:p-12">
-        <div className="signal-glow animate-signal pointer-events-none -right-20 -top-20 h-80 w-80" />
+        <div className="signal-glow animate-signal pointer-events-none absolute -right-20 -top-20 h-80 w-80" />
         <div className="relative grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-end">
           <div>
             <p className="section-label">Writing</p>

@@ -11,7 +11,7 @@ describe("home page recruiter profile", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /i build reliable machine learning and ai systems for noisy, real-world data/i,
+        name: /i build reliable machine learning systems for noisy, real-world data/i,
       }),
     ).toBeInTheDocument();
     expect(
@@ -43,14 +43,14 @@ describe("home page recruiter profile", () => {
     ).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /core expertise/i })).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: /case studies grounded in engineering decisions/i }),
+      screen.getByRole("heading", { name: /case studies grounded in implementation details/i }),
     ).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /production ml at intangles/i })).toBeInTheDocument();
     expect(
       screen.getByRole("heading", { name: /need the complete technical profile/i }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: /open to production ml and applied ai opportunities/i }),
+      screen.getByRole("heading", { name: /open to machine learning and applied ai opportunities/i }),
     ).toBeInTheDocument();
 
     expect(screen.getByText(/4:5 crop · 1200 × 1500 recommended/i)).toBeInTheDocument();
@@ -99,11 +99,11 @@ describe("home page recruiter profile", () => {
 
   it("exports focused homepage metadata", () => {
     expect(metadata.title).toBe(
-      "Rahul Singh — Machine Learning Engineer | Production ML & Applied AI",
+      "Rahul Singh — Machine Learning Engineer | Applied AI | LLM/RAG Systems",
     );
     expect(metadata.description).toMatch(/4\+ years of production experience/i);
     expect(metadata.openGraph).toMatchObject({
-      title: "Rahul Singh — Machine Learning Engineer | Production ML & Applied AI",
+      title: "Rahul Singh — Machine Learning Engineer | Applied AI | LLM/RAG Systems",
     });
   });
 });

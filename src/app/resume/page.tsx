@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   ArrowUpRight,
   Code2 as Github,
@@ -24,6 +25,15 @@ const contactIcons: Record<typeof resumeHeader.contacts[number]["kind"], LucideI
   email: Mail,
   linkedin: Linkedin,
   github: Github,
+};
+
+export const metadata: Metadata = {
+  title: "Resume",
+  description: "Web resume for Rahul Singh covering production ML experience, technical skills, projects, and education.",
+  openGraph: {
+    title: "Resume | Rahul Singh",
+    description: "Resume and technical profile for Rahul Singh, Machine Learning Engineer.",
+  },
 };
 
 export default function ResumePage() {
@@ -54,7 +64,7 @@ export default function ResumePage() {
                   className="text-link min-w-0 break-all"
                   href={contact.href}
                   target={external ? "_blank" : undefined}
-                  rel={external ? "noreferrer" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
                 >
                   {contact.label}
                   {external ? <ArrowUpRight className="link-arrow h-3.5 w-3.5 shrink-0" aria-hidden /> : null}
@@ -76,11 +86,11 @@ export default function ResumePage() {
         <h2 className="font-display text-2xl font-semibold tracking-[-0.04em] md:text-3xl">
           Skills
         </h2>
-        <div className="mt-5 grid gap-5 md:grid-cols-2">
+        <div className="mt-5 grid gap-5 md:auto-rows-fr md:grid-cols-2">
           {resumeSkillGroups.map((group) => (
-            <article key={group.title} className="surface-card p-6">
+            <article key={group.title} className="surface-card flex h-full flex-col p-6">
               <h3 className="text-lg font-semibold tracking-[-0.025em]">{group.title}</h3>
-              <div className="mt-3 flex flex-wrap gap-2">
+              <div className="mt-3 flex flex-1 flex-wrap gap-2 content-start">
                 {group.items.map((item) => <StackPill key={item}>{item}</StackPill>)}
               </div>
             </article>

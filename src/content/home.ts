@@ -23,8 +23,8 @@ export type HomeProject = {
 export const heroSkills = [
   "Production ML",
   "Python & SQL",
-  "Telemetry & Time Series",
-  "Event & Anomaly Detection",
+  "Telemetry Analytics",
+  "Event Detection",
   "RAG & AI Agents",
   "FastAPI",
   "Docker & AWS",
@@ -85,10 +85,10 @@ export const homeProjects: HomeProject[] = [
     title: "FIN-AI",
     category: "Applied AI / RAG",
     problem:
-      "Financial research workflows need grounded retrieval, explicit orchestration, and inspectable outputs.",
+      "Support Indian-market financial research with retrieval-grounded, traceable multi-agent responses instead of single-prompt output.",
     contribution:
-      "Designed FastAPI boundaries, LangGraph agent flow, pgvector retrieval, local inference, and Opik tracing.",
-    evidence: "Multi-agent RAG · Local inference · Traceable workflow",
+      "Designed the FastAPI boundary, LangGraph workflow, pgvector retrieval, local inference path, and observability flow.",
+    evidence: "13 workflow stages · 5 specialist agent roles · Local-first architecture",
     stack: ["FastAPI", "LangGraph", "pgvector", "llama.cpp", "Opik"],
     href: "/projects/fin-ai",
   },
@@ -96,10 +96,10 @@ export const homeProjects: HomeProject[] = [
     title: "Movie Recommendation System",
     category: "Recommendation Systems",
     problem:
-      "Personalized recommendations require efficient retrieval, ranking quality, and practical model delivery.",
+      "Serve personalized movie recommendations through a practical retrieval-and-ranking pipeline.",
     contribution:
       "Built FAISS candidate retrieval, LightGBM ranking, runtime features, FastAPI serving, and AWS deployment boundaries.",
-    evidence: "Two-stage retrieval + ranking · Serverless delivery",
+    evidence: "4 retrieval sources · 2-stage pipeline · Live deployed project",
     stack: ["FAISS", "LightGBM", "FastAPI", "AWS Lambda", "DynamoDB"],
     href: "/projects/movie-recommendation-system",
   },

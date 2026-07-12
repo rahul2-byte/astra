@@ -56,11 +56,11 @@ export const finAiCaseStudy: ProjectArticleCaseStudy = {
       paragraphs: [
         "FIN-AI is a conversational financial research assistant focused on Indian-market questions. It retrieves live market and fundamental information through YFinance, gathers topical news and research context through Exa, and coordinates specialized agents before producing a consolidated response.",
         "I built the project to test a capable local LLM workflow on a 6 GB NVIDIA RTX 4050 GPU. The core reasoning loop uses a quantized GGUF model served through llama.cpp rather than a hosted LLM provider, so memory limits, retrieval quality, and workflow control became explicit engineering constraints.",
-        "The architecture separates deterministic data retrieval from LLM reasoning. LangGraph coordinates routing, planning, specialist analysis, synthesis, critique, conflict resolution, validation, and evaluation. Opik traces were reviewed during development to inspect agent execution and tool behaviour.",
+        "The architecture separates deterministic data retrieval from LLM reasoning. LangGraph coordinates routing, planning, specialist analysis, synthesis, critique, conflict resolution, validation, and evaluation. Observability traces were reviewed during development to inspect agent execution and tool behavior.",
       ],
       callout: {
         title: "Evidence boundary",
-        body: "FIN-AI is a local, work-in-progress prototype. It has no live deployment, formal accuracy benchmark, latency measurement, cost analysis, or financial-performance claim.",
+        body: "FIN-AI is a local, work-in-progress prototype. It has no live deployment, formal accuracy benchmark, latency benchmark, cost analysis, or financial-performance claim.",
       },
     },
     {
@@ -82,7 +82,7 @@ export const finAiCaseStudy: ProjectArticleCaseStudy = {
       eyebrow: "My role",
       title: "Solo ownership from local inference to chat delivery",
       paragraphs: [
-        "This was a solo, two-month project. I designed the local-first architecture, implemented the LangGraph workflow and specialist-agent boundaries, integrated the YFinance and Exa data sources, configured llama.cpp inference, built the FastAPI streaming backend, connected the Next.js chat experience, and reviewed Opik traces.",
+        "This was a solo, two-month project. I designed the local-first architecture, implemented the LangGraph workflow and specialist-agent boundaries, integrated the YFinance and Exa data sources, configured llama.cpp inference, built the FastAPI streaming backend, connected the Next.js chat experience, and reviewed observability traces.",
       ],
       bullets: [
         "Defined data, tool, and deterministic-calculation boundaries for financial research.",
@@ -130,9 +130,9 @@ export const finAiCaseStudy: ProjectArticleCaseStudy = {
     {
       id: "evaluation",
       eyebrow: "Observability and evaluation",
-      title: "Traces were reviewed; performance claims are intentionally absent",
+      title: "Traces were reviewed; benchmark claims are intentionally absent",
       paragraphs: [
-        "Opik traces were reviewed during development to inspect agent progression and tool execution. This gave visibility into how requests moved through routing, retrieval, specialist analysis, synthesis, and validation stages.",
+        "Observability traces were reviewed during development to inspect agent progression and tool execution. This gave visibility into how requests moved through routing, retrieval, specialist analysis, synthesis, and validation stages.",
         "Formal offline or online evaluation has not been completed. The project does not currently claim retrieval relevance, groundedness, agent-routing accuracy, response quality, latency, throughput, cost, or financial-prediction metrics.",
         "A useful next step is a curated set of Indian-market research questions that evaluates source coverage, evidence grounding, route selection, workflow completion, and the practical usefulness of the final response.",
       ],

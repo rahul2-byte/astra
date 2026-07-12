@@ -10,11 +10,11 @@ export function ContactCta() {
         <div>
           <p className="font-technical text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[var(--primary)]">Contact</p>
           <h2 id="contact-cta-title" className="font-display mt-5 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.055em] md:text-6xl">
-            Open to production ML and applied AI opportunities.
+            Open to machine learning and applied AI opportunities.
           </h2>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-white/65">
-            I&apos;m interested in Machine Learning, Applied AI, Generative AI, LLM, RAG, NLP, and Data
-            Science roles where reliable engineering matters.
+            I&apos;m interested in Machine Learning Engineer, Applied AI Engineer, LLM/RAG Engineer, and Data
+            Scientist roles where reliable engineering and practical system design matter.
           </p>
           <ul className="mt-7 flex flex-wrap gap-2" aria-label="Target opportunity areas">
             {contactRoleGroups.map((role) => (
@@ -31,10 +31,10 @@ export function ContactCta() {
             <a className="inline-flex items-center gap-2 text-white/75 hover:text-white" href={`mailto:${site.email}`}>
               <Mail className="h-4 w-4" aria-hidden /> {site.email}
             </a>
-            <a className="inline-flex items-center gap-2 text-white/75 hover:text-white" href={site.linkedin} target="_blank" rel="noreferrer">
+            <a className="inline-flex items-center gap-2 text-white/75 hover:text-white" href={site.linkedin} target="_blank" rel="noopener noreferrer">
               <Linkedin className="h-4 w-4" aria-hidden /> LinkedIn <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
             </a>
-            <a className="inline-flex items-center gap-2 text-white/75 hover:text-white" href={site.github} target="_blank" rel="noreferrer">
+            <a className="inline-flex items-center gap-2 text-white/75 hover:text-white" href={site.github} target="_blank" rel="noopener noreferrer">
               <Github className="h-4 w-4" aria-hidden /> GitHub <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
             </a>
           </div>

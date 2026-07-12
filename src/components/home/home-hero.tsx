@@ -13,7 +13,7 @@ export function HomeHero() {
         <div className="hero-enter">
           <p className="section-label">Rahul Singh · Machine Learning Engineer · Pune, India</p>
           <h1 className="font-display mt-5 max-w-5xl text-4xl font-semibold leading-[0.98] tracking-[-0.065em] sm:text-5xl lg:text-[clamp(3.5rem,4.4vw,4.5rem)]">
-            I build reliable machine learning and AI systems for noisy, real-world data.
+            I build reliable machine learning systems for noisy, real-world data.
           </h1>
           <div className="mt-5 max-w-3xl space-y-2 text-base leading-7 text-[var(--muted)] sm:text-lg">
             <p>
@@ -21,8 +21,8 @@ export function HomeHero() {
               telemetry detection, and data-quality systems.
             </p>
             <p>
-              My work spans production ML, RAG and AI agents, recommendation systems, and backend model
-              delivery—with measurable improvements in alert quality and operational workload.
+              My work combines production ML with applied AI, retrieval workflows, and recommendation
+              systems, with a focus on clear system design, measurable outcomes, and dependable engineering.
             </p>
           </div>
 
