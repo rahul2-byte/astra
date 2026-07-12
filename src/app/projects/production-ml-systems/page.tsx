@@ -1,11 +1,11 @@
-import { CaseStudyPage } from "@/components/case-study/case-study-page";
-import { caseStudies } from "@/content/case-studies";
+import { ProjectArticleLayout } from "@/components/project-article/project-article-layout";
+import { productionMlCaseStudy } from "@/content/production-ml-case-study";
 
 export const metadata = {
   title: "Production ML Systems | Rahul Singh",
-  description: "High-level production ML case study based on Rahul Singh's Intangles experience.",
+  description: "Public-safe technical case study of production OBD telemetry and fuel-event detection work at Intangles.",
 };
 
 export default function ProductionMlCaseStudy() {
-  return <CaseStudyPage study={caseStudies["production-ml-systems"]} />;
+  return <ProjectArticleLayout study={productionMlCaseStudy} />;
 }

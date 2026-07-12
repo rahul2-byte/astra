@@ -23,6 +23,11 @@ describe("portfolio visual system", () => {
     const globals = readSource("app/globals.css");
     const layout = readSource("app/layout.tsx");
     const home = readSource("components/home-sections.tsx");
+    const homeHero = readSource("components/home/home-hero.tsx");
+    const expertise = readSource("components/home/expertise-grid.tsx");
+    const experience = readSource("app/experience/page.tsx");
+    const projects = readSource("app/projects/page.tsx");
+    const movieArticle = readSource("components/project-article/project-article-layout.tsx");
     const projectCard = readSource("components/project-card.tsx");
     const resume = readSource("app/resume/page.tsx");
     const contact = readSource("app/contact/page.tsx");
@@ -45,6 +50,16 @@ describe("portfolio visual system", () => {
     expect(home).toContain("@/components/home/featured-projects");
     expect(home).toContain("@/components/home/contact-cta");
     expect(home).not.toContain("from \"lucide-react\"");
+    expect(homeHero).toContain("hero-viewport");
+    expect(homeHero).toContain("metric-strip-item");
+    expect(expertise).toContain("expertise-card");
+    expect(expertise).toContain("expertise-capabilities");
+    expect(experience).toContain("content-fit-grid");
+    expect(projects).toContain("supporting-project-grid");
+    expect(projects).not.toContain("lg:grid-cols-[1.15fr_0.85fr]");
+    expect(movieArticle).toContain("section-shell");
+    expect(movieArticle).toContain('aria-label="On this page"');
+    expect(movieArticle).toContain("noopener noreferrer");
     expect(projectCard).toContain("surface-card-interactive");
     expect(projectCard).toContain("Network");
     expect(resume).toContain("surface-card");

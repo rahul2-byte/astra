@@ -95,8 +95,8 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section className="mt-10 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-        <article className="surface-card relative flex min-h-full flex-col overflow-hidden p-7 md:p-8">
+      <section className="mt-10 space-y-8">
+        <article className="surface-card relative flex flex-col overflow-hidden p-7 md:p-8">
           <span className="absolute inset-x-0 top-0 h-1.5 bg-[var(--primary)]" />
           <div className="flex items-start justify-between gap-4">
             <div>
@@ -151,14 +151,14 @@ export default function ProjectsPage() {
           </Link>
         </article>
 
-        <div className="grid gap-8">
+        <div className="supporting-project-grid grid items-start gap-8 lg:grid-cols-2">
           {supporting.map((study) => {
             const detail = projectDetails[study.slug];
             const Icon = detail.Icon;
             const metric = study.metrics[0];
 
             return (
-              <article key={study.slug} className="surface-card-interactive flex h-full flex-col p-7">
+              <article key={study.slug} className="surface-card-interactive flex flex-col p-7">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <p className="section-label">{study.category}</p>

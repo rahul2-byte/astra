@@ -1,11 +1,11 @@
-import { CaseStudyPage } from "@/components/case-study/case-study-page";
-import { caseStudies } from "@/content/case-studies";
+import { ProjectArticleLayout } from "@/components/project-article/project-article-layout";
+import { movieRecommendationCaseStudy } from "@/content/movie-recommendation-case-study";
 
 export const metadata = {
   title: "Movie Recommendation System | Rahul Singh",
-  description: "Recommendation system case study for Rahul Singh's ML portfolio.",
+  description: "Technical case study: multi-retriever movie recommendation, runtime features, and LightGBM reranking.",
 };
 
 export default function MovieRecommendationCaseStudy() {
-  return <CaseStudyPage study={caseStudies["movie-recommendation-system"]} />;
+  return <ProjectArticleLayout study={movieRecommendationCaseStudy} />;
 }

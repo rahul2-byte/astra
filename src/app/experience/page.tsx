@@ -221,7 +221,7 @@ export default function ExperiencePage() {
                 ))}
               </div>
 
-              <div className="mt-7 grid gap-5 lg:grid-cols-3">
+              <div className="content-fit-grid mt-7 grid items-start gap-5 lg:grid-cols-3">
                 {entry.details.map(({ title, items, Icon }) => (
                   <section key={title} className="border border-[var(--border)] bg-[var(--surface-elevated)] p-5">
                     <div className="flex items-center gap-3">

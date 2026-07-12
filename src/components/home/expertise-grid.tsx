@@ -28,16 +28,16 @@ export function ExpertiseGrid() {
           {expertiseAreas.map((area, index) => {
             const Icon = iconMap[area.iconName];
             return (
-              <article key={area.title} className="bg-[var(--card)] p-6 md:p-7">
+              <article key={area.title} className="expertise-card flex h-full flex-col bg-[var(--card)] p-6 md:p-7">
                 <div className="flex items-start justify-between gap-4">
                   <span className="grid h-11 w-11 place-items-center bg-[var(--primary)]">
                     <Icon className="h-5 w-5" strokeWidth={1.6} aria-hidden />
                   </span>
                   <span className="font-technical text-xs text-[var(--muted)]">0{index + 1}</span>
                 </div>
-                <h3 className="font-display mt-7 text-2xl font-semibold leading-tight tracking-[-0.04em]">{area.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-[var(--muted)]">{area.description}</p>
-                <ul className="mt-6 space-y-2 border-t soft-divider pt-5 text-xs text-[var(--muted)]">
+                <h3 className="font-display mt-7 text-2xl font-semibold leading-tight tracking-[-0.04em] xl:min-h-[4.5rem]">{area.title}</h3>
+                <p className="mt-4 flex-1 text-sm leading-7 text-[var(--muted)]">{area.description}</p>
+                <ul className="expertise-capabilities mt-6 flex min-h-32 flex-col justify-between gap-2 border-t soft-divider pt-5 text-xs text-[var(--muted)]">
                   {area.capabilities.map((capability) => (
                     <li key={capability} className="flex items-center gap-2">
                       <span className="h-1.5 w-1.5 bg-[var(--primary-hover)]" />{capability}

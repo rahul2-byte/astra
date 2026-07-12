@@ -1,11 +1,11 @@
-import { CaseStudyPage } from "@/components/case-study/case-study-page";
-import { caseStudies } from "@/content/case-studies";
+import { ProjectArticleLayout } from "@/components/project-article/project-article-layout";
+import { finAiCaseStudy } from "@/content/fin-ai-case-study";
 
 export const metadata = {
   title: "FIN-AI | Rahul Singh",
-  description: "Multi-agent financial intelligence platform case study for Rahul Singh's portfolio.",
+  description: "Technical case study: a local-first multi-agent financial research assistant for Indian-market questions.",
 };
 
 export default function FinAiCaseStudy() {
-  return <CaseStudyPage study={caseStudies["fin-ai"]} />;
+  return <ProjectArticleLayout study={finAiCaseStudy} />;
 }

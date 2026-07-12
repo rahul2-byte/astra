@@ -9,13 +9,13 @@ export function HomeHero() {
   return (
     <section className="technical-grid relative border-b soft-divider">
       <div className="signal-glow animate-signal pointer-events-none absolute -right-24 top-10 h-[28rem] w-[28rem]" />
-      <div className="section-shell relative grid gap-12 py-14 lg:grid-cols-[1.2fr_0.58fr] lg:items-center lg:py-20">
+      <div className="hero-viewport section-shell relative grid gap-8 py-10 lg:grid-cols-[1.2fr_0.58fr] lg:items-center lg:py-10 xl:py-12">
         <div className="hero-enter">
           <p className="section-label">Rahul Singh · Machine Learning Engineer · Pune, India</p>
-          <h1 className="font-display mt-7 max-w-5xl text-5xl font-semibold leading-[0.98] tracking-[-0.065em] sm:text-6xl lg:text-[5rem]">
+          <h1 className="font-display mt-5 max-w-5xl text-4xl font-semibold leading-[0.98] tracking-[-0.065em] sm:text-5xl lg:text-[clamp(3.5rem,4.4vw,4.5rem)]">
             I build reliable machine learning and AI systems for noisy, real-world data.
           </h1>
-          <div className="mt-7 max-w-3xl space-y-3 text-lg leading-8 text-[var(--muted)] md:text-xl">
+          <div className="mt-5 max-w-3xl space-y-2 text-base leading-7 text-[var(--muted)] sm:text-lg">
             <p>
               Machine Learning Engineer with 4+ years of production experience building fuel analytics,
               telemetry detection, and data-quality systems.
@@ -26,13 +26,13 @@ export function HomeHero() {
             </p>
           </div>
 
-          <ul className="mt-7 flex flex-wrap gap-2" aria-label="Selected technical skills">
+          <ul className="mt-5 flex flex-wrap gap-2" aria-label="Selected technical skills">
             {heroSkills.map((skill) => (
               <li key={skill}><StackPill>{skill}</StackPill></li>
             ))}
           </ul>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link className="btn-primary" href="/projects">
               View Case Studies <ArrowUpRight className="link-arrow h-4 w-4" aria-hidden />
             </Link>
@@ -49,7 +49,7 @@ export function HomeHero() {
           </div>
         </div>
 
-        <div className="hero-enter hero-enter-delay">
+        <div className="hero-enter hero-enter-delay lg:max-w-[26rem] lg:justify-self-end">
           <PortraitPlaceholder />
         </div>
       </div>
@@ -59,7 +59,7 @@ export function HomeHero() {
           {homeMetrics.map((metric, index) => (
             <div
               key={metric.label}
-              className={`min-h-28 py-6 ${index > 0 ? "border-t border-white/15 sm:border-l sm:border-t-0" : ""} ${index % 2 === 0 ? "sm:pr-6" : "sm:px-6"}`}
+              className={`metric-strip-item flex min-h-28 flex-col items-center justify-center px-6 py-6 text-center ${index > 0 ? "border-t border-white/15 sm:border-l sm:border-t-0" : ""}`}
             >
               <dt className="font-technical text-[0.65rem] uppercase tracking-wider text-white/60">{metric.label}</dt>
               <dd className="metric-value mt-3 text-2xl font-semibold text-[var(--primary)]">{metric.value}</dd>
