@@ -15,7 +15,7 @@ export function Header() {
           <span className="grid h-9 w-9 place-items-center border border-[var(--foreground)] bg-[var(--primary)] font-technical text-xs font-semibold">RS</span>
           <span className="font-display text-lg font-semibold tracking-[-0.04em]">{site.name}</span>
         </Link>
-        <div className="hidden items-center gap-7 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           {navItems.map((item) => (
             <Link key={item.href} className="group relative py-2 font-technical text-xs font-medium" href={item.href}>
               {item.label}
@@ -23,6 +23,13 @@ export function Header() {
             </Link>
           ))}
         </div>
+        <a
+          className="btn-primary hidden lg:inline-flex"
+          href={site.resume}
+          download="Rahul-Singh-ML-Engineer-Resume.pdf"
+        >
+          Download Resume
+        </a>
         <button
           type="button"
           aria-expanded={open}

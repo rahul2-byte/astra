@@ -41,14 +41,10 @@ describe("portfolio visual system", () => {
     expect(globals).toContain("@media print");
     expect(layout).toContain("Space_Grotesk");
     expect(layout).toContain("IBM_Plex_Mono");
-    expect(home).toContain("font-display");
-    expect(home).toContain("technical-grid");
-    expect(home).toContain("surface-card");
-    expect(home).toContain("status-badge");
-    expect(home).toContain("from \"lucide-react\"");
-    expect(home).toContain("MapPin");
-    expect(home).toContain("Target");
-    expect(home).toContain("Layers");
+    expect(home).toContain("@/components/home/home-hero");
+    expect(home).toContain("@/components/home/featured-projects");
+    expect(home).toContain("@/components/home/contact-cta");
+    expect(home).not.toContain("from \"lucide-react\"");
     expect(projectCard).toContain("surface-card-interactive");
     expect(projectCard).toContain("Network");
     expect(resume).toContain("surface-card");

@@ -2,6 +2,15 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { Header } from "@/components/header";
 
 describe("Header", () => {
+  it("offers a direct desktop resume download", () => {
+    render(<Header />);
+
+    expect(screen.getByRole("link", { name: /download resume/i })).toHaveAttribute(
+      "href",
+      "/ML_Engineer_resume.pdf",
+    );
+  });
+
   it("opens and closes the mobile navigation", () => {
     render(<Header />);
 
