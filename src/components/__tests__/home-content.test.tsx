@@ -26,7 +26,7 @@ describe("home page recruiter profile", () => {
     );
     expect(screen.getByRole("link", { name: /download resume/i })).toHaveAttribute(
       "href",
-      "/ML_Engineer_resume.pdf",
+      "/resume.pdf",
     );
     expect(
       screen.getAllByRole("link", { name: /^contact me$/i }).some(
@@ -53,9 +53,10 @@ describe("home page recruiter profile", () => {
       screen.getByRole("heading", { name: /open to machine learning and applied ai opportunities/i }),
     ).toBeInTheDocument();
 
-    expect(screen.getByText(/4:5 crop · 1200 × 1500 recommended/i)).toBeInTheDocument();
+    expect(screen.getByText(/portrait \/ verified/i)).toBeInTheDocument();
+    expect(screen.getByText(/^rahul singh$/i)).toBeInTheDocument();
     expect(
-      screen.getByRole("img", { name: /professional portrait placeholder for rahul singh/i }),
+      screen.getByRole("img", { name: /professional portrait of rahul singh/i }),
     ).toBeInTheDocument();
     expect(screen.getAllByText(/95%/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/15%/i).length).toBeGreaterThan(0);
@@ -83,7 +84,7 @@ describe("home page recruiter profile", () => {
     );
     expect(
       screen.getAllByRole("link", { name: /download resume|download pdf/i }).some(
-        (link) => link.getAttribute("href") === "/ML_Engineer_resume.pdf",
+        (link) => link.getAttribute("href") === "/resume.pdf",
       ),
     ).toBe(true);
     expect(screen.getByRole("link", { name: /view all projects/i })).toHaveAttribute(

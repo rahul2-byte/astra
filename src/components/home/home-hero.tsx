@@ -3,7 +3,7 @@ import { ArrowUpRight, Download } from "lucide-react";
 import { heroSkills, homeMetrics } from "@/content/home";
 import { site } from "@/content/site";
 import { StackPill } from "@/components/case-study/stack-pill";
-import { PortraitPlaceholder } from "@/components/home/portrait-placeholder";
+import { PortraitCard } from "@/components/home/portrait-card";
 
 export function HomeHero() {
   return (
@@ -50,7 +50,7 @@ export function HomeHero() {
         </div>
 
         <div className="hero-enter hero-enter-delay lg:max-w-[26rem] lg:justify-self-end">
-          <PortraitPlaceholder />
+          <PortraitCard />
         </div>
       </div>
 

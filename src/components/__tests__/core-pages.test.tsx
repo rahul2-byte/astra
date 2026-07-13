@@ -74,14 +74,14 @@ describe("core recruiter pages", () => {
     expect(screen.queryByText(/for recruiter outreach, ml roles, ai\/rag opportunities/i)).not.toBeInTheDocument();
     expect(screen.getByRole("link", { name: /download technical resume/i })).toHaveAttribute(
       "href",
-      "/ML_Engineer_resume.pdf",
+      "/resume.pdf",
     );
 
     render(<ResumePage />);
     expect(screen.getAllByRole("link", { name: /download pdf/i }).length).toBeGreaterThan(0);
     expect(
       screen.getAllByRole("link", { name: /download pdf/i }).at(-1),
-    ).toHaveAttribute("href", "/ML_Engineer_resume.pdf");
+    ).toHaveAttribute("href", "/resume.pdf");
   });
 
   it("renders the resume with full content, skill groups, projects, and education", () => {
@@ -122,7 +122,7 @@ describe("core recruiter pages", () => {
 
     expect(screen.getByRole("link", { name: /download pdf/i })).toHaveAttribute(
       "href",
-      "/ML_Engineer_resume.pdf",
+      "/resume.pdf",
     );
     expect(screen.getByRole("link", { name: /download pdf/i })).toHaveAttribute(
       "download",

@@ -42,7 +42,7 @@ export const productionMlCaseStudy: ProjectArticleCaseStudy = {
     },
     {
       label: "Download technical resume",
-      href: "/ML_Engineer_resume.pdf",
+      href: "/resume.pdf",
       description: "Resume-backed professional experience summary",
       external: false,
     },

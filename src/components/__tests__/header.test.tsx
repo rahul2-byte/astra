@@ -12,7 +12,7 @@ describe("Header", () => {
 
     expect(screen.getByRole("link", { name: /download resume/i })).toHaveAttribute(
       "href",
-      "/ML_Engineer_resume.pdf",
+      "/resume.pdf",
     );
   });
 

@@ -28,6 +28,7 @@ describe("portfolio visual system", () => {
     const currentYear = readSource("components/current-year.tsx");
     const home = readSource("components/home-sections.tsx");
     const homeHero = readSource("components/home/home-hero.tsx");
+    const portrait = readSource("components/home/portrait-card.tsx");
     const expertise = readSource("components/home/expertise-grid.tsx");
     const experience = readSource("app/experience/page.tsx");
     const projects = readSource("app/projects/page.tsx");
@@ -41,6 +42,8 @@ describe("portfolio visual system", () => {
     expect(packageJson).toHaveProperty("name", "rahul-ml-portfolio");
     expect(nextConfig).toContain("productionBrowserSourceMaps: false");
     expect(nextConfig).toContain("Content-Security-Policy");
+    expect(nextConfig).toContain("process.env.NODE_ENV === \"development\"");
+    expect(nextConfig).toContain("unsafe-eval");
     expect(nextConfig).toContain("X-Frame-Options");
     expect(nextConfig).toContain("X-Content-Type-Options");
     expect(nextConfig).toContain("Referrer-Policy");
@@ -50,9 +53,15 @@ describe("portfolio visual system", () => {
     expect(existsSync(join(sourceRoot, "components/icon.tsx"))).toBe(false);
     expect(existsSync(join(sourceRoot, "components/project-card.tsx"))).toBe(false);
     expect(existsSync(join(sourceRoot, "components/case-study/case-study-page.tsx"))).toBe(false);
+    expect(existsSync(join(sourceRoot, "components/home/portrait-placeholder.tsx"))).toBe(false);
     expect(existsSync(join(sourceRoot, "mdx-components.tsx"))).toBe(false);
     expect(existsSync(join(sourceRoot, "content/projects.ts"))).toBe(false);
     expect(existsSync(join(sourceRoot, "content/skills.ts"))).toBe(false);
+    expect(existsSync(join(process.cwd(), "public/ML_Engineer_resume.pdf"))).toBe(false);
+    expect(existsSync(join(process.cwd(), "public/images/rahul-portrait-v1.png"))).toBe(false);
+    expect(existsSync(join(process.cwd(), "public/images/rahul-portrait-v2.png"))).toBe(false);
+    expect(existsSync(join(process.cwd(), "public/resume.pdf"))).toBe(true);
+    expect(existsSync(join(process.cwd(), "public/images/portrait.png"))).toBe(true);
     expect(globals).toContain("--primary: #ffd43b");
     expect(globals).toContain("--bar-inactive: #aaa79d");
     expect(globals).toContain("--cta-background: #171711");
@@ -82,6 +91,13 @@ describe("portfolio visual system", () => {
     expect(home).not.toContain("from \"lucide-react\"");
     expect(homeHero).toContain("hero-viewport");
     expect(homeHero).toContain("metric-strip-item");
+    expect(homeHero).toContain("@/components/home/portrait-card");
+    expect(homeHero).not.toContain("@/components/home/portrait-placeholder");
+    expect(homeHero).toContain("PortraitCard");
+    expect(portrait).toContain('src="/images/portrait.png"');
+    expect(portrait).toContain("width={1122}");
+    expect(portrait).toContain("height={1402}");
+    expect(portrait).not.toContain("\n        fill\n");
     expect(expertise).toContain("expertise-card");
     expect(expertise).toContain("expertise-capabilities");
     expect(experience).toContain("content-fit-grid");

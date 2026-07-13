@@ -295,7 +295,7 @@ button {
   letter-spacing: -0.045em;
 }
 
-.portrait-placeholder {
+.portrait-card {
   background:
     linear-gradient(145deg, color-mix(in srgb, var(--card) 88%, var(--primary-soft)), var(--card));
   border: 1px solid var(--foreground);

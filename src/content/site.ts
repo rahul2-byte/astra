@@ -13,7 +13,7 @@ export const site = {
   email: "rahulchand4299@gmail.com",
   phone: "+91 9027537314",
   phoneHref: "tel:+919027537314",
-  resume: "/ML_Engineer_resume.pdf",
+  resume: "/resume.pdf",
 };
 
 export const navItems = [
