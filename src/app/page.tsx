@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
-import { HomeSections } from "@/components/home-sections";
-
-const title = "Rahul Singh — Machine Learning Engineer | Applied AI | LLM/RAG Systems";
-const description =
-  "Machine Learning Engineer with 4+ years of production experience building telemetry analytics, detection systems, recommendation systems, and applied AI workflows.";
+import { HomePage } from "@/components/home-page";
+import { site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title,
-  description,
+  title: `${site.name} | Machine Learning Engineer at Intangles`,
+  description: site.summary,
   openGraph: {
-    title,
-    description,
+    title: `${site.name} | Machine Learning Engineer at Intangles`,
+    description: site.summary,
   },
 };
 
 export default function Home() {
-  return <HomeSections />;
+  return <HomePage />;
 }

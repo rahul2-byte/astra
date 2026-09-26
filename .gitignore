@@ -26,6 +26,10 @@
 *.pem
 .superpowers/
 
+# local agent artifacts
+/.pi/
+/.lavish/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
