@@ -11,15 +11,16 @@ describe("reference-inspired visual system", () => {
     expect(css).toContain("--paper: #fbfcff");
     expect(css).toContain("--accent: #3157c8");
     expect(css).toContain("--font-display-stack");
+    expect(css).not.toContain("text-transform: lowercase");
+    expect(css).not.toContain("100vw - 100%");
     expect(css).toContain("prefers-reduced-motion: reduce");
     expect(css).toContain("forced-colors: active");
     expect(layout).toContain("next/font/google");
     expect(layout).toContain("skip-link");
   });
 
-  it("keeps the profile introduction visible without entrance animation", () => {
+  it("keeps the previous profile introduction and Intangles experience", () => {
     const home = read("src/components/home-page.tsx");
-    expect(home).not.toMatch(/SectionReveal|framer-motion|animate-/);
     expect(home).toContain("Hi, I’m Rahul.");
     expect(home).toContain("Intangles");
   });

@@ -1,17 +1,27 @@
 export const experience = {
-  dates: "April 2022 - Present",
+  dates: "April 2022 – Present",
+  outcomes: [
+    { value: "15%", label: "fewer false-positive fuel alerts after smoothing" },
+    { value: "±2%", label: "refill-volume estimates versus entered logs" },
+  ],
   workstreams: [
     {
       title: "Fuel event detection",
-      detail: "I added checks for small fuel events and missing OBD signals, then smoothed noisy readings. This reduced false-positive alerts by 15%. Refill estimates were within ±2% of customer-entered filling logs.",
+      detail:
+        "Improved fuel-event analytics with signal smoothing, reducing false-positive alerts by 15%. Refill-volume estimates were within ±2% of entered logs.",
+      tools: ["Signal processing"],
     },
     {
-      title: "Vehicle-tag suggestions",
-      detail: "I built an internal tool that suggests algorithm-specific vehicle tags for review. It retrieves similar examples, ranks suggestions by confidence, and checks the output. I can’t share employer data or decision thresholds.",
+      title: "Vehicle-tag recommendations",
+      detail:
+        "Built an internal tool that suggests vehicle tags from similar examples, reducing manual tagging effort and helping new teammates get started.",
+      tools: ["Search & recommendations"],
     },
     {
       title: "EV coolant estimates",
-      detail: "I worked with a team on an LSTM model that estimates coolant temperature and reports current and forecast health states from irregular EV telemetry. I prepared the inputs and added checks for missing data and physical bounds, with deterministic fallbacks when inputs weren’t reliable.",
+      detail:
+        "Collaborated on a team model for coolant-temperature estimates and health-state forecasts from vehicle sensor data. Added checks for incomplete inputs to help prevent unreliable estimates.",
+      tools: ["Time-series ML", "Input validation"],
     },
   ],
 };

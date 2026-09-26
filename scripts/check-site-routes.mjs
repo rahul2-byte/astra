@@ -1,14 +1,24 @@
 import assert from "node:assert/strict";
 
 const baseUrl = new URL(process.argv[2] ?? "http://localhost:3000");
+const projects = [
+  ["fin-ai", "FIN-AI"],
+  ["lora-reproduction", "LoRA Reproduction"],
+  ["movie-recommendation-system", "Movie Recommendation System"],
+];
 
 for (const [path, content] of [
-  ["/", "Experience at Intangles"],
-  ["/projects", "Movie Recommendation System"],
+  ["/", "Machine Learning Engineer at Intangles"],
+  ["/projects", "FIN-AI"],
+  ...projects.map(([slug, title]) => [`/projects/${slug}`, title]),
 ]) {
   const response = await fetch(new URL(path, baseUrl));
   assert.equal(response.status, 200, `${path} should be a page`);
-  assert.ok((await response.text()).includes(content), `${path} should include its main content`);
+  const html = await response.text();
+  assert.ok(html.includes(content), `${path} should include ${content}`);
+  if (path.startsWith("/projects/") && path !== "/projects") {
+    assert.ok(html.includes("Why I built it"), `${path} should include its case study`);
+  }
 }
 
 for (const [path, destination] of [
@@ -16,10 +26,8 @@ for (const [path, destination] of [
   ["/projects/production-ml-systems", "/#experience"],
   ["/contact", "/#contact"],
   ["/writing", "/projects"],
-  ["/resume", "/resume.pdf"],
-  ["/projects/fin-ai", "/projects#fin-ai"],
-  ["/projects/lora-reproduction", "/projects#lora-reproduction"],
-  ["/projects/movie-recommendation-system", "/projects#movie-recommendation-system"],
+  ["/resume", "/resume_updated_fin_ai.pdf"],
+  ["/resume.pdf", "/resume_updated_fin_ai.pdf"],
 ]) {
   const response = await fetch(new URL(path, baseUrl), { redirect: "manual" });
   assert.equal(response.status, 308, `${path} should permanently redirect`);
@@ -29,11 +37,22 @@ for (const [path, destination] of [
   assert.equal(`${target.pathname}${target.hash}`, destination, `${path} should point to ${destination}`);
 }
 
+const unknownProject = await fetch(new URL("/projects/not-a-project", baseUrl));
+assert.equal(unknownProject.status, 404, "unknown project slugs should return 404");
+
+const resume = await fetch(new URL("/resume_updated_fin_ai.pdf", baseUrl));
+assert.equal(resume.status, 200, "approved résumé should be available");
+assert.ok((await resume.arrayBuffer()).byteLength > 0, "résumé response should not be empty");
+
 const sitemap = await fetch(new URL("/sitemap.xml", baseUrl));
 assert.equal(sitemap.status, 200, "sitemap should be available");
 const sitemapPaths = [...(await sitemap.text()).matchAll(/<loc>(.*?)<\/loc>/g)]
   .map(([, url]) => new URL(url).pathname)
   .sort();
-assert.deepEqual(sitemapPaths, ["/", "/projects"], "sitemap should list only the two pages");
+assert.deepEqual(
+  sitemapPaths,
+  ["/", "/projects", ...projects.map(([slug]) => `/projects/${slug}`)].sort(),
+  "sitemap should list all canonical pages",
+);
 
-console.log("Two-page routes, legacy redirects, and sitemap passed.");
+console.log("Project index, detail pages, legacy redirects, résumé, and sitemap passed.");

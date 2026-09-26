@@ -1,14 +1,15 @@
 # Rahul Singh: Machine Learning Engineer
 
-A personal portfolio for Rahul Singh, a Machine Learning Engineer at Intangles in Pune, India. The site has two main pages: a homepage with employment experience, and a Projects page with three independent project write-ups.
+A personal portfolio for Rahul Singh, a Machine Learning Engineer at Intangles in Pune, India. The homepage presents his professional profile and employment experience; the Projects page lists his independent work, with a separate detailed case-study page for each project.
 
 ## Pages
 
 - `/` — Introduction, Intangles experience, résumé, and contact links.
-- `/projects` — FIN-AI, LoRA Reproduction, and Movie Recommendation System, with methods, results, and limitations.
-- `/resume.pdf` — Approved résumé PDF.
+- `/projects` — overview of FIN-AI, LoRA Reproduction, and Movie Recommendation System.
+- `/projects/[slug]` — individual implementation, evidence, and limitations for each project.
+- `/resume_updated_fin_ai.pdf` — approved résumé PDF.
 
-Older experience and project URLs redirect to the matching section on `/` or `/projects`. Contact and writing URLs also redirect to their current destinations.
+Older experience, project, and résumé URLs redirect to their current destinations. Contact and writing URLs also redirect to their current destinations.
 
 ## Development
 
@@ -26,7 +27,7 @@ npx tsc --noEmit
 npm run build
 ```
 
-With the site running, check its two pages and legacy redirects with:
+With the site running, check its routes, project pages, résumé, redirects, and sitemap with:
 
 ```sh
 node scripts/check-site-routes.mjs http://localhost:3000

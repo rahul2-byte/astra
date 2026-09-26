@@ -9,10 +9,10 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
   const evidenceHintId = `${project.slug}-evidence-scroll-hint`;
 
   return (
-    <article id={project.slug} className="project-page" aria-labelledby={titleId}>
+    <article id={project.slug} className="project-page project-detail" aria-labelledby={titleId}>
       <header className="project-heading">
         <p className="project-category">{project.category}</p>
-        <h2 id={titleId}>{project.title}</h2>
+        <h1 id={titleId}>{project.title}</h1>
         <p className="project-deck">{project.summary}</p>
         <div className="project-meta"><span>{project.role}</span><span>Independent project</span></div>
         <ul className="tag-list project-tools" aria-label={`${project.title} tools`}>
@@ -45,7 +45,8 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
       {project.evidence ? (
         <section className="case-content" aria-labelledby={evidenceId}>
           <div className="case-copy">
-            <h3 id={evidenceId}>Results</h3>
+            <h3 id={evidenceId}>Evaluation and evidence</h3>
+            <p className="evidence-caption">{project.evidence.caption}</p>
             {project.resultFigure ? (
               <figure className="project-figure">
                 <Image
@@ -66,7 +67,6 @@ export function ProjectCaseStudy({ project }: { project: Project }) {
                 <tbody>{project.evidence.rows.map((row) => <tr key={row[0]}>{row.map((cell, index) => index === 0 ? <th key={index} scope="row">{cell}</th> : <td key={index}>{cell}</td>)}</tr>)}</tbody>
               </table>
             </EvidenceTableScroll>
-            <p className="evidence-note">{project.evidence.caption}</p>
             <p className="caveat">{project.evidence.note}</p>
           </div>
         </section>
