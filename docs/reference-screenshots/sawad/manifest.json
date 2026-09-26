@@ -1,0 +1,56 @@
+[
+  {
+    "url": "https://sawad.framer.website/",
+    "finalUrl": "https://sawad.framer.website/",
+    "title": "Sawad",
+    "httpStatus": 200,
+    "screenshot": "sawad/001-home.jpg",
+    "height": 5446,
+    "error": ""
+  },
+  {
+    "url": "https://sawad.framer.website/tools",
+    "finalUrl": "https://sawad.framer.website/tools",
+    "title": "Sawad | Tools",
+    "httpStatus": 200,
+    "screenshot": "sawad/002-tools.jpg",
+    "height": 1664,
+    "error": ""
+  },
+  {
+    "url": "https://sawad.framer.website/projects",
+    "finalUrl": "https://sawad.framer.website/projects",
+    "title": "Sawad | Projects",
+    "httpStatus": 200,
+    "screenshot": "sawad/003-projects.jpg",
+    "height": 2591,
+    "error": ""
+  },
+  {
+    "url": "https://sawad.framer.website/experience",
+    "finalUrl": "https://sawad.framer.website/experience",
+    "title": "Sawad | Experience",
+    "httpStatus": 200,
+    "screenshot": "sawad/004-experience.jpg",
+    "height": 2160,
+    "error": ""
+  },
+  {
+    "url": "https://sawad.framer.website/blog",
+    "finalUrl": "https://sawad.framer.website/blog",
+    "title": "Sawad | Thoughts",
+    "httpStatus": 200,
+    "screenshot": "sawad/005-blog.jpg",
+    "height": 2776,
+    "error": ""
+  },
+  {
+    "url": "https://sawad.framer.website/blog/how-to-create-an-effective-design-portfolio",
+    "finalUrl": "https://sawad.framer.website/blog/how-to-create-an-effective-design-portfolio",
+    "title": "How to Create an Effective Design Portfolio - Sawad",
+    "httpStatus": 200,
+    "screenshot": "sawad/006-blog-how-to-create-an-effective-design-portfolio.jpg",
+    "height": 3489,
+    "error": ""
+  }
+]

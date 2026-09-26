@@ -1,0 +1,48 @@
+[
+  {
+    "url": "https://brittanychiang.com/",
+    "finalUrl": "https://brittanychiang.com/",
+    "title": "Brittany Chiang",
+    "httpStatus": 200,
+    "screenshot": "brittanychiang/001-home-live.png",
+    "height": 3798,
+    "error": ""
+  },
+  {
+    "url": "https://brittanychiang.com/archive",
+    "finalUrl": "https://brittanychiang.com/archive",
+    "title": "Archive | Brittany Chiang",
+    "httpStatus": 200,
+    "screenshot": "brittanychiang/002-archive.jpg",
+    "height": 3763,
+    "error": ""
+  },
+  {
+    "url": "https://brittanychiang.com/",
+    "title": "About section",
+    "screenshot": "brittanychiang/003-about-section.png",
+    "captureType": "section",
+    "viewportWidth": 740
+  },
+  {
+    "url": "https://brittanychiang.com/",
+    "title": "Experience section",
+    "screenshot": "brittanychiang/004-experience-section.png",
+    "captureType": "section",
+    "viewportWidth": 740
+  },
+  {
+    "url": "https://brittanychiang.com/",
+    "title": "Projects section",
+    "screenshot": "brittanychiang/005-projects-section.png",
+    "captureType": "section",
+    "viewportWidth": 740
+  },
+  {
+    "url": "https://brittanychiang.com/",
+    "title": "Writing section",
+    "screenshot": "brittanychiang/006-writing-section.png",
+    "captureType": "section",
+    "viewportWidth": 740
+  }
+]

@@ -1,0 +1,39 @@
+[
+  {
+    "url": "https://tim-gesemann.dev",
+    "finalUrl": "https://tim-gesemann.dev",
+    "title": "Tim Gesemann",
+    "httpStatus": 200,
+    "screenshot": "tim-gesemann/001-home-live.png",
+    "viewportWidth": 725,
+    "note": "Captured in live Chrome; cookie-consent dialog visible."
+  },
+  {
+    "url": "https://tim-gesemann.dev",
+    "title": "Skills section",
+    "screenshot": "tim-gesemann/002-skills.png",
+    "captureType": "section",
+    "viewportWidth": 725
+  },
+  {
+    "url": "https://tim-gesemann.dev",
+    "title": "Projects section",
+    "screenshot": "tim-gesemann/003-projects.png",
+    "captureType": "section",
+    "viewportWidth": 725
+  },
+  {
+    "url": "https://tim-gesemann.dev",
+    "title": "Project details section",
+    "screenshot": "tim-gesemann/004-project-details.png",
+    "captureType": "section",
+    "viewportWidth": 725
+  },
+  {
+    "url": "https://tim-gesemann.dev",
+    "title": "Contact section",
+    "screenshot": "tim-gesemann/005-contact.png",
+    "captureType": "section",
+    "viewportWidth": 725
+  }
+]

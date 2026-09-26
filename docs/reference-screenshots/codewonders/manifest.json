@@ -1,0 +1,41 @@
+[
+  {
+    "url": "https://codewonders.dev/",
+    "finalUrl": "https://www.codewonders.dev/",
+    "title": "Home | Adenekan Wonderful | Codewonders",
+    "httpStatus": 200,
+    "screenshot": "codewonders/001-home.jpg",
+    "height": 1000,
+    "error": ""
+  },
+  {
+    "url": "https://codewonders.dev/about",
+    "finalUrl": "https://www.codewonders.dev/about",
+    "title": "About Me | Adenekan Wonderful | Codewonders",
+    "httpStatus": 200,
+    "screenshot": "codewonders/002-about.jpg",
+    "height": 2986,
+    "error": ""
+  },
+  {
+    "url": "https://codewonders.dev/projects",
+    "title": "Projects",
+    "screenshot": "codewonders/003-projects-live.png",
+    "viewportWidth": 725,
+    "note": "Captured in live Chrome."
+  },
+  {
+    "url": "https://codewonders.dev/contact",
+    "title": "Contact",
+    "screenshot": "codewonders/004-contact-live.png",
+    "viewportWidth": 725,
+    "note": "Captured in live Chrome."
+  },
+  {
+    "url": "https://codewonders.dev/articles",
+    "title": "Articles",
+    "screenshot": "codewonders/005-articles-live.png",
+    "viewportWidth": 725,
+    "note": "Captured in live Chrome."
+  }
+]

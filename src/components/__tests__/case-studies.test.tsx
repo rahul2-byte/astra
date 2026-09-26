@@ -1,68 +1,57 @@
-import { render, screen } from "@testing-library/react";
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
+import { fireEvent, render, screen, cleanup, within } from "@testing-library/react";
+import { afterEach } from "vitest";
 import ProjectsPage from "@/app/projects/page";
-import FinAiPage from "@/app/projects/fin-ai/page";
-import MovieRecommendationPage from "@/app/projects/movie-recommendation-system/page";
-import ProductionMlPage from "@/app/projects/production-ml-systems/page";
+import { EvidenceTableScroll } from "@/components/evidence-table-scroll";
 
-describe("research-note project pages", () => {
-  it("renders the upgraded projects index with featured and supporting cards", () => {
+afterEach(cleanup);
+
+describe("project write-ups", () => {
+  it("scrolls evidence tables with the arrow keys and labels each hint", () => {
+    const { getByRole } = render(
+      <EvidenceTableScroll title="Test project" hintId="table-hint">
+        <p id="table-hint">Scroll to see all columns.</p>
+        <table><tbody><tr><td>Evidence</td></tr></tbody></table>
+      </EvidenceTableScroll>,
+    );
+    const region = getByRole("region", { name: /test project evidence table/i });
+
+    expect(region).toHaveAttribute("aria-describedby", "table-hint");
+    fireEvent.keyDown(region, { key: "ArrowRight" });
+    expect(region.scrollLeft).toBe(48);
+    fireEvent.keyDown(region, { key: "ArrowLeft" });
+    expect(region.scrollLeft).toBe(0);
+  });
+
+  it("shows FIN-AI's architecture and evidence limits", () => {
     render(<ProjectsPage />);
-    expect(screen.getByRole("heading", { name: /selected case studies/i })).toBeInTheDocument();
-    expect(screen.getByText(/3 focused studies/i)).toBeInTheDocument();
-    expect(screen.getByText(/Production ML Systems/i)).toBeInTheDocument();
-    expect(screen.getByText(/Purpose/i)).toBeInTheDocument();
-    expect(screen.getByText(/Role/i)).toBeInTheDocument();
-    expect(screen.getByText(/FIN-AI/i)).toBeInTheDocument();
-    expect(screen.getByText(/Movie Recommendation System/i)).toBeInTheDocument();
-    expect(screen.getAllByRole("link", { name: /open case study/i })).toHaveLength(3);
-    expect(screen.queryByRole("link", { name: /github/i })).not.toBeInTheDocument();
-    expect(screen.queryByRole("link", { name: /live demo/i })).not.toBeInTheDocument();
+    const article = screen.getByRole("article", { name: "FIN-AI" });
+
+    expect(within(article).getByText(/command-line assistant for researching NSE and BSE stocks/i)).toBeInTheDocument();
+    expect(within(article).getByText(/limited number of tool turns/i)).toBeInTheDocument();
+    expect(within(article).queryByText(/LangGraph|pgvector|llama\.cpp|streaming chat/i)).not.toBeInTheDocument();
+    expect(within(article).getByText(/no published evaluation of financial-answer accuracy/i)).toBeInTheDocument();
   });
 
-  it("renders FIN-AI as an evidence-led local-first case study", () => {
-    render(<FinAiPage />);
-    expect(screen.getByRole("heading", { name: /^fin-ai$/i })).toBeInTheDocument();
-    expect(screen.getByRole("navigation", { name: /on this page/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /local-first design shaped by a 6 gb rtx 4050/i })).toBeInTheDocument();
-    expect(screen.getByRole("columnheader", { name: /agent/i })).toBeInTheDocument();
-    expect(screen.getByText(/no live deployment, formal accuracy benchmark, latency benchmark/i)).toBeInTheDocument();
-    expect(screen.getAllByRole("link", { name: /view source on github/i })[0]).toHaveAttribute(
-      "href",
-      "https://github.com/rahul2-byte/financial-analyst-system",
-    );
+  it("keeps LoRA's trade-off and validation limits visible", () => {
+    render(<ProjectsPage />);
+    const article = screen.getByRole("article", { name: "LoRA Reproduction" });
+
+    expect(within(article).getByRole("img", { name: /scatter plots comparing trainable parameter counts/i })).toBeInTheDocument();
+    expect(within(article).getByText(/rerun wall time against trainable parameter count/i)).toBeInTheDocument();
+    expect(within(article).getByRole("cell", { name: /0\.6928 ± 0\.0086/i })).toBeInTheDocument();
+    expect(within(article).getByRole("cell", { name: /0\.9281 ± 0\.0046/i })).toBeInTheDocument();
+    expect(within(article).getByText(/scroll horizontally to see every column/i)).toBeInTheDocument();
+    expect(within(article).getByText(/not official GLUE test scores/i)).toBeInTheDocument();
+    expect(within(article).getByText(/base RoBERTa is still needed/i)).toBeInTheDocument();
   });
 
-  it("renders Movie Recommendation as an evidence-led technical case study", () => {
-    render(<MovieRecommendationPage />);
-    expect(screen.getByRole("heading", { name: /movie recommendation system/i })).toBeInTheDocument();
-    expect(screen.getByRole("navigation", { name: /on this page/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /system overview/i })).toBeInTheDocument();
-    expect(screen.getByRole("columnheader", { name: /decision/i })).toBeInTheDocument();
-    expect(screen.getAllByRole("link", { name: /open live demo/i })[0]).toHaveAttribute(
-      "href",
-      "https://movie-recommendation-system-phi-eight.vercel.app/",
-    );
-    expect(screen.getByText(/not yet connected to retrieval or ranking/i)).toBeInTheDocument();
-    expect(screen.queryByText(/precision@10 over training iterations/i)).not.toBeInTheDocument();
-    expect(screen.queryByText(/120ms/i)).not.toBeInTheDocument();
-  });
+  it("shows movie metrics and their benchmark limits on the same page", () => {
+    render(<ProjectsPage />);
+    const article = screen.getByRole("article", { name: "Movie Recommendation System" });
 
-  it("keeps Movie Recommendation preview claims evidence-backed", () => {
-    const movieContent = readFileSync(join(process.cwd(), "src/content/case-studies.ts"), "utf8");
-
-    expect(movieContent).not.toMatch(/50k\+|120ms|Precision@10 over training iterations/);
-    expect(movieContent).toContain('value: "13"');
-  });
-
-  it("renders Production ML as a public-safe evidence-led case study", () => {
-    render(<ProductionMlPage />);
-    expect(screen.getByRole("heading", { name: /production ml systems at intangles/i })).toBeInTheDocument();
-    expect(screen.getByRole("navigation", { name: /on this page/i })).toBeInTheDocument();
-    expect(screen.getAllByText(/alert accuracy maintained/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/support queries from approximately six to two per day/i).length).toBeGreaterThan(0);
-    expect(screen.getByText(/customer names, fleet volumes, telemetry schemas/i)).toBeInTheDocument();
-    expect(screen.getByRole("columnheader", { name: /signal or concern/i })).toBeInTheDocument();
+    expect(within(article).getByRole("cell", { name: "0.281976" })).toBeInTheDocument();
+    expect(within(article).getByText(/50 requests with five seed films/i)).toBeInTheDocument();
+    expect(within(article).getByText(/Lambda cold starts, API Gateway, production throughput/i)).toBeInTheDocument();
+    expect(within(article).getByRole("link", { name: /live demo/i })).toHaveAttribute("href", "https://movie-recommendation-system-phi-eight.vercel.app/");
   });
 });
