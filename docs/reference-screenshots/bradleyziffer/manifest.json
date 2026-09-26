@@ -1,0 +1,56 @@
+[
+  {
+    "url": "https://bradleyziffer.com/",
+    "finalUrl": "https://bradleyziffer.com/",
+    "title": "bradley | a builder",
+    "httpStatus": 200,
+    "screenshot": "bradleyziffer/001-home.jpg",
+    "height": 8290,
+    "error": ""
+  },
+  {
+    "url": "https://bradleyziffer.com/Amazon",
+    "finalUrl": "https://bradleyziffer.com/Amazon",
+    "title": "Headcount at Amazon",
+    "httpStatus": 200,
+    "screenshot": "bradleyziffer/002-Amazon.jpg",
+    "height": 16000,
+    "error": ""
+  },
+  {
+    "url": "https://bradleyziffer.com/Amazon-AI",
+    "finalUrl": "https://bradleyziffer.com/Amazon-AI",
+    "title": "AI at Amazon",
+    "httpStatus": 200,
+    "screenshot": "bradleyziffer/003-Amazon-AI.jpg",
+    "height": 8068,
+    "error": ""
+  },
+  {
+    "url": "https://bradleyziffer.com/Acorns",
+    "finalUrl": "https://bradleyziffer.com/Acorns",
+    "title": "Financial Freedom at Acorns",
+    "httpStatus": 200,
+    "screenshot": "bradleyziffer/004-Acorns.jpg",
+    "height": 7334,
+    "error": ""
+  },
+  {
+    "url": "https://bradleyziffer.com/Acorns-hidden",
+    "finalUrl": "https://bradleyziffer.com/Acorns-hidden",
+    "title": "Financial Freedom at Acorns",
+    "httpStatus": 200,
+    "screenshot": "bradleyziffer/005-Acorns-hidden.jpg",
+    "height": 8026,
+    "error": ""
+  },
+  {
+    "url": "https://bradleyziffer.com/pgLang",
+    "finalUrl": "https://bradleyziffer.com/pgLang",
+    "title": "Blockchain for pgLang",
+    "httpStatus": 200,
+    "screenshot": "bradleyziffer/006-pgLang.jpg",
+    "height": 4757,
+    "error": ""
+  }
+]

@@ -1,43 +1,40 @@
-import type { Metadata } from "next";
-import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Calistoga, Inter } from "next/font/google";
 import { site } from "@/content/site";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-space-grotesk",
-});
+const bodyFont = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
+const displayFont = Calistoga({ weight: "400", subsets: ["latin"], variable: "--font-display", display: "swap" });
 
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-ibm-plex-mono",
-  weight: ["400", "500", "600"],
-});
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: `${site.name} — ${site.title}`,
+    default: `${site.name} | ${site.title}`,
     template: `%s | ${site.name}`,
   },
   description: site.summary,
   openGraph: {
-    title: `${site.name} — ${site.title}`,
+    title: `${site.name} | ${site.title}`,
     description: site.summary,
+    type: "website",
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} h-full antialiased`}>
-      <body className="min-h-full">
+    <html lang="en" className={`${bodyFont.variable} ${displayFont.variable}`}>
+      <body>
+        <a className="skip-link" href="#main-content">Skip to content</a>
         <Header />
-        <div className="flex-1">{children}</div>
+        {children}
         <Footer />
       </body>
     </html>

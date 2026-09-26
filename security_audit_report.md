@@ -258,12 +258,12 @@ Add `npm audit --audit-level=high` to the CI pipeline to fail the build on new h
 ---
 
 ## 31. Domain and DNS Security
-**Pending Manual Review.** Registrar and DNS configurations are outside the repository scope. Ensure MFA is enabled on the domain registrar.
+**Complete (user-confirmed).** MFA is enabled on the domain registrar.
 
 ---
 
 ## 32. Hosting and Cloud Security
-**Pending Manual Review.** Ensure the hosting provider account has MFA enabled and is connected via a scoped GitHub App rather than a Personal Access Token.
+**Complete (user-confirmed).** Hosting-account MFA is enabled, and repository access uses a scoped GitHub App rather than a Personal Access Token.
 
 ---
 

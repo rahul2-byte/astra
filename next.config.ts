@@ -17,6 +17,18 @@ const contentSecurityPolicy = [
 
 const nextConfig: NextConfig = {
   productionBrowserSourceMaps: false,
+  async redirects() {
+    return [
+      { source: "/contact", destination: "/#contact", permanent: true },
+      { source: "/resume", destination: "/resume.pdf", permanent: true },
+      { source: "/writing", destination: "/projects", permanent: true },
+      { source: "/experience", destination: "/#experience", permanent: true },
+      { source: "/projects/fin-ai", destination: "/projects#fin-ai", permanent: true },
+      { source: "/projects/lora-reproduction", destination: "/projects#lora-reproduction", permanent: true },
+      { source: "/projects/movie-recommendation-system", destination: "/projects#movie-recommendation-system", permanent: true },
+      { source: "/projects/production-ml-systems", destination: "/#experience", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {
