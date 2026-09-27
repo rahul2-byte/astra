@@ -10,7 +10,8 @@ async function renderStudy(slug: string) {
   render(await ProjectDetailPage({ params: Promise.resolve({ slug }) }));
   const project = projects.find(({ slug: projectSlug }) => projectSlug === slug);
   if (!project) throw new Error(`Missing test project: ${slug}`);
-  return within(screen.getByRole("article", { name: project.title }));
+  const articleName = slug === "movie-recommendation-system" ? /Multi-Stage Movie Recommendation System/ : project.title;
+  return within(screen.getByRole("article", { name: articleName }));
 }
 
 describe("project write-ups", () => {
@@ -55,7 +56,9 @@ describe("project write-ups", () => {
   it("shows movie metrics and benchmark limits on its own page", async () => {
     const article = await renderStudy("movie-recommendation-system");
 
-    expect(article.getByRole("heading", { level: 1, name: "Movie Recommendation System" })).toBeInTheDocument();
+    expect(article.getByRole("heading", { level: 1, name: /Multi-Stage Movie Recommendation System: Hybrid Retrieval & Reranking/ })).toBeInTheDocument();
+    expect(article.getByRole("navigation", { name: "On this page" })).toBeInTheDocument();
+    expect(article.getByRole("heading", { name: /11 ranking features/ })).toBeInTheDocument();
     expect(article.getByRole("cell", { name: "0.281976" })).toBeInTheDocument();
     expect(article.getByText(/sent 50 requests with five seed films/i)).toBeInTheDocument();
     expect(article.getByText(/Lambda cold starts, API Gateway, production throughput/i)).toBeInTheDocument();

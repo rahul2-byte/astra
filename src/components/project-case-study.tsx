@@ -1,8 +1,11 @@
 import Image from "next/image";
 import type { Project } from "@/content/projects";
 import { EvidenceTableScroll } from "@/components/evidence-table-scroll";
+import { MovieCaseStudy } from "@/components/movie-case-study";
 
 export function ProjectCaseStudy({ project }: { project: Project }) {
+  if (project.slug === "movie-recommendation-system") return <MovieCaseStudy project={project} />;
+
   const titleId = `${project.slug}-title`;
   const workflowId = `${project.slug}-workflow-title`;
   const evidenceId = `${project.slug}-evidence-title`;

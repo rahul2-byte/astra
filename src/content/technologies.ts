@@ -19,7 +19,7 @@ export type TechnologyGroup = { title: string; items: Technology[] };
 
 export const technologyGroups: TechnologyGroup[] = [
   {
-    title: "Languages & data",
+    title: "Languages & Data",
     items: [
       { name: "Python", icon: siPython },
       { name: "SQL" },
@@ -28,7 +28,7 @@ export const technologyGroups: TechnologyGroup[] = [
     ],
   },
   {
-    title: "Machine learning",
+    title: "Machine Learning",
     items: [
       { name: "PyTorch", icon: siPytorch },
       { name: "TensorFlow / Keras", icon: siTensorflow },
@@ -40,16 +40,16 @@ export const technologyGroups: TechnologyGroup[] = [
     ],
   },
   {
-    title: "LLMs & retrieval",
+    title: "LLMs & Retrieval",
     items: [
-      { name: "RAG" },
-      { name: "Embeddings & semantic search" },
+      { name: "RAG Architecture" },
+      { name: "Embeddings & Semantic Search" },
       { name: "FAISS" },
-      { name: "MMR reranking" },
+      { name: "MMR Reranking" },
     ],
   },
   {
-    title: "APIs, cloud & delivery",
+    title: "APIs, Cloud & Delivery",
     items: [
       { name: "FastAPI", icon: siFastapi },
       { name: "Docker", icon: siDocker },

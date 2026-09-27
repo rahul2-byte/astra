@@ -37,7 +37,7 @@ export function HomePage() {
           <address className="contact-links" aria-label="Contact Rahul">
             <a href={`mailto:${site.email}`}>
               <MailIcon className="contact-icon" />
-              <span className="contact-copy"><small>Email</small><span>{site.email}</span></span>
+              <span className="contact-copy"><small>Direct email</small><span>{site.email}</span></span>
             </a>
             <a href={site.phoneHref}>
               <PhoneIcon className="contact-icon" />
