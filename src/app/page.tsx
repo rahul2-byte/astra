@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { HomePage } from "@/components/home-page";
+import { ReferencePage } from "@/components/reference-page";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -12,5 +12,5 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <HomePage />;
+  return <ReferencePage name="home" />;
 }

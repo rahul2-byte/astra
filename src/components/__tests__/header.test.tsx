@@ -10,7 +10,7 @@ describe("site navigation", () => {
     expect(within(navigation).getByRole("link", { name: "Experience" })).toHaveAttribute("href", "/#experience");
     expect(within(navigation).getByRole("link", { name: "Skills" })).toHaveAttribute("href", "/#skills");
     expect(within(navigation).getByRole("link", { name: "Projects" })).toHaveAttribute("href", "/#projects");
-    expect(within(navigation).getByRole("link", { name: "Case Studies" })).toHaveAttribute("href", "/projects");
+    expect(within(navigation).queryByRole("link", { name: "Case Studies" })).not.toBeInTheDocument();
     expect(within(navigation).getByRole("link", { name: "Contact" })).toHaveAttribute("href", "/#contact");
   });
 });

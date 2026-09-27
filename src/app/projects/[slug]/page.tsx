@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ProjectCaseStudy } from "@/components/project-case-study";
+import { ReferencePage, type ReferencePageName } from "@/components/reference-page";
 import { getProject, projects } from "@/content/projects";
 
 type ProjectPageProps = { params: Promise<{ slug: string }> };
@@ -29,13 +28,13 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   const project = getProject(slug);
   if (!project) notFound();
 
-  return (
-    <main id="main-content" className="shell project-detail-main">
-      <nav className="breadcrumbs" aria-label="Breadcrumb">
-        <Link href="/">Home</Link><span aria-hidden="true">/</span><Link href="/projects">Projects</Link>
-      </nav>
-      <ProjectCaseStudy project={project} />
-      <p className="back-to-projects"><Link href="/projects">← All projects</Link></p>
-    </main>
-  );
+  const referenceNameBySlug: Record<string, ReferencePageName> = {
+    "fin-ai": "fin-ai",
+    "lora-reproduction": "lora",
+    "movie-recommendation-system": "movie",
+  };
+  const referenceName = referenceNameBySlug[slug];
+  if (!referenceName) notFound();
+
+  return <ReferencePage name={referenceName} />;
 }

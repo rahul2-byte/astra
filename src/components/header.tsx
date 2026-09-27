@@ -10,7 +10,7 @@ export function Header() {
         <Link className="brand" href="/" aria-label="Rahul Singh home"><span>RS</span>Rahul Singh</Link>
         <p className="header-status"><span aria-hidden="true" />Intangles · Available for ML</p>
         <nav className="main-nav" aria-label="Main navigation">
-          <Link href="/#about">About</Link><Link href="/#experience">Experience</Link><Link href="/#skills">Skills</Link><Link href="/#projects">Projects</Link><Link href="/projects">Case Studies</Link><Link href="/#contact">Contact</Link>
+          <Link href="/#about">About</Link><Link href="/#experience">Experience</Link><Link href="/#skills">Skills</Link><Link href="/#projects">Projects</Link><Link href="/#contact">Contact</Link>
         </nav>
         <div className="header-actions">
           <a className="header-resume" href={site.resume} download="Rahul-Singh-Resume.pdf"><DownloadIcon className="icon" />Résumé</a>

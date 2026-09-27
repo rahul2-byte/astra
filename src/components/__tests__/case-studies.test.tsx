@@ -1,17 +1,13 @@
-import { fireEvent, render, screen, cleanup, within } from "@testing-library/react";
+import { fireEvent, render, cleanup, within } from "@testing-library/react";
 import { afterEach } from "vitest";
 import ProjectDetailPage from "@/app/projects/[slug]/page";
 import { EvidenceTableScroll } from "@/components/evidence-table-scroll";
-import { projects } from "@/content/projects";
 
 afterEach(cleanup);
 
 async function renderStudy(slug: string) {
-  render(await ProjectDetailPage({ params: Promise.resolve({ slug }) }));
-  const project = projects.find(({ slug: projectSlug }) => projectSlug === slug);
-  if (!project) throw new Error(`Missing test project: ${slug}`);
-  const articleName = slug === "movie-recommendation-system" ? /Multi-Stage Movie Recommendation System/ : project.title;
-  return within(screen.getByRole("article", { name: articleName }));
+  const { container } = render(await ProjectDetailPage({ params: Promise.resolve({ slug }) }));
+  return within(container);
 }
 
 describe("project write-ups", () => {
@@ -31,37 +27,40 @@ describe("project write-ups", () => {
     expect(region.scrollLeft).toBe(0);
   });
 
-  it("shows FIN-AI's architecture and evidence limits on its own page", async () => {
-    const article = await renderStudy("fin-ai");
+  it("renders the supplied FIN-AI architecture and constraints", async () => {
+    const page = await renderStudy("fin-ai");
 
-    expect(article.getByRole("heading", { level: 1, name: "FIN-AI" })).toBeInTheDocument();
-    expect(article.getByText(/command-line stock-research assistant for NSE and BSE/i)).toBeInTheDocument();
-    expect(article.getByText(/limited number of tool calls to draft a summary/i)).toBeInTheDocument();
-    expect(article.queryByText(/LangGraph|pgvector|llama\.cpp|streaming chat/i)).not.toBeInTheDocument();
-    expect(article.getByText(/no published evaluation of financial-answer accuracy/i)).toBeInTheDocument();
+    expect(page.getByRole("heading", { level: 1, name: /FIN-AI: Bounded Model-and-Tool Financial Research Assistant/ })).toBeInTheDocument();
+    expect(page.getByRole("heading", { name: /Bounded Tool-and-Model Pipeline Architecture/ })).toBeInTheDocument();
+    expect(page.getByRole("heading", { name: /Practical Engineering Limitations/ })).toBeInTheDocument();
+    expect(page.getByRole("link", { name: /previous case study/i })).toHaveAttribute("href", "/projects");
+    expect(page.getByRole("link", { name: /next case study/i })).toHaveAttribute("href", "/projects/lora-reproduction");
   });
 
-  it("keeps LoRA's trade-off and validation limits on its own page", async () => {
-    const article = await renderStudy("lora-reproduction");
+  it("renders the supplied LoRA results and limitations", async () => {
+    const page = await renderStudy("lora-reproduction");
 
-    expect(article.getByRole("heading", { level: 1, name: "LoRA Reproduction" })).toBeInTheDocument();
-    expect(article.getByRole("img", { name: /scatter plots compare trainable parameter counts/i })).toBeInTheDocument();
-    expect(article.getByRole("cell", { name: /0\.6928 ± 0\.0086/i })).toBeInTheDocument();
-    expect(article.getByRole("cell", { name: /0\.9281 ± 0\.0046/i })).toBeInTheDocument();
-    expect(article.getByText(/scroll horizontally to see every column/i)).toBeInTheDocument();
-    expect(article.getByText(/not official GLUE test scores/i)).toBeInTheDocument();
-    expect(article.getByText(/base RoBERTa is still needed/i)).toBeInTheDocument();
+    expect(page.getByRole("heading", { level: 1, name: /LoRA Reproduction: Systematic Ablation on RoBERTa-base/ })).toBeInTheDocument();
+    expect(page.getByRole("heading", { name: /Comparative Performance Matrix/ })).toBeInTheDocument();
+    expect(page.getByText(/0\.6928 ± 0\.0086/)).toBeInTheDocument();
+    expect(page.getByText(/not official withheld test server submissions/i)).toBeInTheDocument();
+    expect(page.getByRole("link", { name: /previous project/i })).toHaveAttribute("href", "/projects/fin-ai");
+    expect(page.getByRole("link", { name: /next project/i })).toHaveAttribute("href", "/projects/movie-recommendation-system");
   });
 
-  it("shows movie metrics and benchmark limits on its own page", async () => {
-    const article = await renderStudy("movie-recommendation-system");
+  it("renders the supplied movie retrieval and reranking study", async () => {
+    const page = await renderStudy("movie-recommendation-system");
 
-    expect(article.getByRole("heading", { level: 1, name: /Multi-Stage Movie Recommendation System: Hybrid Retrieval & Reranking/ })).toBeInTheDocument();
-    expect(article.getByRole("navigation", { name: "On this page" })).toBeInTheDocument();
-    expect(article.getByRole("heading", { name: /11 ranking features/ })).toBeInTheDocument();
-    expect(article.getByRole("cell", { name: "0.281976" })).toBeInTheDocument();
-    expect(article.getByText(/sent 50 requests with five seed films/i)).toBeInTheDocument();
-    expect(article.getByText(/Lambda cold starts, API Gateway, production throughput/i)).toBeInTheDocument();
-    expect(article.getByRole("link", { name: /live demo/i })).toHaveAttribute("href", "https://movie-recommendation-system-phi-eight.vercel.app/");
+    expect(page.getAllByRole("main")[0].querySelector("script")).toBeNull();
+    expect(page.getByRole("heading", { level: 1, name: /Multi-Stage Movie Recommendation System: Hybrid Retrieval & Reranking/ })).toBeInTheDocument();
+    expect(page.getByRole("heading", { name: /4-Way Retrieval Funnel & Reciprocal Rank Fusion/ })).toBeInTheDocument();
+    expect(page.getByRole("heading", { name: /LightGBM Reranking & 32 Cross-Features/ })).toBeInTheDocument();
+    const evaluationTable = page.getByRole("region", { name: /evaluation & comparative analysis/i });
+    fireEvent.keyDown(evaluationTable, { key: "ArrowRight" });
+    expect(evaluationTable.scrollLeft).toBe(48);
+    fireEvent.keyDown(evaluationTable, { key: "ArrowLeft" });
+    expect(evaluationTable.scrollLeft).toBe(0);
+    expect(page.getByRole("link", { name: /previous case study/i })).toHaveAttribute("href", "/projects/lora-reproduction");
+    expect(page.getByRole("link", { name: /next case study/i })).toHaveAttribute("href", "/projects/fin-ai");
   });
 });

@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import Home from "@/app/page";
 import ProjectsPage from "@/app/projects/page";
 import ProjectDetailPage, { generateStaticParams } from "@/app/projects/[slug]/page";
@@ -7,34 +7,54 @@ import sitemap from "@/app/sitemap";
 import { projects } from "@/content/projects";
 
 describe("site structure", () => {
-  it("keeps the profile and Intangles experience on the home page", () => {
+  it("renders the supplied homepage and its experience content", () => {
     render(<Home />);
+    const main = screen.getByRole("main");
 
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/hi, i’m rahul/i);
-    expect(screen.getByRole("region", { name: "Experience" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /fuel event detection/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /vehicle-tag recommendations/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /ev coolant estimates/i })).toBeInTheDocument();
+    expect(main.querySelector("h1")?.textContent).not.toContain("\u00a0");
+    expect(["about", "experience", "skills", "projects", "contact"].every((id) => main.querySelector(`#${id}`))).toBe(true);
+    expect(within(main).getByRole("heading", { level: 1, name: /hi, i’m rahul/i })).toBeInTheDocument();
+    expect(main.querySelector('a[href="#"]')).toBeNull();
+    expect(within(main).getByRole("heading", { name: "Experience" })).toBeInTheDocument();
+    expect(within(main).getByRole("heading", { name: /fuel event detection/i })).toBeInTheDocument();
+    expect(within(main).getByRole("heading", { name: /vehicle-tag recommendations/i })).toBeInTheDocument();
+    expect(within(main).getByRole("heading", { name: /ev coolant estimates/i })).toBeInTheDocument();
   });
 
-  it("lists all projects and links each to its own case-study page", () => {
+  it("lists the supplied projects with working case-study and repository links", () => {
     render(<ProjectsPage />);
-    expect(screen.getByRole("heading", { name: "Projects", level: 1 })).toBeInTheDocument();
-    expect(screen.getByRole("list", { name: /all projects/i }).querySelectorAll(":scope > li")).toHaveLength(projects.length);
+    const main = screen.getByRole("main");
+    expect(within(main).getByRole("heading", { name: /independent projects & applied ml case studies/i, level: 1 })).toBeInTheDocument();
+    expect(main.querySelector('a[href="#"]')).toBeNull();
+    expect(main.querySelector("script")).toBeNull();
+    expect(main.querySelector("#filter-container")).toBeNull();
 
-    for (const project of projects) {
-      expect(screen.getByRole("link", { name: project.title })).toHaveAttribute("href", `/projects/${project.slug}`);
-      expect(screen.getByRole("link", { name: `Read ${project.title} case study` })).toHaveAttribute("href", `/projects/${project.slug}`);
-      expect(screen.getByRole("link", { name: `View ${project.title} repository on GitHub` })).toHaveAttribute("href", project.repository);
-    }
+    const caseStudyLinks = within(main).getAllByRole("link", { name: /case study/i });
+    expect(caseStudyLinks).toHaveLength(projects.length);
+    const cards = [...main.querySelectorAll<HTMLElement>(".project-card")];
+    expect(cards).toHaveLength(projects.length);
+    projects.forEach((project, index) => {
+      expect(caseStudyLinks[index]).toHaveAttribute("href", `/projects/${project.slug}`);
+      expect(within(main).getAllByText(project.title, { exact: false }).length).toBeGreaterThan(0);
+      expect(within(main).getAllByRole("link").some((link) => link.getAttribute("href") === project.repository)).toBe(true);
+    });
   });
 
-  it("pre-renders one detailed page per project", async () => {
+  it("pre-renders the supplied case study for every existing project route", async () => {
     expect(generateStaticParams()).toEqual(projects.map(({ slug }) => ({ slug })));
 
-    render(await ProjectDetailPage({ params: Promise.resolve({ slug: "fin-ai" }) }));
-    expect(screen.getByRole("heading", { level: 1, name: "FIN-AI" })).toBeInTheDocument();
-    expect(screen.getByRole("navigation", { name: /breadcrumb/i })).toHaveAttribute("aria-label", "Breadcrumb");
+    const headings = [
+      ["fin-ai", /FIN-AI: Bounded Model-and-Tool Financial Research Assistant/],
+      ["lora-reproduction", /LoRA Reproduction: Systematic Ablation on RoBERTa-base/],
+      ["movie-recommendation-system", /Multi-Stage Movie Recommendation System: Hybrid Retrieval & Reranking/],
+    ] as const;
+    for (const [slug, heading] of headings) {
+      const { container } = render(await ProjectDetailPage({ params: Promise.resolve({ slug }) }));
+      expect(within(container).getByRole("heading", { level: 1, name: heading })).toBeInTheDocument();
+      expect(within(container).getAllByRole("main")).toHaveLength(1);
+      expect(container.querySelector('a[href="#"]')).toBeNull();
+      expect(within(container).getByRole("navigation", { name: /breadcrumb/i })).toBeInTheDocument();
+    }
   });
 
   it("offers a clear recovery path for unknown routes", () => {

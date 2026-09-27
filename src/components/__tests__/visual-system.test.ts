@@ -3,30 +3,31 @@ import { join } from "node:path";
 
 const read = (path: string) => readFileSync(join(process.cwd(), path), "utf8");
 
-describe("reference-inspired visual system", () => {
-  it("uses self-hosted display and body fonts with accessible motion states", () => {
+describe("supplied visual system", () => {
+  it("compiles the reference Tailwind tokens locally and retains accessible navigation", () => {
     const css = read("src/app/globals.css");
+    const config = read("tailwind.config.cjs");
     const layout = read("src/app/layout.tsx");
+    const csp = read("next.config.ts");
 
-    expect(css).toContain("--paper: #fbfcff");
-    expect(css).toContain("--blue-primary: #2446ad");
-    expect(css).toContain("--blue-secondary: #3157c8");
-    expect(css).toContain("--blue-tertiary: #edf2ff");
-    expect(css).toContain("--accent: var(--blue-secondary)");
-    expect(css).toContain(".site-header { background: var(--blue-tertiary)");
-    expect(css).toContain(".site-footer { padding-block: 1.5rem; border-top: 1px solid rgb(49 87 200 / 30%); background: var(--blue-primary)");
-    expect(css).toContain("--font-display-stack");
-    expect(css).not.toContain("text-transform: lowercase");
-    expect(css).not.toContain("100vw - 100%");
+    expect(css).toContain("@tailwind utilities;");
+    expect(css).toContain("::-webkit-scrollbar");
     expect(css).toContain("prefers-reduced-motion: reduce");
-    expect(css).toContain("forced-colors: active");
-    expect(layout).toContain("next/font/google");
-    expect(layout).toContain("skip-link");
+    expect(config).toContain('"canvas": "#fbfbfa"');
+    expect(config).toContain('"primary": "#0037b0"');
+    expect(config).toContain('"headline-xl":');
+    expect(config).toContain("var(--font-body)");
+    expect(config).toContain("JetBrains Mono");
+    expect(layout).toContain("family=JetBrains+Mono");
+    expect(layout).toContain("href=\"#main-content\"");
+    expect(csp).toContain("https://fonts.googleapis.com");
+    expect(csp).toContain("https://fonts.gstatic.com");
   });
 
-  it("keeps the previous profile introduction and Intangles experience", () => {
-    const home = read("src/components/home-page.tsx");
+  it("keeps the supplied homepage HTML as the content source", () => {
+    const home = read("src/content/reference/home.html");
     expect(home).toContain("Hi, I’m Rahul.");
-    expect(home).toContain("Intangles");
+    expect(home).toContain("Technical toolkit");
+    expect(home).toContain("Independent projects");
   });
 });

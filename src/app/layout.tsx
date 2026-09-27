@@ -1,16 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { site } from "@/content/site";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
-import { AmbientMLBackground } from "@/components/ambient/AmbientMLBackground";
 import { getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
-
-const bodyFont = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
-const displayFont = Space_Grotesk({ subsets: ["latin"], variable: "--font-display", display: "swap" });
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -33,15 +26,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${bodyFont.variable} ${displayFont.variable}`}>
-      <body>
-        <AmbientMLBackground />
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font -- Shared Google stylesheet supplies the design's sans, mono, and icon fonts without build-time font downloads. */}
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+      </head>
+      <body className="bg-canvas text-on-surface font-body-md text-body-md min-h-screen flex flex-col antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
         <a className="skip-link" href="#main-content">Skip to content</a>
-        <div className="site-content-layer">
-          <Header />
-          {children}
-          <Footer />
-        </div>
+        {children}
         <Analytics />
         <SpeedInsights />
       </body>

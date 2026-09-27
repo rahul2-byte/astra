@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"on-secondary-fixed-variant":"#3f465c","tertiary-container":"#a73400","primary":"#0037b0","on-primary-container":"#cad3ff","on-error":"#ffffff","on-tertiary-fixed-variant":"#832700","surface-container-highest":"#d3e4fe","outline-variant":"#c4c5d7","canvas":"#fbfbfa","surface-bright":"#f8f9ff","on-surface":"#0b1c30","surface-dim":"#cbdbf5","text-secondary":"#475569","background":"#f8f9ff","inverse-on-surface":"#eaf1ff","surface-container":"#e5eeff","surface-container-low":"#eff4ff","on-surface-variant":"#434655","primary-fixed-dim":"#b7c4ff","error":"#ba1a1a","surface":"#ffffff","inverse-primary":"#b7c4ff","text-muted":"#64748b","on-secondary-container":"#5c647a","surface-variant":"#d3e4fe","border-strong":"#cbd5e1","tertiary":"#7f2500","on-tertiary-container":"#ffc9b7","secondary-container":"#dae2fd","on-secondary-fixed":"#131b2e","on-secondary":"#ffffff","surface-container-lowest":"#ffffff","on-error-container":"#93000a","accent-surface":"#eff6ff","on-primary-fixed-variant":"#0039b5","border-subtle":"#eaecf0","secondary":"#565e74","error-container":"#ffdad6","tertiary-fixed":"#ffdbcf","tertiary-fixed-dim":"#ffb59c","secondary-fixed-dim":"#bec6e0","secondary-fixed":"#dae2fd","on-background":"#0b1c30","on-primary":"#ffffff","accent-hover":"#1e40af","on-tertiary-fixed":"#390c00","on-primary-fixed":"#001551","primary-fixed":"#dce1ff","text-primary":"#0f172a","success-surface":"#ecfdf5","on-tertiary":"#ffffff","surface-container-high":"#dce9ff","inverse-surface":"#213145","outline":"#747686","primary-container":"#1d4ed8","surface-tint":"#2151da","success-text":"#047857"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"margin":"2rem","space-lg":"1.5rem","gutter-mobile":"1rem","space-sm":"0.5rem","gutter":"1.5rem","space-xl":"2.5rem","space-md":"1rem","margin-mobile":"1rem","space-xs":"0.25rem"},"fontFamily":{"headline-md":["Inter"],"body-md":["Inter"],"headline-xl-mobile":["Inter"],"label-mono":["JetBrains Mono"],"metric-display":["JetBrains Mono"],"headline-xl":["Inter"],"code-badge":["JetBrains Mono"],"headline-lg":["Inter"],"body-lg":["Inter"],"body-sm":["Inter"]},"fontSize":{"headline-md":["19px",{"lineHeight":"26px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"22px","letterSpacing":"-0.005em","fontWeight":"400"}],"headline-xl-mobile":["30px",{"lineHeight":"38px","letterSpacing":"-0.025em","fontWeight":"700"}],"label-mono":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"metric-display":["24px",{"lineHeight":"30px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-xl":["40px",{"lineHeight":"48px","letterSpacing":"-0.03em","fontWeight":"700"}],"code-badge":["12px",{"lineHeight":"16px","fontWeight":"500"}],"headline-lg":["26px",{"lineHeight":"34px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"26px","letterSpacing":"-0.01em","fontWeight":"400"}],"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}]}}}}</script></head><body class="bg-canvas text-on-surface font-body-md text-body-md min-h-screen flex flex-col antialiased selection:bg-primary-fixed selection:text-on-primary-fixed"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-b border-border-subtle"><div class="h-16 max-w-6xl mx-auto px-6 flex items-center justify-between gap-4"><div class="flex items-center gap-3"><a class="flex items-center gap-2 group" data-path="about" href="#"><span class="flex items-center justify-center w-8 h-8 rounded bg-text-primary text-surface font-label-mono text-label-mono font-semibold tracking-tight transition-transform group-hover:scale-95">RS</span><span class="font-headline-md text-body-md font-semibold text-text-primary tracking-tight whitespace-nowrap hidden sm:inline-block">Rahul Singh</span></a><div class="h-4 w-px bg-border-subtle hidden md:block"></div><div class="hidden md:flex items-center gap-2 px-2 py-0.5 rounded bg-surface-container-low border border-border-subtle"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success-text opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-success-text"></span></span><span class="font-label-mono text-label-mono text-text-secondary whitespace-nowrap">Intangles · Available for ML</span></div></div><nav class="hidden lg:flex items-center gap-1 font-body-sm text-body-sm" data-active-classes="text-text-primary font-semibold bg-accent-surface rounded"><a class="px-2.5 py-1.5 text-on-surface-variant hover:text-text-primary hover:bg-surface-container-low transition-colors rounded" data-path="about" href="#">About</a><a class="px-2.5 py-1.5 text-on-surface-variant hover:text-text-primary hover:bg-surface-container-low transition-colors rounded" data-path="experience" href="#">Experience</a><a class="px-2.5 py-1.5 text-on-surface-variant hover:text-text-primary hover:bg-surface-container-low transition-colors rounded" data-path="skills" href="#">Skills</a><a class="px-2.5 py-1.5 text-on-surface-variant hover:text-text-primary hover:bg-surface-container-low transition-colors rounded" data-path="projects" href="#">Projects</a><a class="px-2.5 py-1.5 text-on-surface-variant hover:text-text-primary hover:bg-surface-container-low transition-colors rounded" data-path="contact" href="#">Contact</a></nav><div class="flex items-center gap-2"><a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-border-subtle bg-surface text-text-primary font-code-badge text-code-badge hover:bg-surface-container-low hover:border-border-strong transition-all shadow-[0_1px_2px_rgba(0,0,0,0.02)]" href="#"><span class="material-symbols-outlined text-[16px]">download</span><span class="hidden sm:inline">Résumé</span></a><a aria-label="GitHub Profile" class="p-1.5 rounded text-on-surface-variant hover:text-text-primary hover:bg-surface-container-low transition-colors" href="https://github.com/rahul2-byte" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[20px]">code</span></a><a aria-label="LinkedIn Profile" class="p-1.5 rounded text-on-surface-variant hover:text-text-primary hover:bg-surface-container-low transition-colors" href="https://www.linkedin.com/in/-rahul-singh22/" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[20px]">share</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0 ml-1"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 flex-1 bg-canvas"><div class="flex flex-col w-full">
+<!-- Top Progress Bar / Meta Strip -->
+<div class="w-full bg-surface border-b border-border-subtle sticky top-16 z-30 px-6 py-2.5">
+<div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
+<nav aria-label="Breadcrumb" class="flex items-center gap-1.5 font-label-mono text-label-mono text-text-muted">
+<a class="hover:text-primary transition-colors" data-path="about" href="#">Home</a>
+<span class="text-border-strong">/</span>
+<a class="hover:text-primary transition-colors" data-path="projects" href="#">Projects</a>
+<span class="text-border-strong">/</span>
+<span class="text-text-primary font-semibold">LoRA Reproduction</span>
+</nav>
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container-low font-label-mono text-label-mono text-text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+          27 Ablation Runs Logged
+        </span>
+<a class="inline-flex items-center gap-1 text-primary hover:text-accent-hover font-label-mono text-label-mono font-medium transition-colors" href="https://github.com/rahul2-byte/lora-reproduction" rel="noopener noreferrer" target="_blank">
+<span>Source Code</span>
+<span class="material-symbols-outlined text-[14px]">north_east</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Hero Header Section -->
+<section class="w-full bg-canvas border-b border-border-subtle pt-10 pb-12 px-6">
+<div class="max-w-6xl mx-auto space-y-8">
+<!-- Domain Category & Status -->
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-2.5 py-1 rounded bg-surface border border-border-subtle font-label-mono text-label-mono text-primary font-semibold uppercase tracking-wider">
+          Parameter-efficient fine-tuning
+        </span>
+<span class="text-border-strong">•</span>
+<span class="px-2.5 py-1 rounded bg-surface border border-border-subtle font-label-mono text-label-mono text-text-secondary uppercase tracking-wider">
+          Empirical Research
+        </span>
+<span class="text-border-strong">•</span>
+<span class="px-2.5 py-1 rounded bg-surface border border-border-subtle font-label-mono text-label-mono text-text-secondary uppercase tracking-wider">
+          NLP Robustness
+        </span>
+</div>
+<!-- Main Title & Narrative Abstract -->
+<div class="space-y-4 max-w-4xl">
+<h1 class="font-headline-xl text-headline-xl-mobile sm:text-headline-xl text-text-primary tracking-tight">
+          LoRA Reproduction: Systematic Ablation on RoBERTa-base
+        </h1>
+<p class="font-body-lg text-body-lg text-text-secondary leading-relaxed">
+          Rigorous empirical replication of Hu et al.’s Low-Rank Adaptation. Evaluated rank hyperparameter sensitivity (<span class="font-label-mono font-medium text-text-primary">r ∈ {2, 4, 8, 16}</span>) against classical full fine-tuning on GLUE benchmark tasks, isolating parameter efficiency vs downstream generalization tradeoffs.
+        </p>
+</div>
+<!-- Key Metadata Ribbon -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 rounded-xl bg-surface border border-border-subtle shadow-sm">
+<div class="space-y-1">
+<span class="font-label-mono text-label-mono text-text-muted uppercase">Role</span>
+<p class="font-body-sm text-body-sm font-semibold text-text-primary">Independent Research &amp; Evaluation</p>
+</div>
+<div class="space-y-1">
+<span class="font-label-mono text-label-mono text-text-muted uppercase">Scope</span>
+<p class="font-body-sm text-body-sm font-semibold text-text-primary">PyTorch Core, 27 Ablations, GLUE</p>
+</div>
+<div class="space-y-1">
+<span class="font-label-mono text-label-mono text-text-muted uppercase">Hardware</span>
+<p class="font-body-sm text-body-sm font-semibold text-text-primary">1x NVIDIA RTX 4050 (Laptop GPU)</p>
+</div>
+<div class="space-y-1">
+<span class="font-label-mono text-label-mono text-text-muted uppercase">Reproducibility</span>
+<p class="font-body-sm text-body-sm font-semibold text-text-primary">3 Seeds (42, 1337, 2024), Checkpoints</p>
+</div>
+</div>
+<!-- Tech Stack Tags & Primary CTAs -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-2">
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="px-2.5 py-1 rounded bg-surface border border-border-subtle font-code-badge text-code-badge text-text-secondary">PyTorch</span>
+<span class="px-2.5 py-1 rounded bg-surface border border-border-subtle font-code-badge text-code-badge text-text-secondary">Hugging Face</span>
+<span class="px-2.5 py-1 rounded bg-surface border border-border-subtle font-code-badge text-code-badge text-text-secondary">PEFT</span>
+<span class="px-2.5 py-1 rounded bg-surface border border-border-subtle font-code-badge text-code-badge text-text-secondary">RoBERTa-base</span>
+<span class="px-2.5 py-1 rounded bg-surface border border-border-subtle font-code-badge text-code-badge text-text-secondary">CUDA 12.1</span>
+<span class="px-2.5 py-1 rounded bg-surface border border-border-subtle font-code-badge text-code-badge text-text-secondary">GLUE Benchmark</span>
+<span class="px-2.5 py-1 rounded bg-surface border border-border-subtle font-code-badge text-code-badge text-text-secondary">pytest</span>
+</div>
+<div class="flex items-center gap-3">
+<a class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-text-primary text-surface font-body-sm text-body-sm font-medium hover:bg-black transition-colors shadow-sm" href="https://github.com/rahul2-byte/lora-reproduction" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span>Source Code</span>
+<span class="material-symbols-outlined text-[14px]">north_east</span>
+</a>
+<a class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface border border-border-subtle text-text-primary font-body-sm text-body-sm font-medium hover:bg-surface-container-low transition-colors" href="https://github.com/rahul2-byte/lora-reproduction/blob/main/docs/results.md" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">description</span>
+<span>Results &amp; Logs ↗</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Metric Telemetry Highlight Strip -->
+<section class="w-full bg-surface border-b border-border-subtle py-8 px-6">
+<div class="max-w-6xl mx-auto">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Metric Card 1 -->
+<div class="p-5 rounded-xl bg-surface-container-low border border-border-subtle hover:border-border-strong transition-all flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-text-muted">PARAM REDUCTION</span>
+<span class="material-symbols-outlined text-primary text-[20px]">layers</span>
+</div>
+<div class="mt-4">
+<div class="font-metric-display text-metric-display text-text-primary tracking-tight">887K <span class="text-text-muted text-base font-normal">vs 124.6M</span></div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">99.29% fewer trainable parameters compared to full fine-tuning</p>
+</div>
+<div class="mt-3 pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-label-mono text-success-text">
+<span>Δ -123.76M weights</span>
+<span>99.3% ↓</span>
+</div>
+</div>
+<!-- Metric Card 2 -->
+<div class="p-5 rounded-xl bg-surface-container-low border border-border-subtle hover:border-border-strong transition-all flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-text-muted">ARTIFACT FOOTPRINT</span>
+<span class="material-symbols-outlined text-primary text-[20px]">inventory_2</span>
+</div>
+<div class="mt-4">
+<div class="font-metric-display text-metric-display text-text-primary tracking-tight">3.57 MB <span class="text-text-muted text-base font-normal">vs 498.7 MB</span></div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">~140x smaller task artifact footprint enabling instantaneous edge deployment</p>
+</div>
+<div class="mt-3 pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-label-mono text-primary">
+<span>Adapter-only export</span>
+<span>139.7x ↓</span>
+</div>
+</div>
+<!-- Metric Card 3 -->
+<div class="p-5 rounded-xl bg-surface-container-low border border-border-subtle hover:border-border-strong transition-all flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-text-muted">SST-2 PARITY</span>
+<span class="material-symbols-outlined text-success-text text-[20px]">verified</span>
+</div>
+<div class="mt-4">
+<div class="font-metric-display text-metric-display text-text-primary tracking-tight">0.9281 <span class="text-text-muted text-base font-normal">± 0.0046</span></div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">Statistical accuracy match against full fine-tuning (0.9304 ± 0.0024)</p>
+</div>
+<div class="mt-3 pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-label-mono text-text-secondary">
+<span>Validation gap: -0.23%</span>
+<span>Parity met</span>
+</div>
+</div>
+<!-- Metric Card 4 -->
+<div class="p-5 rounded-xl bg-surface-container-low border border-border-subtle hover:border-border-strong transition-all flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono text-text-muted">PEAK GPU VRAM</span>
+<span class="material-symbols-outlined text-primary text-[20px]">memory</span>
+</div>
+<div class="mt-4">
+<div class="font-metric-display text-metric-display text-text-primary tracking-tight">0.83 - 0.92 <span class="text-text-muted text-base font-normal">GiB</span></div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">Down from 2.41 GiB during full fine-tuning on identical batch size (32)</p>
+</div>
+<div class="mt-3 pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-label-mono text-success-text">
+<span>63.0% Memory relief</span>
+<span>Edge ready</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Deep Dive Body: Two-Column Structure -->
+<div class="w-full bg-canvas py-12 px-6">
+<div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
+<!-- Sticky Sidebar Navigation & Quick Reference -->
+<aside class="hidden lg:block lg:col-span-3">
+<div class="sticky top-32 space-y-6">
+<div class="p-4 rounded-xl bg-surface border border-border-subtle shadow-sm space-y-3">
+<span class="font-label-mono text-label-mono text-text-muted uppercase tracking-wider">Contents</span>
+<nav class="space-y-1.5 font-body-sm text-body-sm">
+<a class="flex items-center justify-between text-text-secondary hover:text-primary py-1 border-l-2 border-transparent pl-2 hover:border-primary transition-all" href="#motivation">
+<span>1. Core Motivation</span>
+<span class="font-label-mono text-xs text-text-muted">01</span>
+</a>
+<a class="flex items-center justify-between text-text-secondary hover:text-primary py-1 border-l-2 border-transparent pl-2 hover:border-primary transition-all" href="#architecture">
+<span>2. Implementation &amp; Math</span>
+<span class="font-label-mono text-xs text-text-muted">02</span>
+</a>
+<a class="flex items-center justify-between text-text-secondary hover:text-primary py-1 border-l-2 border-transparent pl-2 hover:border-primary transition-all" href="#protocol">
+<span>3. Experimental Protocol</span>
+<span class="font-label-mono text-xs text-text-muted">03</span>
+</a>
+<a class="flex items-center justify-between text-text-secondary hover:text-primary py-1 border-l-2 border-transparent pl-2 hover:border-primary transition-all" href="#results">
+<span>4. Evaluation &amp; Failure Modes</span>
+<span class="font-label-mono text-xs text-text-muted">04</span>
+</a>
+<a class="flex items-center justify-between text-text-secondary hover:text-primary py-1 border-l-2 border-transparent pl-2 hover:border-primary transition-all" href="#constraints">
+<span>5. Engineering Constraints</span>
+<span class="font-label-mono text-xs text-text-muted">05</span>
+</a>
+<a class="flex items-center justify-between text-text-secondary hover:text-primary py-1 border-l-2 border-transparent pl-2 hover:border-primary transition-all" href="#reproducibility">
+<span>6. Reproducibility &amp; Artifacts</span>
+<span class="font-label-mono text-xs text-text-muted">06</span>
+</a>
+</nav>
+</div>
+<!-- Hardware Badge -->
+<div class="p-4 rounded-xl bg-surface border border-border-subtle shadow-sm space-y-2">
+<span class="font-label-mono text-label-mono text-text-muted uppercase tracking-wider">Testbed Rig</span>
+<div class="text-body-sm text-text-secondary space-y-1">
+<div class="flex items-center justify-between">
+<span class="text-text-muted">GPU</span>
+<span class="font-label-mono text-xs font-semibold text-text-primary">RTX 4050 Laptop</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-text-muted">VRAM</span>
+<span class="font-label-mono text-xs text-text-primary">6 GB GDDR6</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-text-muted">PyTorch</span>
+<span class="font-label-mono text-xs text-text-primary">2.1.2+cu121</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-text-muted">Seeds</span>
+<span class="font-label-mono text-xs text-text-primary">[42, 1337, 2024]</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Deep Dive Content -->
+<main class="lg:col-span-9 space-y-12">
+<!-- SECTION 1: Core Motivation -->
+<section class="space-y-4 scroll-mt-24" id="motivation">
+<div class="flex items-center gap-3">
+<span class="font-label-mono text-label-mono px-2 py-0.5 rounded bg-surface border border-border-subtle text-primary font-semibold">01</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary">Why I Built It &amp; The Core Research Question</h2>
+</div>
+<div class="p-6 rounded-xl bg-surface border border-border-subtle shadow-sm space-y-4">
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+              In applied machine learning, claims of "99% parameter efficiency" are often reported without scrutinizing down-stream generalization tradeoffs, gradient stability, or the sensitivity of low-rank updates across datasets of contrasting scale. Parameter reduction alone is an incomplete metric: a model that saves 99% of its weights but drops 18% in pairwise sentence paraphrase accuracy introduces silent failure modes into production pipelines.
+            </p>
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+              This reproduction project sought to answer two straightforward engineering questions:
+            </p>
+<ul class="space-y-2 font-body-md text-body-md text-text-secondary pl-2">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">arrow_forward</span>
+<span><strong>Generalization Parity:</strong> Does a custom, cleanly implemented LoRA adapter in PyTorch match the benchmark score of full-parameter fine-tuning on binary sentiment analysis (SST-2, ~67k training examples) within standard statistical error?</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">arrow_forward</span>
+<span><strong>Data Scarcity Bottleneck:</strong> How does rank adaptation degrade when applied to highly constrained, pairwise paraphrase tasks (MRPC, ~3.6k examples) under standard shared hyperparameters, and can a rank sweep (<span class="font-label-mono">r ∈ {2, 4, 8, 16}</span>) resolve the bottleneck?</span>
+</li>
+</ul>
+</div>
+</section>
+<!-- SECTION 2: Architecture & Implementation Details -->
+<section class="space-y-4 scroll-mt-24" id="architecture">
+<div class="flex items-center gap-3">
+<span class="font-label-mono text-label-mono px-2 py-0.5 rounded bg-surface border border-border-subtle text-primary font-semibold">02</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary">System Architecture &amp; Mathematical Formulation</h2>
+</div>
+<div class="space-y-6">
+<!-- Diagram & Math Card -->
+<div class="p-6 rounded-xl bg-surface border border-border-subtle shadow-sm space-y-6">
+<div class="space-y-2">
+<h3 class="font-headline-md text-headline-md text-text-primary">Self-Attention Query/Value Projection Adaptation</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">
+                  Rather than modifying the full weight tensor <span class="font-label-mono text-xs">W₀ ∈ ℝ^(d×k)</span>, LoRA decomposes the weight update into two low-rank matrices <span class="font-label-mono text-xs">B ∈ ℝ^(d×r)</span> and <span class="font-label-mono text-xs">A ∈ ℝ^(r×k)</span> where <span class="font-label-mono text-xs">r ≪ min(d, k)</span>. Base weights remain completely frozen during backward passes.
+                </p>
+</div>
+<!-- Mathematical Formulation Box -->
+<div class="p-4 rounded-lg bg-surface-container-low border border-border-subtle space-y-3 font-label-mono text-sm text-text-primary">
+<div class="flex items-center justify-between text-xs text-text-muted border-b border-border-subtle pb-2">
+<span>FORWARD FORMULATION</span>
+<span>ZERO-LATENCY INFERENCE AVAILABLE</span>
+</div>
+<div class="py-2 text-center text-base font-semibold tracking-wide text-primary">
+                  h = W₀x + ΔWx = W₀x + (α / r) · B A x
+                </div>
+<div class="text-xs text-text-secondary space-y-1 pt-2 border-t border-border-subtle">
+<p>• <strong>Initialization:</strong> Matrix A initialized with Gaussian distribution <span class="text-text-primary">𝒩(0, 1/r)</span>; Matrix B initialized to exact zero (<span class="text-text-primary">B = 0</span>), ensuring <span class="text-text-primary">ΔW = 0</span> at step 0.</p>
+<p>• <strong>Scaling Constant:</strong> Scaling factor <span class="text-text-primary">α / r</span> (with α = 16) avoids the need to retune hyperparameters when changing rank <span class="text-text-primary">r</span>.</p>
+<p>• <strong>Inference Merging:</strong> At inference time, <span class="text-text-primary">W = W₀ + (α/r)·BA</span> is precomputed, yielding 0ms added runtime latency.</p>
+</div>
+</div>
+<!-- Inline Code Snippet showing Adapter Injection -->
+<div class="space-y-2">
+<div class="flex items-center justify-between text-xs font-label-mono text-text-muted">
+<span>Custom LinearLoRA Layer Implementation</span>
+<span>Python / PyTorch</span>
+</div>
+<div class="rounded-lg bg-surface-container-highest/40 border border-border-subtle p-4 font-label-mono text-xs text-text-primary overflow-x-auto leading-relaxed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" data-keyboard-scroll role="region" aria-label="LoRA implementation code sample" tabindex="0">
+<pre class="font-label-mono"><code><span class="text-text-muted"># Core low-rank projection layer applied to query &amp; value matrices</span>
+<span class="text-primary font-semibold">class</span> <span class="font-semibold text-text-primary">LinearLoRA</span>(nn.Module):
+    <span class="text-primary font-semibold">def</span> <span class="font-semibold text-text-primary">__init__</span>(self, in_features: <span class="text-primary">int</span>, out_features: <span class="text-primary">int</span>, r: <span class="text-primary">int</span> = 8, alpha: <span class="text-primary">float</span> = 16.0):
+        super().__init__()
+        self.r = r
+        self.alpha = alpha
+        self.scaling = alpha / r
+        
+        <span class="text-text-muted"># Frozen base weight matrix</span>
+        self.base_layer = nn.Linear(in_features, out_features, bias=False)
+        self.base_layer.weight.requires_grad = False
+        
+        <span class="text-text-muted"># Trainable low-rank decompositions</span>
+        self.lora_A = nn.Parameter(torch.empty((r, in_features)))
+        self.lora_B = nn.Parameter(torch.zeros((out_features, r)))
+        nn.init.kaiming_uniform_(self.lora_A, a=math.sqrt(5))
+
+    <span class="text-primary font-semibold">def</span> <span class="font-semibold text-text-primary">forward</span>(self, x: torch.Tensor) -&gt; torch.Tensor:
+        base_out = self.base_layer(x)
+        lora_out = (x @ self.lora_A.T @ self.lora_B.T) * self.scaling
+        <span class="text-primary font-semibold">return</span> base_out + lora_out</code></pre>
+</div>
+</div>
+<!-- Verification Badge -->
+<div class="flex items-center gap-3 p-3 rounded-lg bg-success-surface border border-border-subtle text-success-text text-body-sm">
+<span class="material-symbols-outlined text-[18px] shrink-0">check_circle</span>
+<span><strong>Verification Suite:</strong> Automated test suites with <span class="font-label-mono text-xs">pytest</span> verify that outputs from custom merged adapters match Hugging Face PEFT reference implementations to within numerical floating-point tolerances (<span class="font-label-mono text-xs">atol=1e-5</span>).</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: Experimental Protocol & Methodology -->
+<section class="space-y-4 scroll-mt-24" id="protocol">
+<div class="flex items-center gap-3">
+<span class="font-label-mono text-label-mono px-2 py-0.5 rounded bg-surface border border-border-subtle text-primary font-semibold">03</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary">Experimental Protocol &amp; Methodology</h2>
+</div>
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+            To ensure zero contamination and reproducible findings, all experiments were bounded by strict control rules:
+          </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Step 1 -->
+<div class="p-5 rounded-xl bg-surface border border-border-subtle shadow-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono px-2 py-0.5 rounded bg-surface-container-low text-text-muted">PHASE 01</span>
+<span class="material-symbols-outlined text-primary text-[18px]">lock</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-text-primary">Pin Protocol &amp; Datasets</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">
+                Fixed model commit hashes for <span class="font-label-mono text-xs">roberta-base</span>. Evaluation restricted exclusively to GLUE validation splits (<span class="font-label-mono text-xs">validation_matched</span>) without using the validation set for tuning or early stopping.
+              </p>
+</div>
+<!-- Step 2 -->
+<div class="p-5 rounded-xl bg-surface border border-border-subtle shadow-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono px-2 py-0.5 rounded bg-surface-container-low text-text-muted">PHASE 02</span>
+<span class="material-symbols-outlined text-primary text-[18px]">alt_route</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-text-primary">Tripartite Baseline Regime</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">
+                Trained three configurations across three deterministic seeds (<span class="font-label-mono text-xs">42, 1337, 2024</span>): (1) Linear classifier head only, (2) Full parameter fine-tuning, and (3) Custom LoRA adapters on attention projections.
+              </p>
+</div>
+<!-- Step 3 -->
+<div class="p-5 rounded-xl bg-surface border border-border-subtle shadow-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono px-2 py-0.5 rounded bg-surface-container-low text-text-muted">PHASE 03</span>
+<span class="material-symbols-outlined text-primary text-[18px]">query_stats</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-text-primary">Full Cost Accounting</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">
+                Instrumented exact PyTorch CUDA peak memory allocation tracking via <span class="font-label-mono text-xs">torch.cuda.max_memory_allocated()</span>, measuring end-to-end wall-clock training durations and exported serialization artifact sizes on disk.
+              </p>
+</div>
+<!-- Step 4 -->
+<div class="p-5 rounded-xl bg-surface border border-border-subtle shadow-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-label-mono px-2 py-0.5 rounded bg-surface-container-low text-text-muted">PHASE 04</span>
+<span class="material-symbols-outlined text-primary text-[18px]">biotech</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-text-primary">Single-Seed Rank Ablation</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">
+                Conducted 8 dedicated single-seed ablations across rank hyperparameters <span class="font-label-mono text-xs">r ∈ {2, 4, 8, 16}</span> and scaling alpha values <span class="font-label-mono text-xs">α ∈ {8, 16, 32}</span> on MRPC to diagnose performance sensitivity on low-sample classification.
+              </p>
+</div>
+</div>
+</section>
+<!-- SECTION 4: Evaluation, Results & Empirical Evidence -->
+<section class="space-y-6 scroll-mt-24" id="results">
+<div class="flex items-center gap-3">
+<span class="font-label-mono text-label-mono px-2 py-0.5 rounded bg-surface border border-border-subtle text-primary font-semibold">04</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary">Evaluation, Results &amp; Empirical Evidence</h2>
+</div>
+<div class="p-6 rounded-xl bg-surface border border-border-subtle shadow-sm space-y-6">
+<div class="space-y-1">
+<h3 class="font-headline-md text-headline-md text-text-primary">Comparative Performance Matrix</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">
+                Mean ± sample standard deviation computed across 3 deterministic seeds (<span class="font-label-mono text-xs">42, 1337, 2024</span>) on GLUE validation sets. Fixed budget of 3 epochs and identical learning rates (<span class="font-label-mono text-xs">2e-5</span>) utilized across all runs.
+              </p>
+</div>
+<!-- Quantitative Table -->
+<div class="overflow-x-auto rounded-lg border border-border-subtle focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" data-keyboard-scroll role="region" aria-label="Comparative performance results" tabindex="0">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="bg-surface-container-low border-b border-border-subtle font-label-mono text-label-mono text-text-muted">
+<th class="py-3 px-4">Evaluation Metric</th>
+<th class="py-3 px-4 text-primary font-semibold">Custom LoRA (r=8)</th>
+<th class="py-3 px-4">Full Fine-Tuning</th>
+<th class="py-3 px-4">Impact / Relative Delta</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle text-text-primary font-label-mono">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4 font-body-sm font-medium text-text-primary">Trainable Parameters</td>
+<td class="py-3 px-4 text-primary font-semibold">887,042</td>
+<td class="py-3 px-4 text-text-secondary">124,647,170</td>
+<td class="py-3 px-4 text-success-text text-xs">-99.29% trainable weight reduction</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4 font-body-sm font-medium text-text-primary">Task Artifact Size</td>
+<td class="py-3 px-4 text-primary font-semibold">3.57 MB</td>
+<td class="py-3 px-4 text-text-secondary">498.70 MB</td>
+<td class="py-3 px-4 text-success-text text-xs">139.7x storage reduction</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4 font-body-sm font-medium text-text-primary">Peak Allocated VRAM</td>
+<td class="py-3 px-4 text-primary font-semibold">0.83 - 0.92 GiB</td>
+<td class="py-3 px-4 text-text-secondary">2.35 - 2.41 GiB</td>
+<td class="py-3 px-4 text-success-text text-xs">63.0% peak memory relief</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4 font-body-sm font-medium text-text-primary">SST-2 Accuracy</td>
+<td class="py-3 px-4 text-primary font-semibold">0.9281 ± 0.0046</td>
+<td class="py-3 px-4 text-text-secondary">0.9304 ± 0.0024</td>
+<td class="py-3 px-4 text-text-secondary text-xs">-0.23% delta (within 1σ error band)</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4 font-body-sm font-medium text-text-primary">MRPC Accuracy</td>
+<td class="py-3 px-4 text-error font-semibold">0.6928 ± 0.0086</td>
+<td class="py-3 px-4 text-text-secondary">0.8717 ± 0.0051</td>
+<td class="py-3 px-4 text-error text-xs">-17.89% degradation on low sample size</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4 font-body-sm font-medium text-text-primary">MRPC F1 Score</td>
+<td class="py-3 px-4 text-text-primary">0.8184 ± 0.0052</td>
+<td class="py-3 px-4 text-text-secondary">0.9082 ± 0.0039</td>
+<td class="py-3 px-4 text-text-muted text-xs">High F1 masks strong positive prediction bias</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Deep Failure Mode Analytical Commentary -->
+<div class="p-5 rounded-lg bg-surface-container-low border border-border-subtle space-y-3">
+<div class="flex items-center gap-2 text-text-primary font-headline-md text-body-md font-semibold">
+<span class="material-symbols-outlined text-primary text-[18px]">analytics</span>
+<span>Critical Technical Insight: MRPC Low-Rank Failure Mode</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+                While SST-2 validated the efficiency premise of LoRA by achieving empirical parity with full fine-tuning, MRPC exposed an acute operational bottleneck. Under identical learning rates (<span class="font-label-mono text-xs">2e-5</span>) and epoch budgets (3 epochs), LoRA collapsed toward majority class guessing on MRPC.
+              </p>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+                Because MRPC comprises only ~3,668 training pairs with a 68% positive class imbalance, a restricted rank subspace (<span class="font-label-mono text-xs">r=8</span>) on query and value projections alone provided insufficient expressive capacity for cross-sentence attention alignment within 3 epochs. The model optimized cross-entropy loss by predicting the positive class indiscriminately—resulting in a deceptively respectable F1 score of <span class="font-label-mono text-xs text-text-primary">0.8184</span> despite an accuracy (<span class="font-label-mono text-xs text-error font-medium">0.6928</span>) barely outperforming trivial majority guessing. This confirms that <strong>F1 must never be reviewed in isolation on imbalanced low-resource tasks without accuracy and confusion matrix inspection</strong>.
+              </p>
+</div>
+</div>
+</section>
+<!-- SECTION 5: Engineering Constraints & Open Limitations -->
+<section class="space-y-4 scroll-mt-24" id="constraints">
+<div class="flex items-center gap-3">
+<span class="font-label-mono text-label-mono px-2 py-0.5 rounded bg-surface border border-border-subtle text-primary font-semibold">05</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary">Engineering Constraints &amp; Open Limitations</h2>
+</div>
+<div class="p-6 rounded-xl bg-surface border border-border-subtle shadow-sm space-y-4">
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+              Every credible research log requires transparently documented boundary conditions. The conclusions of this project are scoped by several explicit real-world constraints:
+            </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+<div class="p-4 rounded-lg bg-surface-container-low border border-border-subtle space-y-2">
+<span class="font-label-mono text-label-mono text-primary font-semibold">01 · HARDWARE CONFINES</span>
+<p class="font-body-sm text-body-sm text-text-secondary">
+                  Execution on a single mobile GPU (RTX 4050 6GB) limits max batch sizes and eliminates multi-GPU DDP gradient synchronization evaluation.
+                </p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-border-subtle space-y-2">
+<span class="font-label-mono text-label-mono text-primary font-semibold">02 · EVALUATION SPLITS</span>
+<p class="font-body-sm text-body-sm text-text-secondary">
+                  Reported metrics reflect local GLUE validation matched subsets, not official withheld test server submissions, to ensure full deterministic seed reproducibility.
+                </p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low border border-border-subtle space-y-2">
+<span class="font-label-mono text-label-mono text-primary font-semibold">03 · SERVING DEPENDENCY</span>
+<p class="font-body-sm text-body-sm text-text-secondary">
+                  While task adapters compress to 3.57 MB, production inference pipelines still mandate loading the full 498.7 MB frozen RoBERTa base weights in memory.
+                </p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: Artifacts & Open Reproducibility -->
+<section class="space-y-4 scroll-mt-24" id="reproducibility">
+<div class="flex items-center gap-3">
+<span class="font-label-mono text-label-mono px-2 py-0.5 rounded bg-surface border border-border-subtle text-primary font-semibold">06</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary">Artifacts &amp; Open Reproducibility</h2>
+</div>
+<div class="p-6 rounded-xl bg-surface border border-border-subtle shadow-sm space-y-4">
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+              All experiment code, configuration YAMLs, unit tests, and raw CSV run logs are publicly versioned under the repository:
+            </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+<a class="flex items-center justify-between p-4 rounded-lg border border-border-subtle bg-surface hover:bg-surface-container-low hover:border-border-strong transition-all group" href="https://github.com/rahul2-byte/lora-reproduction" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[22px]">code</span>
+<div>
+<div class="font-body-sm text-body-sm font-semibold text-text-primary group-hover:text-primary transition-colors">lora-reproduction</div>
+<div class="font-label-mono text-xs text-text-muted">github.com/rahul2-byte/lora-reproduction</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary text-[18px]">north_east</span>
+</a>
+<a class="flex items-center justify-between p-4 rounded-lg border border-border-subtle bg-surface hover:bg-surface-container-low hover:border-border-strong transition-all group" href="https://github.com/rahul2-byte/lora-reproduction/blob/main/docs/results.md" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[22px]">table_chart</span>
+<div>
+<div class="font-body-sm text-body-sm font-semibold text-text-primary group-hover:text-primary transition-colors">results.md (Complete Matrix)</div>
+<div class="font-label-mono text-xs text-text-muted">Per-seed scores, runtime &amp; loss logs</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary text-[18px]">north_east</span>
+</a>
+</div>
+<!-- Terminal Run Reproduction Command Box -->
+<div class="rounded-lg bg-surface-container-highest/40 border border-border-subtle p-4 space-y-2 mt-4">
+<span class="font-label-mono text-xs text-text-muted uppercase">To Replicate Experiments Locally:</span>
+<div class="font-label-mono text-xs text-text-primary space-y-1">
+<div class="text-text-secondary"><span class="text-primary">$</span> git clone https://github.com/rahul2-byte/lora-reproduction.git</div>
+<div class="text-text-secondary"><span class="text-primary">$</span> pip install -r requirements.txt &amp;&amp; pytest tests/</div>
+<div class="text-text-secondary"><span class="text-primary">$</span> python scripts/run_ablation.py --task sst2 --seeds 42 1337 2024 --rank 8</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Project Pagination Links -->
+<div class="pt-8 border-t border-border-subtle flex flex-col sm:flex-row items-center justify-between gap-4">
+<a class="flex items-center gap-2 text-text-secondary hover:text-text-primary font-body-sm text-body-sm transition-colors group" data-path="projects" href="#">
+<span class="material-symbols-outlined text-[18px] group-hover:-translate-x-0.5 transition-transform">arrow_back</span>
+<div>
+<span class="text-xs text-text-muted block font-label-mono">PREVIOUS PROJECT</span>
+<span class="font-medium">FIN-AI (Financial Intelligence Agent)</span>
+</div>
+</a>
+<a class="flex items-center gap-2 text-text-secondary hover:text-text-primary font-body-sm text-body-sm text-right transition-colors group" data-path="projects" href="#">
+<div>
+<span class="text-xs text-text-muted block font-label-mono">NEXT PROJECT</span>
+<span class="font-medium">Multi-Stage Movie Recommendation</span>
+</div>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</a>
+</div>
+</main>
+</div>
+</div>
+</div></main><footer class="w-full border-t border-border-subtle bg-surface"><div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-6 font-body-sm text-body-sm text-text-muted"><div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4"><span class="font-label-mono text-label-mono text-text-secondary">© 2026 Rahul Singh</span><span class="hidden sm:inline text-border-strong">•</span><span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">location_on</span>Pune, India</span></div><div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 font-label-mono text-label-mono"><a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="mailto:rahulchand4299@gmail.com"><span class="material-symbols-outlined text-[15px]">mail</span>Email</a><a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="tel:+919027537314"><span class="material-symbols-outlined text-[15px]">call</span>+91 9027537314</a><a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="https://github.com/rahul2-byte" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[15px]">terminal</span>GitHub</a><a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="https://www.linkedin.com/in/-rahul-singh22/" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[15px]">north_east</span>LinkedIn</a></div></div></footer></body></html>
