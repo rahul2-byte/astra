@@ -11,6 +11,7 @@ export function HomePage() {
     <main id="main-content" className="shell home-main">
       <section id="about" className="hero" aria-labelledby="home-title">
         <div className="hero-copy">
+          <p className="availability"><span aria-hidden="true" />Intangles · Pune, India / Open to Senior &amp; Staff ML roles</p>
           <h1 id="home-title">Hi, I’m Rahul.</h1>
           <p className="hero-role">Machine Learning Engineer at Intangles</p>
           <p className="hero-intro">
@@ -21,6 +22,7 @@ export function HomePage() {
               <DownloadIcon className="icon" />
               Download résumé
             </a>
+            <Link className="secondary-action" href="/projects">View Projects</Link>
             <nav className="social-links" aria-label="Social links">
               <a href={site.github} target="_blank" rel="noopener noreferrer">
                 <BrandIcon className="icon" icon={siGithub} />
@@ -46,13 +48,13 @@ export function HomePage() {
       </section>
 
       <section id="experience" className="experience-section" aria-labelledby="experience-title">
-        <h2 id="experience-title" className="section-title">Experience</h2>
+        <header className="section-heading"><h2 id="experience-title" className="section-title">Experience</h2><p>Production ML deployed on live fleet telemetry</p></header>
         <article className="experience-card" aria-label="Machine Learning Engineer at Intangles">
           <div className="experience-mark" aria-hidden="true">I</div>
           <div className="experience-content">
             <header className="experience-heading">
               <div>
-                <h3>Intangles</h3>
+                <h3>Intangles <span className="experience-type">Commercial IoT</span></h3>
                 <p>Machine Learning Engineer · Pune, India</p>
               </div>
               <time dateTime="2022-04">{experience.dates}</time>
@@ -80,8 +82,8 @@ export function HomePage() {
         </article>
       </section>
 
-      <section className="technology-section" aria-labelledby="technology-title">
-        <h2 id="technology-title" className="section-title">Technical toolkit</h2>
+      <section id="skills" className="technology-section" aria-labelledby="technology-title">
+        <header className="section-heading"><h2 id="technology-title" className="section-title">Technical toolkit</h2><p>Core engineering primitives &amp; toolchain</p></header>
         <ul className="technology-groups">
           {technologyGroups.map(({ title, items }) => (
             <li className="technology-group" key={title}>
@@ -99,8 +101,8 @@ export function HomePage() {
         </ul>
       </section>
 
-      <section className="personal-projects" aria-labelledby="projects-title">
-        <h2 id="projects-title" className="section-title">Independent projects</h2>
+      <section id="projects" className="personal-projects" aria-labelledby="projects-title">
+        <header className="section-heading"><h2 id="projects-title" className="section-title">Independent projects</h2><p>Research experiments &amp; full-stack systems</p></header>
         <ol className="home-project-list" aria-label="Selected projects">
           {projects.map((project) => (
             <li className="home-project" key={project.slug}>
@@ -108,6 +110,9 @@ export function HomePage() {
               <div className="home-project-copy">
                 <h3>{project.title}</h3>
                 <p>{project.summary}</p>
+                <ul className="tag-list project-preview-tags" aria-label={`${project.title} technologies`}>
+                  {project.tools.slice(0, 4).map((tool) => <li key={tool}>{tool}</li>)}
+                </ul>
               </div>
               <div className="home-project-actions">
                 <Link className="home-project-case-study" href={`/projects/${project.slug}`} aria-label={`Read ${project.title} case study`}>
@@ -127,7 +132,14 @@ export function HomePage() {
             </li>
           ))}
         </ol>
-        <Link className="all-projects-link" href="/projects">Browse all projects <span aria-hidden="true">↗</span></Link>
+        <Link className="all-projects-link" href="/projects">Browse all projects &amp; archived experiments <span aria-hidden="true">→</span></Link>
+      </section>
+
+      <section id="contact" className="connect-panel" aria-labelledby="connect-title">
+        <p className="connect-eyebrow">Let’s connect</p>
+        <h2 id="connect-title">Interested in telemetry systems, retrieval architectures, or machine learning roles?</h2>
+        <p>I am currently open to discussing Machine Learning Engineer positions, technical collaborations, and research implementations. Feel free to reach out directly.</p>
+        <div className="connect-actions"><a className="resume-link" href={`mailto:${site.email}`}><MailIcon className="icon" />{site.email}</a><a className="secondary-action" href={site.phoneHref}><PhoneIcon className="icon" />{site.phone}</a></div>
       </section>
     </main>
   );
