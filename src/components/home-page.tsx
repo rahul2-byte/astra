@@ -14,7 +14,7 @@ export function HomePage() {
           <h1 id="home-title">Hi, I’m Rahul.</h1>
           <p className="hero-role">Machine Learning Engineer at Intangles</p>
           <p className="hero-intro">
-            I have 4+ years of experience building production machine-learning systems for vehicle telemetry. At Intangles, I work on fuel-event detection, data quality, and recommendation tools. Outside work, I build projects in financial research, model fine-tuning, and recommendations.
+            I have 4+ years of experience building production ML systems for vehicle telemetry, including fuel-event detection, data quality, and recommendations. My independent projects explore financial research, model fine-tuning, and recommender systems.
           </p>
           <div className="hero-actions">
             <a className="resume-link" href={site.resume} download="Rahul-Singh-Resume.pdf">

@@ -32,24 +32,24 @@ export const projects: Project[] = [
     title: "FIN-AI",
     category: "Financial research · applied AI",
     summary:
-      "A command-line assistant for researching NSE and BSE stocks. It gathers provider data, runs deterministic calculations, and uses a bounded model-and-tool loop to draft reports.",
+      "A command-line stock-research assistant for NSE and BSE. It gathers provider data, runs deterministic calculations, and uses a bounded model-and-tool loop to draft reports.",
     role: "CLI and research workflow",
     tools: ["Python", "Hive", "Textual", "FastAPI", "YFinance", "Upstox", "TinyFish"],
     repository: "https://github.com/rahul2-byte/financial-analyst-system",
     evidenceLink: "https://github.com/rahul2-byte/financial-analyst-system/blob/main/README.md",
     evidenceLabel: "Read the README",
     problem:
-      "A stock report can mix prices, company data, news, calculations, and an LLM summary. I wanted the sources to stay visible, so a polished answer could not hide a gap in the evidence.",
+      "Stock research combines prices, company data, news, calculations, and model-written summaries. I built FIN-AI to keep sources visible so a polished report cannot hide missing evidence.",
     approach: [
-      "The main interface is a terminal app. It identifies the requested stock, gathers market or news data through registered tools, runs deterministic checks, then gives Hive a limited number of tool turns to draft a summary.",
-      "Python handles the calculations. Results can be shown in Textual, plain text, or JSON. Citation and publication checks stop unsupported reports.",
-      "Runs save transcripts, checkpoints, and provider snapshots locally. The snapshots let me replay selected runs without making the same live requests again.",
+      "The Textual CLI identifies the requested stock, collects market or news data through registered tools, runs deterministic checks, and gives Hive a limited number of tool calls to draft a summary.",
+      "Python runs the calculations; reports can be rendered in Textual, plain text, or JSON. Citation and publication checks reject unsupported reports.",
+      "Each run saves transcripts, checkpoints, and provider snapshots locally. Saved snapshots let me replay selected runs without repeating live provider requests.",
     ],
     workflow: [
-      { title: "Choose a stock", detail: "Ask for clarification when a symbol is ambiguous." },
-      { title: "Collect data", detail: "Gather market, company, and news data from providers." },
-      { title: "Run the analysis", detail: "Use Python calculations and a limited number of model/tool turns." },
-      { title: "Check the report", detail: "Validate citations, then render to Textual, plain text, or JSON." },
+      { title: "Choose a stock", detail: "Clarify the request when a symbol is ambiguous." },
+      { title: "Collect data", detail: "Fetch market, company, and news data from providers." },
+      { title: "Run the analysis", detail: "Run Python calculations and a limited model-and-tool loop." },
+      { title: "Check the report", detail: "Check citations before rendering in Textual, plain text, or JSON." },
     ],
     limitation:
       "This is a local command-line prototype, not an investment product. The public repository has no evaluation of answer accuracy, investment performance, or production reliability. FastAPI serves only the root and health endpoints; it does not expose the research workflow. Provider data may be incomplete or unavailable.",
@@ -60,28 +60,28 @@ export const projects: Project[] = [
     title: "LoRA Reproduction",
     category: "Parameter-efficient fine-tuning · research engineering",
     summary:
-      "I implemented LoRA adapters for RoBERTa and ran 27 experiments. The adapters used far fewer trainable parameters, but results varied: SST-2 held up; MRPC did not.",
+      "I implemented LoRA adapters for RoBERTa and ran 27 experiments. They used far fewer trainable parameters; SST-2 stayed close to full fine-tuning, while MRPC accuracy fell.",
     role: "LoRA implementation and evaluation",
     tools: ["PyTorch", "RoBERTa", "Hugging Face", "PEFT", "CUDA", "pytest"],
     repository: "https://github.com/rahul2-byte/lora-reproduction",
     evidenceLink: "https://github.com/rahul2-byte/lora-reproduction/blob/main/docs/results.md",
     evidenceLabel: "Read the results",
     problem:
-      "Fewer trainable weights do not tell you how well a fine-tuned model performs. I implemented LoRA for RoBERTa and compared it with full fine-tuning and a head-only baseline on two GLUE tasks.",
+      "Parameter count alone does not show task performance. I implemented LoRA for RoBERTa and compared it with full fine-tuning and a classifier-head baseline on MRPC and SST-2.",
     approach: [
       "I added low-rank adapters to RoBERTa's query and value projections and froze the base model. Tests compare merged inference with the reference PEFT implementation.",
-      "Across three seeds, I compared head-only training, full fine-tuning, and custom LoRA on MRPC and SST-2. I also ran a PEFT reference and eight single-seed MRPC ablations. Reports are generated from saved run artifacts.",
+      "Across three seeds, I compared head-only training, full fine-tuning, and custom LoRA on MRPC and SST-2. I also ran a PEFT reference and eight one-seed MRPC ablations. Reports come from saved run artifacts.",
     ],
     workflow: [
-      { title: "Set the protocol", detail: "Pin the model and data revisions; reserve GLUE validation for evaluation." },
+      { title: "Set the protocol", detail: "Pin model and data revisions; use GLUE validation only for evaluation." },
       { title: "Train three ways", detail: "Compare head-only training, full fine-tuning, and LoRA across three seeds." },
       { title: "Record the costs", detail: "Track scores, trainable parameters, GPU memory, run time, and artifact size." },
       { title: "Review the results", detail: "Check the saved adapters and report the weak MRPC scores." },
     ],
     resultFigure: {
       src: "/images/projects/lora-efficiency.png",
-      alt: "Scatter plots comparing trainable parameter counts and rerun times for head-only training, custom LoRA, and full fine-tuning on MRPC and SST-2.",
-      caption: "Rerun wall time against trainable parameter count on MRPC and SST-2.",
+      alt: "Scatter plots compare trainable parameter counts and rerun times for head-only training, custom LoRA, and full fine-tuning on MRPC and SST-2.",
+      caption: "Rerun time versus trainable parameter count on MRPC and SST-2.",
       width: 1440,
       height: 592,
     },
@@ -96,7 +96,7 @@ export const projects: Project[] = [
         ["Peak allocated GPU memory", "0.83–0.92 GiB", "2.35–2.41 GiB", "PyTorch allocation on one RTX 4050 laptop"],
       ],
       note:
-        "All methods used three epochs and the same learning rate. These are validation results, not official GLUE test scores. On MRPC, the LoRA adapter predicted “positive” for most examples; its F1 score looks better than its accuracy.",
+        "All methods used three epochs and the same learning rate. These are validation results, not official GLUE test scores. LoRA predictions on MRPC skewed heavily positive, so F1 alone overstates performance; read it alongside accuracy.",
     },
     limitation:
       "This is a small study: two tasks, one model, three seeds, and one laptop GPU. The MRPC ablations used one seed. Memory and timing depend on that hardware, and using the adapter still requires the matching base model and tokenizer.",
@@ -107,7 +107,7 @@ export const projects: Project[] = [
     title: "Movie Recommendation System",
     category: "Recommendation systems · full-stack ML",
     summary:
-      "A movie recommender that starts with up to five films. Four retrieval models find candidates; rank fusion combines their lists, then LightGBM orders the results.",
+      "A movie recommender seeded with up to five films. Four retrieval models generate candidates; rank fusion combines their lists, and LightGBM reranks the shortlist.",
     role: "Data pipeline, models, and web app",
     tools: ["Python", "PyTorch", "FAISS", "LightGBM", "FastAPI", "Next.js", "AWS Lambda"],
     repository: "https://github.com/rahul2-byte/movie-recommendation-system",
@@ -117,18 +117,18 @@ export const projects: Project[] = [
     problem:
       "I wanted recommendations to reflect a few films someone picked, rather than just popularity. I also wanted to rerank a shortlist instead of scoring the full catalog.",
     approach: [
-      "MovieLens and TMDB data feed two stages. ALS, item-graph, two-tower, and content models retrieve films; reciprocal-rank fusion combines their lists, and LightGBM reranks the candidates.",
-      "Models, indexes, and feature data ship together in an immutable bundle. FastAPI serves requests locally or through Docker on AWS Lambda. The Next.js page handles search, up to five selected films, and results.",
-      "The UI accepts mood labels, but the ranker ignores them. Recommendations use the selected films; no account is needed.",
+      "MovieLens and TMDB data feed a two-stage pipeline. ALS, item-graph, two-tower, and content models retrieve films; reciprocal-rank fusion combines their lists, and LightGBM reranks the shortlist.",
+      "Models, indexes, and feature data ship in an immutable bundle. FastAPI serves requests locally or in Docker on AWS Lambda. The Next.js interface lets people search, choose up to five films, and review recommendations.",
+      "The interface includes mood labels, but they do not affect ranking yet. Recommendations use the selected films, and no account is needed.",
     ],
     workflow: [
-      { title: "Pick films", detail: "Choose up to five titles from the catalog." },
-      { title: "Find candidates", detail: "Use ALS, item graph, two-tower, and content models." },
-      { title: "Rank the list", detail: "Combine the retrieval lists, then rerank with LightGBM." },
-      { title: "Show results", detail: "Add TMDB details and return the list through FastAPI." },
+      { title: "Choose films", detail: "Pick up to five titles from the catalog." },
+      { title: "Find candidates", detail: "Retrieve films with ALS, item-graph, two-tower, and content models." },
+      { title: "Rank the list", detail: "Fuse the retrieval lists, then rerank candidates with LightGBM." },
+      { title: "Show results", detail: "Add TMDB details and return recommendations through FastAPI." },
     ],
     evidence: {
-      caption: "Offline ranking results. The latency test used 50 warm requests on a local machine.",
+      caption: "Offline ranking metrics. Latency was measured across 50 warm requests on a local machine.",
       headings: ["Measure", "Popularity", "Rank fusion", "LightGBM"],
       rows: [
         ["NDCG@10", "0.179199", "0.276502", "0.281976"],

@@ -1,0 +1,11 @@
+.ambient-background { position: fixed; z-index: 0; inset: 0; overflow: hidden; pointer-events: none; }
+.ambient-events { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ambient-event { position: absolute; top: 0; left: 0; width: max-content; visibility: hidden; color: rgb(36 70 173 / 56%); opacity: .72; }
+.ambient-event--telemetry { color: rgb(49 87 200 / 59%); }
+.ambient-event--chart { color: rgb(49 87 200 / 62%); }
+.ambient-formula { font: 500 var(--ambient-random-size, 14px)/1.3 var(--font-display-stack); white-space: nowrap; }
+.ambient-trace, .ambient-chart { display: block; width: var(--ambient-random-size, 5rem); height: auto; overflow: visible; }
+.ambient-trace path, .ambient-chart path { fill: none; stroke: currentColor; stroke-width: 1.2; stroke-dasharray: 160; stroke-dashoffset: 160; animation: ambient-draw 1.8s ease-in-out infinite alternate; }
+@keyframes ambient-draw { to { stroke-dashoffset: 0; } }
+@media (max-width: 640px) { .ambient-event { color: rgb(36 70 173 / 55%); opacity: .9; } .ambient-event--telemetry, .ambient-event--chart { color: rgb(49 87 200 / 65%); } }
+@media (prefers-reduced-motion: reduce) { .ambient-background { display: none; } }

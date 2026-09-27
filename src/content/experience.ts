@@ -8,19 +8,19 @@ export const experience = {
     {
       title: "Fuel event detection",
       detail:
-        "Improved fuel-event analytics with signal smoothing, reducing false-positive alerts by 15%. Refill-volume estimates were within ±2% of entered logs.",
+        "Reduced false-positive fuel alerts by 15% with signal smoothing. Refill-volume estimates were within ±2% of entered logs.",
       tools: ["Signal processing"],
     },
     {
       title: "Vehicle-tag recommendations",
       detail:
-        "Built an internal tool that suggests vehicle tags from similar examples, reducing manual tagging effort and helping new teammates get started.",
+        "Built an internal tool that recommends vehicle tags from similar examples, reducing manual tagging and helping new teammates ramp up.",
       tools: ["Search & recommendations"],
     },
     {
       title: "EV coolant estimates",
       detail:
-        "Collaborated on a team model for coolant-temperature estimates and health-state forecasts from vehicle sensor data. Added checks for incomplete inputs to help prevent unreliable estimates.",
+        "Collaborated on a team model that estimates coolant temperature and forecasts health states from vehicle sensor data. Added checks for incomplete inputs to reduce the risk of unreliable estimates.",
       tools: ["Time-series ML", "Input validation"],
     },
   ],

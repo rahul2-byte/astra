@@ -11,7 +11,7 @@ describe("home page", () => {
 
     expect(screen.getByRole("heading", { level: 1, name: /hi, i’m rahul/i })).toBeInTheDocument();
     expect(screen.getByText(/machine learning engineer at intangles/i)).toBeInTheDocument();
-    expect(screen.getByText(/4\+ years.*production machine-learning systems.*vehicle telemetry.*financial research/i)).toBeInTheDocument();
+    expect(screen.getByText(/4\+ years.*production ML systems.*vehicle telemetry.*financial research/i)).toBeInTheDocument();
     expect(screen.getByRole("region", { name: "Experience" })).toBeInTheDocument();
     expect(screen.getByText("15%")).toBeInTheDocument();
     expect(screen.getByText("±2%")).toBeInTheDocument();
@@ -50,6 +50,6 @@ describe("home page", () => {
 
   it("publishes concise, current homepage metadata", () => {
     expect(metadata.title).toBe("Rahul Singh | Machine Learning Engineer at Intangles");
-    expect(metadata.description).toMatch(/works with vehicle telemetry.*financial research/i);
+    expect(metadata.description).toMatch(/4\+ years.*vehicle telemetry.*financial research/i);
   });
 });

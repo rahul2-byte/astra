@@ -34,8 +34,8 @@ describe("project write-ups", () => {
     const article = await renderStudy("fin-ai");
 
     expect(article.getByRole("heading", { level: 1, name: "FIN-AI" })).toBeInTheDocument();
-    expect(article.getByText(/command-line assistant for researching NSE and BSE stocks/i)).toBeInTheDocument();
-    expect(article.getByText(/limited number of model\/tool turns/i)).toBeInTheDocument();
+    expect(article.getByText(/command-line stock-research assistant for NSE and BSE/i)).toBeInTheDocument();
+    expect(article.getByText(/limited number of tool calls to draft a summary/i)).toBeInTheDocument();
     expect(article.queryByText(/LangGraph|pgvector|llama\.cpp|streaming chat/i)).not.toBeInTheDocument();
     expect(article.getByText(/no published evaluation of financial-answer accuracy/i)).toBeInTheDocument();
   });
@@ -44,7 +44,7 @@ describe("project write-ups", () => {
     const article = await renderStudy("lora-reproduction");
 
     expect(article.getByRole("heading", { level: 1, name: "LoRA Reproduction" })).toBeInTheDocument();
-    expect(article.getByRole("img", { name: /scatter plots comparing trainable parameter counts/i })).toBeInTheDocument();
+    expect(article.getByRole("img", { name: /scatter plots compare trainable parameter counts/i })).toBeInTheDocument();
     expect(article.getByRole("cell", { name: /0\.6928 ± 0\.0086/i })).toBeInTheDocument();
     expect(article.getByRole("cell", { name: /0\.9281 ± 0\.0046/i })).toBeInTheDocument();
     expect(article.getByText(/scroll horizontally to see every column/i)).toBeInTheDocument();

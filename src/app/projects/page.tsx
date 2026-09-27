@@ -6,7 +6,7 @@ import { BrandIcon } from "@/components/brand-icon";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Independent projects in financial research, LoRA fine-tuning, and movie recommendations, with detailed implementation and evaluation write-ups.",
+  description: "Independent projects in financial research, model fine-tuning, and recommendations, with implementation details, available evaluation, and limitations.",
 };
 
 export default function ProjectsPage() {
@@ -15,7 +15,7 @@ export default function ProjectsPage() {
       <header className="page-intro">
         <p className="eyebrow">Selected work</p>
         <h1>Projects</h1>
-        <p>Independent work in financial research, model fine-tuning, and recommendation systems. Each project has its own detailed write-up, including evidence and limitations.</p>
+        <p>Projects in financial research, model fine-tuning, and recommendation systems. Each write-up covers the implementation, available evidence, and known limitations.</p>
       </header>
       <ol className="project-index" aria-label="All projects">
         {projects.map((project) => (

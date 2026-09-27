@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import { site } from "@/content/site";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { AmbientMLBackground } from "@/components/ambient/AmbientMLBackground";
 import { getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
@@ -32,10 +33,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${bodyFont.variable} ${displayFont.variable}`}>
       <body>
+        <AmbientMLBackground />
         <a className="skip-link" href="#main-content">Skip to content</a>
-        <Header />
-        {children}
-        <Footer />
+        <div className="site-content-layer">
+          <Header />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );

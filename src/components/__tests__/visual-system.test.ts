@@ -9,7 +9,12 @@ describe("reference-inspired visual system", () => {
     const layout = read("src/app/layout.tsx");
 
     expect(css).toContain("--paper: #fbfcff");
-    expect(css).toContain("--accent: #3157c8");
+    expect(css).toContain("--blue-primary: #2446ad");
+    expect(css).toContain("--blue-secondary: #3157c8");
+    expect(css).toContain("--blue-tertiary: #edf2ff");
+    expect(css).toContain("--accent: var(--blue-secondary)");
+    expect(css).toContain(".site-header { background: var(--blue-tertiary)");
+    expect(css).toContain(".site-footer { padding-block: 1.5rem; border-top: 1px solid rgb(49 87 200 / 30%); background: var(--blue-primary)");
     expect(css).toContain("--font-display-stack");
     expect(css).not.toContain("text-transform: lowercase");
     expect(css).not.toContain("100vw - 100%");
