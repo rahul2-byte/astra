@@ -554,7 +554,7 @@ body:has(.project-detail-main) .main-nav a[href="/projects"] { background: #eef3
   #movie-funnel, #movie-retrieval, #movie-ranking, #movie-evaluation, #movie-constraints, #movie-quickstart { justify-content: space-between; }
   .movie-rrf-code pre { min-height: 50rem; }
   .movie-metric strong { font-size: 1.25rem; }
-  #movie-why { min-height: 32rem; }
+  #movie-why { min-height: 32rem; justify-content: space-between; }
   #movie-funnel { min-height: 72rem; }
   #movie-retrieval { min-height: 94rem; }
   #movie-ranking { min-height: 63.5rem; }
