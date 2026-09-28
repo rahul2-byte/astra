@@ -1,15 +1,15 @@
 export const site = {
   name: "Rahul Singh",
-  title: "Machine Learning Engineer",
+  title: "Applied AI / Machine Learning Engineer",
   summary:
-    "Rahul Singh is a machine learning engineer at Intangles in Pune with 4+ years of production experience. His work spans vehicle telemetry, financial research, model fine-tuning, and recommendation systems.",
+    "Rahul Singh is an Applied AI / Machine Learning Engineer with 4+ years of experience building production vehicle-telemetry models and an internal RAG recommender at Intangles. He has also built a financial research agent with bounded tool execution, evidence checks, and replayable evaluation.",
   location: "Pune, India",
   github: "https://github.com/rahul2-byte",
   linkedin: "https://www.linkedin.com/in/-rahul-singh22/",
   email: "rahulchand4299@gmail.com",
   phone: "+91 9027537314",
   phoneHref: "tel:+919027537314",
-  resume: "/resume_updated_fin_ai.pdf",
+  resume: "/Rahul_Singh_Applied_AI_ML_Engineer_Resume.pdf",
 };
 
 export const navItems = [

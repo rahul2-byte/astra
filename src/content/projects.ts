@@ -32,7 +32,7 @@ export const projects: Project[] = [
     title: "FIN-AI",
     category: "Financial research · applied AI",
     summary:
-      "A command-line stock-research assistant for NSE and BSE. It gathers provider data, runs deterministic calculations, and uses a bounded model-and-tool loop to draft reports.",
+      "A CLI-first NSE/BSE financial research agent with deterministic lookup routes, bounded LLM tool execution, fail-closed evidence checks, and replayable evaluation.",
     role: "CLI and research workflow",
     tools: ["Python", "Hive", "Textual", "FastAPI", "YFinance", "Upstox", "TinyFish"],
     repository: "https://github.com/rahul2-byte/financial-analyst-system",
@@ -41,16 +41,26 @@ export const projects: Project[] = [
     problem:
       "Stock research combines prices, company data, news, calculations, and model-written summaries. I built FIN-AI to keep sources visible so a polished report cannot hide missing evidence.",
     approach: [
-      "The Textual CLI identifies the requested stock, collects market or news data through registered tools, runs deterministic checks, and gives Hive a limited number of tool calls to draft a summary.",
-      "Python runs the calculations; reports can be rendered in Textual, plain text, or JSON. Citation and publication checks reject unsupported reports.",
-      "Each run saves transcripts, checkpoints, and provider snapshots locally. Saved snapshots let me replay selected runs without repeating live provider requests.",
+      "The CLI uses deterministic lookup routes and bounded LLM tool execution across nine schema-defined tools. Financial calculations run in Python, not as LLM-generated arithmetic.",
+      "Fail-closed publication checks reject reports with missing citations, unsupported major claims, or numeric facts without verified data; failed checks return limited-evidence results.",
+      "A 150-case live/replay evaluation uses provider snapshots and transcripts to inspect tool decisions and replay failures without live provider calls.",
     ],
     workflow: [
-      { title: "Choose a stock", detail: "Clarify the request when a symbol is ambiguous." },
-      { title: "Collect data", detail: "Fetch market, company, and news data from providers." },
-      { title: "Run the analysis", detail: "Run Python calculations and a limited model-and-tool loop." },
-      { title: "Check the report", detail: "Check citations before rendering in Textual, plain text, or JSON." },
+      { title: "Choose a stock", detail: "Resolve the NSE/BSE stock request through deterministic lookup routes." },
+      { title: "Collect data", detail: "Use bounded LLM tool execution across nine schema-defined tools." },
+      { title: "Run the analysis", detail: "Run financial calculations in Python, not with LLM-generated arithmetic." },
+      { title: "Check the report", detail: "Fail closed on missing citations, unsupported major claims, or unverified numeric facts." },
     ],
+    evidence: {
+      caption: "One live run from the 150-case live/replay evaluation; terminal success measures execution, not answer accuracy.",
+      headings: ["Measure", "Observed result", "Context"],
+      rows: [
+        ["Terminal successes", "143 / 150 (95.3%)", "One live run"],
+        ["End-to-end p50 latency", "45.7 s", "One live run"],
+        ["End-to-end p95 latency", "110.3 s", "One live run"],
+      ],
+      note: "The evaluation records execution outcomes and latency. Terminal success is not a measure of financial-answer accuracy or investment performance.",
+    },
     limitation:
       "This is a local command-line prototype, not an investment product. The public repository has no evaluation of answer accuracy, investment performance, or production reliability. FastAPI serves only the root and health endpoints; it does not expose the research workflow. Provider data may be incomplete or unavailable.",
   },
@@ -69,8 +79,8 @@ export const projects: Project[] = [
     problem:
       "Parameter count alone does not show task performance. I implemented LoRA for RoBERTa and compared it with full fine-tuning and a classifier-head baseline on MRPC and SST-2.",
     approach: [
-      "I added low-rank adapters to RoBERTa's query and value projections and froze the base model. Tests compare merged inference with the reference PEFT implementation.",
-      "Across three seeds, I compared head-only training, full fine-tuning, and custom LoRA on MRPC and SST-2. I also ran a PEFT reference and eight one-seed MRPC ablations. Reports come from saved run artifacts.",
+      "I implemented custom PyTorch LoRA adapters for RoBERTa query/value projections, with frozen base weights, rank/alpha scaling, adapter dropout, paper-style initialization, safe module injection, and merged-inference export. Tests validate forward parity with PEFT.",
+      "The reproducible 27-run GLUE study includes 18 core MRPC/SST-2 runs across three seeds, one PEFT reference run, and eight rank, scaling, and module-placement ablations. Reports come from saved run artifacts.",
     ],
     workflow: [
       { title: "Set the protocol", detail: "Pin model and data revisions; use GLUE validation only for evaluation." },
@@ -90,10 +100,10 @@ export const projects: Project[] = [
       headings: ["Measure", "Custom LoRA", "Full fine-tuning", "Context"],
       rows: [
         ["Trainable parameters", "887,042", "124,647,170", "99.29% fewer trainable values"],
-        ["Task artifact", "3.57 MB", "498.7 MB", "Base RoBERTa is still needed for LoRA inference"],
+        ["Task artifact", "3.57 MB", "498.7 MB", "99.28% smaller; base RoBERTa is still needed for LoRA inference"],
         ["SST-2 accuracy", "0.9281 ± 0.0046", "0.9304 ± 0.0024", "Close in this local validation study"],
         ["MRPC accuracy", "0.6928 ± 0.0086", "0.8717 ± 0.0051", "LoRA was weak under the shared settings"],
-        ["Peak allocated GPU memory", "0.83–0.92 GiB", "2.35–2.41 GiB", "PyTorch allocation on one RTX 4050 laptop"],
+        ["Peak allocated GPU memory", "0.83–0.92 GiB", "2.35–2.41 GiB", "61.9–64.6% lower PyTorch allocation on one RTX 4050 laptop"],
       ],
       note:
         "All methods used three epochs and the same learning rate. These are validation results, not official GLUE test scores. LoRA predictions on MRPC skewed heavily positive, so F1 alone overstates performance; read it alongside accuracy.",

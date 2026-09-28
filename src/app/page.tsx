@@ -3,10 +3,10 @@ import { HomePage } from "@/components/home-page";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: `${site.name} | Machine Learning Engineer at Intangles`,
+  title: `${site.name} | Applied AI / Machine Learning Engineer at Intangles`,
   description: site.summary,
   openGraph: {
-    title: `${site.name} | Machine Learning Engineer at Intangles`,
+    title: `${site.name} | Applied AI / Machine Learning Engineer at Intangles`,
     description: site.summary,
   },
 };

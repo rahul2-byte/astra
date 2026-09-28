@@ -1,63 +1,58 @@
-import {
-  siDocker,
-  siFastapi,
-  siGithubactions,
-  siHuggingface,
-  siMlflow,
-  siNextdotjs,
-  siPostgresql,
-  siPython,
-  siPytorch,
-  siRabbitmq,
-  siScikitlearn,
-  siTensorflow,
-  type SimpleIcon,
-} from "simple-icons";
-
-export type Technology = { name: string; icon?: SimpleIcon };
+export type Technology = { name: string };
 export type TechnologyGroup = { title: string; items: Technology[] };
 
 export const technologyGroups: TechnologyGroup[] = [
   {
-    title: "Languages & data",
+    title: "Generative AI / LLMs",
     items: [
-      { name: "Python", icon: siPython },
-      { name: "SQL" },
-      { name: "PostgreSQL", icon: siPostgresql },
-      { name: "RabbitMQ", icon: siRabbitmq },
-    ],
-  },
-  {
-    title: "Machine learning",
-    items: [
-      { name: "PyTorch", icon: siPytorch },
-      { name: "TensorFlow / Keras", icon: siTensorflow },
-      { name: "Hugging Face", icon: siHuggingface },
-      { name: "scikit-learn", icon: siScikitlearn },
-      { name: "LightGBM" },
-      { name: "LoRA / PEFT" },
-      { name: "Sentence Transformers" },
-    ],
-  },
-  {
-    title: "LLMs & retrieval",
-    items: [
+      { name: "LLM workflows" },
       { name: "RAG" },
-      { name: "Embeddings & semantic search" },
-      { name: "FAISS" },
-      { name: "MMR reranking" },
+      { name: "LangGraph" },
+      { name: "Tool calling" },
+      { name: "Structured outputs" },
+      { name: "LoRA / parameter-efficient fine-tuning" },
     ],
   },
   {
-    title: "APIs, cloud & delivery",
+    title: "ML / NLP",
     items: [
-      { name: "FastAPI", icon: siFastapi },
-      { name: "Docker", icon: siDocker },
-      { name: "AWS Lambda" },
-      { name: "MLflow", icon: siMlflow },
+      { name: "PyTorch" },
+      { name: "TensorFlow / Keras" },
+      { name: "Hugging Face Transformers / PEFT" },
+      { name: "scikit-learn" },
+      { name: "LightGBM" },
+      { name: "sentence-transformers" },
+    ],
+  },
+  {
+    title: "Retrieval",
+    items: [
+      { name: "Embeddings" },
+      { name: "Semantic search" },
+      { name: "pgvector" },
+      { name: "Maximal Marginal Relevance (MMR) reranking" },
+    ],
+  },
+  {
+    title: "Backend / data",
+    items: [
+      { name: "Python" },
+      { name: "SQL" },
+      { name: "FastAPI" },
+      { name: "REST APIs" },
+      { name: "PostgreSQL" },
+      { name: "RabbitMQ" },
+    ],
+  },
+  {
+    title: "MLOps / cloud",
+    items: [
+      { name: "Docker" },
+      { name: "AWS" },
+      { name: "MLflow" },
       { name: "OpenTelemetry" },
-      { name: "GitHub Actions", icon: siGithubactions },
-      { name: "Next.js", icon: siNextdotjs },
+      { name: "GitHub Actions (CI/CD)" },
+      { name: "Git" },
     ],
   },
 ];

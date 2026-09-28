@@ -12,14 +12,14 @@ export function HomePage() {
       <section id="about" className="hero" aria-labelledby="home-title">
         <div className="hero-copy">
           <h1 id="home-title">Hi, I’m Rahul.</h1>
-          <p className="hero-role">Machine Learning Engineer at Intangles</p>
+          <p className="hero-role">Applied AI / Machine Learning Engineer at Intangles</p>
           <p className="hero-intro">
-            I have 4+ years of experience building production ML systems for vehicle telemetry, including fuel-event detection, data quality, and recommendations. My independent projects explore financial research, model fine-tuning, and recommender systems.
+            I have 4+ years of experience building production vehicle-telemetry models and an internal RAG recommender. My projects include a financial research agent with bounded tool execution, evidence checks, and replayable evaluation.
           </p>
           <div className="hero-actions">
             <a className="resume-link" href={site.resume} download="Rahul-Singh-Resume.pdf">
               <DownloadIcon className="icon" />
-              Download résumé
+              Download resume
             </a>
             <nav className="social-links" aria-label="Social links">
               <a href={site.github} target="_blank" rel="noopener noreferrer">
@@ -57,7 +57,7 @@ export function HomePage() {
               </div>
               <time dateTime="2022-04">{experience.dates}</time>
             </header>
-            <ul className="experience-outcomes" aria-label="Selected fuel analytics outcomes">
+            <ul className="experience-outcomes" aria-label="Fuel Analytics scale">
               {experience.outcomes.map(({ value, label }) => (
                 <li key={value}>
                   <strong>{value}</strong>
@@ -66,12 +66,11 @@ export function HomePage() {
               ))}
             </ul>
             <ul className="experience-workstreams">
-              {experience.workstreams.map(({ title, detail, tools }) => (
+              {experience.workstreams.map(({ title, points }) => (
                 <li key={title}>
                   <h4>{title}</h4>
-                  <p>{detail}</p>
-                  <ul className="tag-list" aria-label={`${title} methods and tools`}>
-                    {tools.map((tool) => <li key={tool}>{tool}</li>)}
+                  <ul className="experience-points">
+                    {points.map((point) => <li key={point}>{point}</li>)}
                   </ul>
                 </li>
               ))}
@@ -81,19 +80,12 @@ export function HomePage() {
       </section>
 
       <section className="technology-section" aria-labelledby="technology-title">
-        <h2 id="technology-title" className="section-title">Technical toolkit</h2>
+        <h2 id="technology-title" className="section-title">Skills &amp; tools</h2>
         <ul className="technology-groups">
           {technologyGroups.map(({ title, items }) => (
             <li className="technology-group" key={title}>
               <h3>{title}</h3>
-              <ul className="tech-list">
-                {items.map(({ name, icon }) => (
-                  <li className="technology-item" key={name}>
-                    {icon && <BrandIcon className="technology-icon" icon={icon} />}
-                    <span>{name}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="technology-copy">{items.map(({ name }) => name).join(" · ")}</p>
             </li>
           ))}
         </ul>
@@ -128,6 +120,17 @@ export function HomePage() {
           ))}
         </ol>
         <Link className="all-projects-link" href="/projects">Browse all projects <span aria-hidden="true">↗</span></Link>
+      </section>
+
+      <section className="education-section" aria-labelledby="education-title">
+        <h2 id="education-title" className="section-title">Education</h2>
+        <article className="education-entry">
+          <div>
+            <h3>Government Polytechnic Kashipur</h3>
+            <p>Diploma in Computer Science and Engineering · Uttarakhand, India</p>
+          </div>
+          <time dateTime="2018-07">Jul 2018 – Sep 2021</time>
+        </article>
       </section>
     </main>
   );

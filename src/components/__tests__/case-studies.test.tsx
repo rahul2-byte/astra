@@ -34,10 +34,12 @@ describe("project write-ups", () => {
     const article = await renderStudy("fin-ai");
 
     expect(article.getByRole("heading", { level: 1, name: "FIN-AI" })).toBeInTheDocument();
-    expect(article.getByText(/command-line stock-research assistant for NSE and BSE/i)).toBeInTheDocument();
-    expect(article.getByText(/limited number of tool calls to draft a summary/i)).toBeInTheDocument();
-    expect(article.queryByText(/LangGraph|pgvector|llama\.cpp|streaming chat/i)).not.toBeInTheDocument();
-    expect(article.getByText(/no published evaluation of financial-answer accuracy/i)).toBeInTheDocument();
+    expect(article.getByText(/CLI-first NSE\/BSE financial research agent/i)).toBeInTheDocument();
+    expect(article.getByText(/financial calculations run in Python, not as LLM-generated arithmetic/i)).toBeInTheDocument();
+    expect(article.getAllByText(/150-case live\/replay evaluation/i).length).toBeGreaterThan(0);
+    expect(article.getByRole("cell", { name: "143 / 150 (95.3%)" })).toBeInTheDocument();
+    expect(article.getAllByText(/terminal success measures execution, not answer accuracy/i).length).toBeGreaterThan(0);
+    expect(article.getByText(/no evaluation of answer accuracy, investment performance, or production reliability/i)).toBeInTheDocument();
   });
 
   it("keeps LoRA's trade-off and validation limits on its own page", async () => {

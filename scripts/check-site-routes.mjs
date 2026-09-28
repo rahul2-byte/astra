@@ -8,7 +8,7 @@ const projects = [
 ];
 
 for (const [path, content] of [
-  ["/", "Machine Learning Engineer at Intangles"],
+  ["/", "Applied AI / Machine Learning Engineer at Intangles"],
   ["/projects", "FIN-AI"],
   ...projects.map(([slug, title]) => [`/projects/${slug}`, title]),
 ]) {
@@ -26,8 +26,9 @@ for (const [path, destination] of [
   ["/projects/production-ml-systems", "/#experience"],
   ["/contact", "/#contact"],
   ["/writing", "/projects"],
-  ["/resume", "/resume_updated_fin_ai.pdf"],
-  ["/resume.pdf", "/resume_updated_fin_ai.pdf"],
+  ["/resume", "/Rahul_Singh_Applied_AI_ML_Engineer_Resume.pdf"],
+  ["/resume.pdf", "/Rahul_Singh_Applied_AI_ML_Engineer_Resume.pdf"],
+  ["/resume_updated_fin_ai.pdf", "/Rahul_Singh_Applied_AI_ML_Engineer_Resume.pdf"],
 ]) {
   const response = await fetch(new URL(path, baseUrl), { redirect: "manual" });
   assert.equal(response.status, 308, `${path} should permanently redirect`);
@@ -40,9 +41,9 @@ for (const [path, destination] of [
 const unknownProject = await fetch(new URL("/projects/not-a-project", baseUrl));
 assert.equal(unknownProject.status, 404, "unknown project slugs should return 404");
 
-const resume = await fetch(new URL("/resume_updated_fin_ai.pdf", baseUrl));
-assert.equal(resume.status, 200, "approved résumé should be available");
-assert.ok((await resume.arrayBuffer()).byteLength > 0, "résumé response should not be empty");
+const resume = await fetch(new URL("/Rahul_Singh_Applied_AI_ML_Engineer_Resume.pdf", baseUrl));
+assert.equal(resume.status, 200, "current resume should be available");
+assert.ok((await resume.arrayBuffer()).byteLength > 0, "resume response should not be empty");
 
 const sitemap = await fetch(new URL("/sitemap.xml", baseUrl));
 assert.equal(sitemap.status, 200, "sitemap should be available");
@@ -55,4 +56,4 @@ assert.deepEqual(
   "sitemap should list all canonical pages",
 );
 
-console.log("Project index, detail pages, legacy redirects, résumé, and sitemap passed.");
+console.log("Project index, detail pages, legacy redirects, resume, and sitemap passed.");

@@ -12,9 +12,10 @@ describe("site structure", () => {
 
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/hi, i’m rahul/i);
     expect(screen.getByRole("region", { name: "Experience" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /fuel event detection/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /vehicle-tag recommendations/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /ev coolant estimates/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /fuel analytics/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /spec tag recommender/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /ev battery coolant temperature/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /production monitoring/i })).toBeInTheDocument();
   });
 
   it("lists all projects and links each to its own case-study page", () => {

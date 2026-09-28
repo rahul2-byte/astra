@@ -20,8 +20,9 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/contact", destination: "/#contact", permanent: true },
-      { source: "/resume", destination: "/resume_updated_fin_ai.pdf", permanent: true },
-      { source: "/resume.pdf", destination: "/resume_updated_fin_ai.pdf", permanent: true },
+      { source: "/resume", destination: "/Rahul_Singh_Applied_AI_ML_Engineer_Resume.pdf", permanent: true },
+      { source: "/resume_updated_fin_ai.pdf", destination: "/Rahul_Singh_Applied_AI_ML_Engineer_Resume.pdf", permanent: true },
+      { source: "/resume.pdf", destination: "/Rahul_Singh_Applied_AI_ML_Engineer_Resume.pdf", permanent: true },
       { source: "/writing", destination: "/projects", permanent: true },
       { source: "/experience", destination: "/#experience", permanent: true },
       { source: "/projects/production-ml-systems", destination: "/#experience", permanent: true },
